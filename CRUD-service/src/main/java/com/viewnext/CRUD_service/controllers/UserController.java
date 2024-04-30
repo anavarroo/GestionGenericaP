@@ -29,8 +29,8 @@ public class UserController {
      * @return Un objeto ResponseEntity que contiene el nuevo usuario creado y el estado HTTP 201 Created.
      */
     @PostMapping("/crear")
-    public ResponseEntity<User> crearUsuario(@RequestBody User user) {
-        User nuevoUsuario = userServiceI.crearUsuario(user);
+    public ResponseEntity<UserDto> crearUsuario(@RequestBody User user) {
+        UserDto nuevoUsuario = userServiceI.crearUsuario(user);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
     }
 
