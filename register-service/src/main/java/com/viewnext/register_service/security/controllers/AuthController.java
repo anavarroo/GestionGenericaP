@@ -1,5 +1,6 @@
 package com.viewnext.register_service.security.controllers;
 
+import com.viewnext.register_service.persistence.dto.UserDto;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
@@ -29,7 +30,7 @@ public class AuthController {
      * @return Respuesta con el token de autenticación.
      */
     @PostMapping(value = "/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<UserDto> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authMngm.register(request));
     }
 

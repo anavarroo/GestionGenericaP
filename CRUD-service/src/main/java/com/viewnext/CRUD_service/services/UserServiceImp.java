@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImp implements UserServiceI {
 
@@ -78,6 +81,13 @@ public class UserServiceImp implements UserServiceI {
         }
     }
 
+    @Override
+    public void aprobarRegistro(String correo,boolean estado) {
+        User usuarioMod = userRepositoryI.findByCorreo(correo);
+        usuarioMod.setEstado(estado);
+        userRepositoryI.save(usuarioMod);
+    }
+
     /**
      * Encuentra un usuario por su correo y devuelve su DTO.
      *
@@ -85,10 +95,14 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorNombre(String nombre) {
-        User user = userRepositoryI.findByNombre(nombre);
+    public List<UserDto> consultarUsuarioPorNombre(String nombre) {
+        List<User> users = userRepositoryI.findByNombre(nombre);
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
 
-        return convertToDto(user);
+        return userDtos;
     }
 
     /**
@@ -98,10 +112,15 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorApellidos(String apellidos) {
-        User user = userRepositoryI.findByApellidos(apellidos);
+    public List<UserDto> consultarUsuarioPorApellidos(String apellidos) {
+        List<User> users = userRepositoryI.findByApellidos(apellidos);
 
-        return convertToDto(user);
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
     }
 
     /**
@@ -111,10 +130,15 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorEdad(int edad) {
-        User user = userRepositoryI.findByEdad(edad);
+    public List<UserDto> consultarUsuarioPorEdad(int edad) {
+        List<User> users = userRepositoryI.findByEdad(edad);
 
-        return convertToDto(user);
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
     }
 
     /**
@@ -124,10 +148,13 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorCorreo(String correo) {
+    public List<UserDto> consultarUsuarioPorCorreo(String correo) {
         User user = userRepositoryI.findByCorreo(correo);
 
-        return convertToDto(user);
+        List<UserDto> userDtos = new ArrayList<>();
+        userDtos.add(convertToDto(user));
+
+        return userDtos;
     }
 
     /**
@@ -137,10 +164,15 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorDireccion(String direccion) {
-        User user = userRepositoryI.findByDireccion(direccion);
+    public List<UserDto> consultarUsuarioPorDireccion(String direccion) {
+        List<User> users = userRepositoryI.findByDireccion(direccion);
 
-        return convertToDto(user);
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
     }
 
     /**
@@ -150,10 +182,12 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorTelefono(int telefono) {
+    public List<UserDto> consultarUsuarioPorTelefono(int telefono) {
         User user = userRepositoryI.findByTelefono(telefono);
+        List<UserDto> userDtos = new ArrayList<>();
+        userDtos.add(convertToDto(user));
 
-        return convertToDto(user);
+        return userDtos;
     }
 
     /**
