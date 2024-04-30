@@ -27,7 +27,7 @@ public class UserServiceImp implements UserServiceI {
      * @return El objeto User creado y guardado en la base de datos.
      */
     @Override
-    public User crearUsuario(User user) {
+    public UserDto crearUsuario(User user) {
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -35,7 +35,8 @@ public class UserServiceImp implements UserServiceI {
 
         user.setContrasena(contrasenaEncriptada);
 
-        return userRepositoryI.save(user);
+        userRepositoryI.save(user);
+        return convertToDto(user);
     }
 
     /**

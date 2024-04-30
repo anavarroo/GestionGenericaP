@@ -70,7 +70,7 @@ public interface UserServiceI {
      * @param user El objeto User que representa al nuevo usuario a crear.
      * @return El objeto User creado y guardado en la base de datos.
      */
-    User crearUsuario(User user);
+    UserDto crearUsuario(User user);
 
     /**
      * Elimina un usuario de la base de datos por su dirección de correo electrónico.
