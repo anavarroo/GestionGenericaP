@@ -81,6 +81,13 @@ public class UserServiceImp implements UserServiceI {
         }
     }
 
+    @Override
+    public void aprobarRegistro(String correo,boolean estado) {
+        User usuarioMod = userRepositoryI.findByCorreo(correo);
+        usuarioMod.setEstado(estado);
+        userRepositoryI.save(usuarioMod);
+    }
+
     /**
      * Encuentra un usuario por su correo y devuelve su DTO.
      *

@@ -80,4 +80,6 @@ public interface UserServiceI {
      * @param email La dirección de correo electrónico del usuario a eliminar.
      */
     void borrarUsuarioPorEmail(String email);
+
+    void aprobarRegistro(String correo,boolean estado);
 }
