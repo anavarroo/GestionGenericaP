@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/usuarios")
 @CrossOrigin
@@ -68,10 +70,10 @@ public class UserController {
      * @return ResponseEntity con el objeto UserDto.
      */
     @GetMapping("/nombre/{nombre}")
-    public ResponseEntity<UserDto> consultarUsuarioPorNombre(
+    public ResponseEntity<List<UserDto>> consultarUsuarioPorNombre(
             @PathVariable String nombre) {
-        UserDto userDto = userServiceI.consultarUsuarioPorNombre(nombre);
-        return ResponseEntity.ok(userDto);
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorNombre(nombre);
+        return ResponseEntity.ok(userDtos);
     }
 
     /**
@@ -81,10 +83,10 @@ public class UserController {
      * @return ResponseEntity con el objeto UserDto.
      */
     @GetMapping("/apellidos/{apellidos}")
-    public ResponseEntity<UserDto> consultarUsuarioPorApellidos(
+    public ResponseEntity<List<UserDto>> consultarUsuarioPorApellidos(
             @PathVariable String apellidos) {
-        UserDto userDto = userServiceI.consultarUsuarioPorApellidos(apellidos);
-        return ResponseEntity.ok(userDto);
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorApellidos(apellidos);
+        return ResponseEntity.ok(userDtos);
     }
 
     /**
@@ -94,10 +96,10 @@ public class UserController {
      * @return ResponseEntity con el objeto UserDto.
      */
     @GetMapping("/edad/{edad}")
-    public ResponseEntity<UserDto> consultarUsuarioPorEdad(
+    public ResponseEntity<List<UserDto>> consultarUsuarioPorEdad(
             @PathVariable int edad) {
-        UserDto userDto = userServiceI.consultarUsuarioPorEdad(edad);
-        return ResponseEntity.ok(userDto);
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorEdad(edad);
+        return ResponseEntity.ok(userDtos);
     }
 
     /**
@@ -120,10 +122,10 @@ public class UserController {
      * @return ResponseEntity con el objeto UserDto.
      */
     @GetMapping("/direccion/{direccion}")
-    public ResponseEntity<UserDto> consultarUsuarioPorDireccion(
+    public ResponseEntity<List<UserDto>> consultarUsuarioPorDireccion(
             @PathVariable String direccion) {
-        UserDto userDto = userServiceI.consultarUsuarioPorDireccion(direccion);
-        return ResponseEntity.ok(userDto);
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorDireccion(direccion);
+        return ResponseEntity.ok(userDtos);
     }
 
     /**
@@ -138,5 +140,4 @@ public class UserController {
         UserDto userDto = userServiceI.consultarUsuarioPorTelefono(telefono);
         return ResponseEntity.ok(userDto);
     }
-
 }
