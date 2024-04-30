@@ -13,6 +13,7 @@ public interface UserRepositoryI extends JpaRepository<User, Long>{
      * @param correo Correo de usuario a buscar.
      * @return Usuario encontrado.
      */
+
     User findByNombre(String correo);
 
     User findByApellidos(String correo);
