@@ -37,6 +37,8 @@ public class UserController {
     }
 
 
+
+
     /**
      * Edita los datos de un usuario.
      *
@@ -139,5 +141,10 @@ public class UserController {
             @PathVariable int telefono) {
         List<UserDto> userDto = userServiceI.consultarUsuarioPorTelefono(telefono);
         return ResponseEntity.ok(userDto);
+    }
+
+    @PutMapping("/aprobar/{correo}")
+    public void confirmarUsuario (@PathVariable String correo, @RequestParam boolean estado){
+        userServiceI.aprobarRegistro(correo,estado);
     }
 }
