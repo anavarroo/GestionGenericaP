@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -53,16 +54,21 @@ public class User implements Serializable, UserDetails {
     @Column(name = "telefono")
     private int telefono;
 
+    @Column(name = "estado")
+    boolean estado;
+
     /** Contraseña del usuario **/
     @Column(name = "contrasena", nullable = false)
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
+
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
     public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, Role role) {
+                String direccion, int telefono, String contrasena, boolean estado, Role role) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
@@ -70,6 +76,7 @@ public class User implements Serializable, UserDetails {
         this.direccion = direccion;
         this.telefono = telefono;
         this.contrasena = contrasena;
+        this.estado = true;
         this.role = role;
     }
 

@@ -28,6 +28,11 @@ public class JWTServiceImpl implements JWTServiceI{
      */
     @Override
     public String getToken(User user) {
+        if (!user.isEstado()) {
+            // Si el estado del usuario es false, no se genera el token
+            throw new RuntimeException("El usuario no está habilitado para generar el token JWT");
+        }
+
         return getToken(Map.of("id", user.getId(),
                 "correo", user.getCorreo()), user);
     }
