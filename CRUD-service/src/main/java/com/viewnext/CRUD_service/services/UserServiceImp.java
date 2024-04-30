@@ -27,7 +27,7 @@ public class UserServiceImp implements UserServiceI {
      * @return El objeto User creado y guardado en la base de datos.
      */
     @Override
-    public User crearUsuario(User user) {
+    public UserDto crearUsuario(User user) {
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -35,23 +35,9 @@ public class UserServiceImp implements UserServiceI {
 
         user.setContrasena(contrasenaEncriptada);
 
-         return userRepositoryI.save(user);
-    }
-
-
-    /**
-     * Encuentra un usuario por su correo y devuelve su DTO.
-     *
-     * @param correo Correo del usuario a buscar.
-     * @return DTO del usuario encontrado.
-     */
-    @Override
-    public UserDto consultarUsuario(String correo) {
-        User user = userRepositoryI.findByCorreo(correo);
-
+        userRepositoryI.save(user);
         return convertToDto(user);
     }
-
 
     /**
      * Actualiza la informacion de un usuario y devuelve su DTO actualizado.
@@ -66,7 +52,6 @@ public class UserServiceImp implements UserServiceI {
 
         user.setNombre(userDto.getNombre());
         user.setApellidos(userDto.getApellidos());
-        user.setCorreo(userDto.getCorreo());
         user.setEdad(userDto.getEdad());
         user.setDireccion(userDto.getDireccion());
         user.setTelefono(userDto.getTelefono());
@@ -93,6 +78,83 @@ public class UserServiceImp implements UserServiceI {
         }
     }
 
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param nombre Nombre del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public UserDto consultarUsuarioPorNombre(String nombre) {
+        User user = userRepositoryI.findByNombre(nombre);
+
+        return convertToDto(user);
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param apellidos Apellidos del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public UserDto consultarUsuarioPorApellidos(String apellidos) {
+        User user = userRepositoryI.findByApellidos(apellidos);
+
+        return convertToDto(user);
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param edad Edad del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public UserDto consultarUsuarioPorEdad(int edad) {
+        User user = userRepositoryI.findByEdad(edad);
+
+        return convertToDto(user);
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param correo Correo del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public UserDto consultarUsuarioPorCorreo(String correo) {
+        User user = userRepositoryI.findByCorreo(correo);
+
+        return convertToDto(user);
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param direccion Direccion del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public UserDto consultarUsuarioPorDireccion(String direccion) {
+        User user = userRepositoryI.findByDireccion(direccion);
+
+        return convertToDto(user);
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param telefono Telefono del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public UserDto consultarUsuarioPorTelefono(int telefono) {
+        User user = userRepositoryI.findByTelefono(telefono);
+
+        return convertToDto(user);
+    }
 
     /**
      * Convierte un objeto User en un objeto UserDto.
