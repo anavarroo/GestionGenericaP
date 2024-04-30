@@ -5,31 +5,33 @@ package com.viewnext.CRUD_service.services;
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
 import com.viewnext.CRUD_service.persistence.model.User;
 
+import java.util.List;
+
 public interface UserServiceI {
 
     /**
      * Muestra un usuario segun su correo.
      *
      * @param nombre Nombre del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuarioPorNombre(String nombre);
+    List<UserDto> consultarUsuarioPorNombre(String nombre);
 
     /**
      * Muestra un usuario segun su correo.
      *
      * @param apellidos Apellidos del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuarioPorApellidos(String apellidos);
+    List<UserDto> consultarUsuarioPorApellidos(String apellidos);
 
     /**
      * Muestra un usuario segun su correo.
      *
      * @param edad Edad del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuarioPorEdad(int edad);
+    List<UserDto> consultarUsuarioPorEdad(int edad);
 
     /**
      * Muestra un usuario segun su correo.
@@ -43,9 +45,9 @@ public interface UserServiceI {
      * Muestra un usuario segun su correo.
      *
      * @param direccion Direccion del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuarioPorDireccion(String direccion);
+    List<UserDto> consultarUsuarioPorDireccion(String direccion);
 
     /**
      * Muestra un usuario segun su correo.
