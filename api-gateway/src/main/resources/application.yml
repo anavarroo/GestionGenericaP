@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: register-service
+          uri: lb://register-service
+          predicates:
+            - Path=/auth/**
+
+        - id: CRUD-service
+          uri: lb://CRUD-service
+          predicates:
+            - Path=/api/v1/usuarios/**
+
+
+          filters:
+            - AuthenticationFilter
