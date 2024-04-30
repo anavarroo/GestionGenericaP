@@ -37,9 +37,9 @@ public interface UserServiceI {
      * Muestra un usuario segun su correo.
      *
      * @param correo Correo del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuarioPorCorreo(String correo);
+    List<UserDto> consultarUsuarioPorCorreo(String correo);
 
     /**
      * Muestra un usuario segun su correo.
@@ -53,9 +53,9 @@ public interface UserServiceI {
      * Muestra un usuario segun su correo.
      *
      * @param telefono Telefono del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuarioPorTelefono(int telefono);
+    List<UserDto> consultarUsuarioPorTelefono(int telefono);
 
     /**
      * Actualiza la descripción de un usuario.

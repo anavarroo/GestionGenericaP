@@ -109,9 +109,9 @@ public class UserController {
      * @return ResponseEntity con el objeto UserDto.
      */
     @GetMapping("/correo/{correo}")
-    public ResponseEntity<UserDto> consultarUsuarioPorCorreo(
+    public ResponseEntity<List<UserDto>> consultarUsuarioPorCorreo(
             @PathVariable String correo) {
-        UserDto userDto = userServiceI.consultarUsuarioPorCorreo(correo);
+        List<UserDto> userDto = userServiceI.consultarUsuarioPorCorreo(correo);
         return ResponseEntity.ok(userDto);
     }
 
@@ -135,9 +135,9 @@ public class UserController {
      * @return ResponseEntity con el objeto UserDto.
      */
     @GetMapping("/telefono/{telefono}")
-    public ResponseEntity<UserDto> consultarUsuarioPorTelefono(
+    public ResponseEntity<List<UserDto>> consultarUsuarioPorTelefono(
             @PathVariable int telefono) {
-        UserDto userDto = userServiceI.consultarUsuarioPorTelefono(telefono);
+        List<UserDto> userDto = userServiceI.consultarUsuarioPorTelefono(telefono);
         return ResponseEntity.ok(userDto);
     }
 }
