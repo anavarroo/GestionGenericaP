@@ -1,4 +1,4 @@
-package com.viewnext.register_service.persistence.model;
+package com.viewnext.register_service.register_service.persistence.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -71,7 +71,7 @@ public class User implements Serializable, UserDetails {
     private String secret;
 
     public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado,Role role) {
+                String direccion, int telefono, String contrasena, boolean estado, Role role) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
