@@ -1,6 +1,7 @@
 package com.viewnext.register_service.security.controllers;
 
 import com.viewnext.register_service.persistence.dto.UserDto;
+import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
@@ -35,10 +36,8 @@ public class AuthController {
     @PostMapping(value = "/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
 
-        var response = authMngm.register(request);
-        if (request.isMfaEnabled()) {
-            return ResponseEntity.ok(response);
-        }
+        UserDtoRegister response = authMngm.register(request);
+
         return ResponseEntity.ok(response);
     }
 
@@ -59,6 +58,8 @@ public class AuthController {
     ) {
         return ResponseEntity.ok(authMngm.verifyCode(verificationRequest));
     }
+
+
 
 
 }

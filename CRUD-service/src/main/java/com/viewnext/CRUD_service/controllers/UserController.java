@@ -2,6 +2,7 @@ package com.viewnext.CRUD_service.controllers;
 
 
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
 import com.viewnext.CRUD_service.services.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,5 +147,10 @@ public class UserController {
     @PutMapping("/aprobar/{correo}")
     public void confirmarUsuario (@PathVariable String correo, @RequestParam boolean estado){
         userServiceI.aprobarRegistro(correo,estado);
+    }
+
+    @GetMapping("/pendientes")
+    public ResponseEntity<List<UserDtoRegister>> encontrarConEstadoFalse() {
+        return ResponseEntity.ok(userServiceI.devolverUsuariosConEstadoFalse());
     }
 }

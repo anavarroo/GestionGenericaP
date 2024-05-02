@@ -54,7 +54,7 @@ public class User implements Serializable, UserDetails {
     @Column(name = "telefono")
     private int telefono;
 
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     boolean estado;
 
     /** Contraseña del usuario **/

@@ -1,5 +1,7 @@
 package com.viewnext.CRUD_service.persistence.repository;
 
+import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -56,4 +58,11 @@ public interface UserRepositoryI extends JpaRepository<User, Long>{
      * @return Usuario encontrado.
      */
     User findByTelefono(int telefono);
+
+    /**
+     * Busca un usuario por su estado.
+     *
+     * @return Usuarios encontrados con estado = true.
+     */
+    List<User> findByEstadoFalse();
 }
