@@ -7,8 +7,12 @@ import com.viewnext.register_service.persistence.repository.UserRepositoryI;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
+import com.viewnext.register_service.security.model.VerificationRequest;
+import com.viewnext.register_service.security.twoFA.TwoFactorAuthenticationService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,12 +28,15 @@ public class AuthServiceImpl implements AuthServiceI {
 
     private final AuthenticationManager authenticationManager;
 
+    private final TwoFactorAuthenticationService tfaService;
+
     @Autowired
-    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, TwoFactorAuthenticationService tfaService) {
         this.userRepo = userRepo;
         this.jwtMngm = jwtMngm;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+        this.tfaService = tfaService;
     }
 
     /**
@@ -39,16 +46,26 @@ public class AuthServiceImpl implements AuthServiceI {
      * @return La respuesta de autenticación.
      */
     @Override
-    public UserDto register(RegisterRequest request) {
+    public AuthResponse register(RegisterRequest request) {
         User user = new User(request.getNombre(),
                 request.getApellidos(), request.getEdad(), request.getCorreo(),
                 request.getDireccion(), request.getTelefono(),
                 passwordEncoder.encode(request.getContrasena()), request.isEstado(),
-                Role.USER);
+                Role.USER, request.isMfaEnabled());
 
+
+        if(request.isMfaEnabled()) {
+            user.setSecret(tfaService.generateNewSecret());
+        }
         userRepo.save(user);
 
-        return convertToDto(user);
+        var jwtToken = jwtMngm.getToken(user);
+
+        return AuthResponse.builder()
+                .secretImageUri(tfaService.generateQrCodeImageUri(user.getSecret()))
+                .token(jwtToken)
+                .mfaEnabled(user.isMfaEnabled())
+                .build();
     }
 
     /**
@@ -63,7 +80,19 @@ public class AuthServiceImpl implements AuthServiceI {
                 request.getCorreo(),
                 request.getContrasena()));
         User user = userRepo.findByCorreo(request.getCorreo());
-        return new AuthResponse(jwtMngm.getToken(user));
+
+        if (user.isMfaEnabled()){
+            return AuthResponse.builder()
+                    .token("")
+                    .mfaEnabled(true)
+                    .build();
+        }
+        var jwtToken = jwtMngm.getToken(user);
+
+        return AuthResponse.builder()
+                .token(jwtToken)
+                .mfaEnabled(false)
+                .build();
     }
 
     /**
@@ -83,4 +112,19 @@ public class AuthServiceImpl implements AuthServiceI {
         return userDto;
     }
 
+    public AuthResponse verifyCode(
+            VerificationRequest verificationRequest
+    ) {
+        User user = userRepo
+                .findByCorreo(verificationRequest.getEmail());
+        if (tfaService.isOtpNotValid(user.getSecret(), verificationRequest.getCode())) {
+
+            throw new BadCredentialsException("Code is not correct");
+        }
+        var jwtToken = jwtMngm.getToken(user);
+        return AuthResponse.builder()
+                .token(jwtToken)
+                .mfaEnabled(user.isMfaEnabled())
+                .build();
+    }
 }
