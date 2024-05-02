@@ -87,6 +87,15 @@ public class User implements Serializable, UserDetails {
         this.mfaEnabled = mfaEnabled;
     }
 
+    public User(String nombre, String apellidos, String correo, String contrasena,
+                boolean mfaEnabled) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.mfaEnabled = mfaEnabled;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
