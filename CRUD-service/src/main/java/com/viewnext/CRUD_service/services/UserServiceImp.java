@@ -81,6 +81,13 @@ public class UserServiceImp implements UserServiceI {
         }
     }
 
+    @Override
+    public void aprobarRegistro(String correo,boolean estado) {
+        User usuarioMod = userRepositoryI.findByCorreo(correo);
+        usuarioMod.setEstado(estado);
+        userRepositoryI.save(usuarioMod);
+    }
+
     /**
      * Encuentra un usuario por su correo y devuelve su DTO.
      *
@@ -141,10 +148,13 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorCorreo(String correo) {
+    public List<UserDto> consultarUsuarioPorCorreo(String correo) {
         User user = userRepositoryI.findByCorreo(correo);
 
-        return convertToDto(user);
+        List<UserDto> userDtos = new ArrayList<>();
+        userDtos.add(convertToDto(user));
+
+        return userDtos;
     }
 
     /**
@@ -172,10 +182,12 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public UserDto consultarUsuarioPorTelefono(int telefono) {
+    public List<UserDto> consultarUsuarioPorTelefono(int telefono) {
         User user = userRepositoryI.findByTelefono(telefono);
+        List<UserDto> userDtos = new ArrayList<>();
+        userDtos.add(convertToDto(user));
 
-        return convertToDto(user);
+        return userDtos;
     }
 
     /**

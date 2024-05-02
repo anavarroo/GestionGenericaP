@@ -58,11 +58,17 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
+
+    @Column(name = "estado")
+    private boolean estado;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
+
+
     public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, Role role) {
+                String direccion, int telefono, String contrasena, boolean estado,Role role) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
@@ -70,8 +76,10 @@ public class User implements Serializable, UserDetails {
         this.direccion = direccion;
         this.telefono = telefono;
         this.contrasena = contrasena;
+        this.estado = false;
         this.role = role;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

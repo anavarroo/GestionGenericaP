@@ -1,5 +1,6 @@
 package com.viewnext.register_service.security.model;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,4 +28,6 @@ public class RegisterRequest {
 
     /** La contraseña proporcionada en la solicitud de registro. */
     private String contrasena;
+
+    private boolean estado;
 }
