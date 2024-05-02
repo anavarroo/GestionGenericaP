@@ -1,5 +1,6 @@
 package com.viewnext.register_service.security.services;
 
+import com.viewnext.register_service.persistence.dto.UserDto;
 import com.viewnext.register_service.persistence.model.Role;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
@@ -38,16 +39,16 @@ public class AuthServiceImpl implements AuthServiceI {
      * @return La respuesta de autenticación.
      */
     @Override
-    public AuthResponse register(RegisterRequest request) {
+    public UserDto register(RegisterRequest request) {
         User user = new User(request.getNombre(),
                 request.getApellidos(), request.getEdad(), request.getCorreo(),
                 request.getDireccion(), request.getTelefono(),
-                passwordEncoder.encode(request.getContrasena()),
+                passwordEncoder.encode(request.getContrasena()), request.isEstado(),
                 Role.USER);
 
         userRepo.save(user);
 
-        return new AuthResponse(jwtMngm.getToken(user));
+        return convertToDto(user);
     }
 
     /**
@@ -63,6 +64,23 @@ public class AuthServiceImpl implements AuthServiceI {
                 request.getContrasena()));
         User user = userRepo.findByCorreo(request.getCorreo());
         return new AuthResponse(jwtMngm.getToken(user));
+    }
+
+    /**
+     * Convierte un objeto User en un objeto UserDto.
+     *
+     * @param user Objeto User a convertir.
+     * @return Objeto UserDto convertido.
+     */
+    private UserDto convertToDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setNombre(user.getNombre());
+        userDto.setApellidos(user.getApellidos());
+        userDto.setCorreo(user.getCorreo());
+        userDto.setEdad(user.getEdad());
+        userDto.setDireccion(user.getDireccion());
+        userDto.setTelefono(user.getTelefono());
+        return userDto;
     }
 
 }

@@ -3,18 +3,62 @@ package com.viewnext.CRUD_service.services;
 
 
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
+
+import java.util.List;
 
 public interface UserServiceI {
 
-    /**
+    List<UserDtoRegister> devolverUsuariosConEstadoFalse();
 
+    /**
+     * Muestra un usuario segun su correo.
+     *
+     * @param nombre Nombre del usuario que se busca.
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDto> consultarUsuarioPorNombre(String nombre);
+
+    /**
+     * Muestra un usuario segun su correo.
+     *
+     * @param apellidos Apellidos del usuario que se busca.
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDto> consultarUsuarioPorApellidos(String apellidos);
+
+    /**
+     * Muestra un usuario segun su correo.
+     *
+     * @param edad Edad del usuario que se busca.
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDto> consultarUsuarioPorEdad(int edad);
+
+    /**
      * Muestra un usuario segun su correo.
      *
      * @param correo Correo del usuario que se busca.
-     * @return DTO del usuario encontrado.
+     * @return Lista de DTOs de los usuarios encontrados.
      */
-    UserDto consultarUsuario(String correo);
+    List<UserDto> consultarUsuarioPorCorreo(String correo);
+
+    /**
+     * Muestra un usuario segun su correo.
+     *
+     * @param direccion Direccion del usuario que se busca.
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDto> consultarUsuarioPorDireccion(String direccion);
+
+    /**
+     * Muestra un usuario segun su correo.
+     *
+     * @param telefono Telefono del usuario que se busca.
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDto> consultarUsuarioPorTelefono(int telefono);
 
     /**
      * Actualiza la descripción de un usuario.
@@ -31,7 +75,7 @@ public interface UserServiceI {
      * @param user El objeto User que representa al nuevo usuario a crear.
      * @return El objeto User creado y guardado en la base de datos.
      */
-    User crearUsuario(User user);
+    UserDto crearUsuario(User user);
 
     /**
      * Elimina un usuario de la base de datos por su dirección de correo electrónico.
@@ -39,4 +83,6 @@ public interface UserServiceI {
      * @param email La dirección de correo electrónico del usuario a eliminar.
      */
     void borrarUsuarioPorEmail(String email);
+
+    void aprobarRegistro(String correo,boolean estado);
 }

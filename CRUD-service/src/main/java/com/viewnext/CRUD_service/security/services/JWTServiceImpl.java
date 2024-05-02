@@ -1,6 +1,6 @@
-package com.viewnext.register_service.security.services;
+package com.viewnext.CRUD_service.security.services;
 
-import com.viewnext.register_service.persistence.model.User;
+import com.viewnext.CRUD_service.persistence.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -28,11 +28,6 @@ public class JWTServiceImpl implements JWTServiceI{
      */
     @Override
     public String getToken(User user) {
-        if (!user.isEstado()) {
-            // Si el estado del usuario es false, no se genera el token
-            throw new RuntimeException("El usuario no está habilitado para generar el token JWT");
-        }
-
         return getToken(Map.of("id", user.getId(),
                 "correo", user.getCorreo()), user);
     }

@@ -1,5 +1,7 @@
 package com.viewnext.register_service.security.services;
 
+import com.viewnext.register_service.persistence.dto.UserDto;
+import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
@@ -12,7 +14,7 @@ public interface AuthServiceI {
      * @param request La solicitud de registro.
      * @return La respuesta de autenticación.
      */
-    AuthResponse register(RegisterRequest request);
+    UserDto register(RegisterRequest request);
 
     /**
      * Inicia sesión en el sistema.

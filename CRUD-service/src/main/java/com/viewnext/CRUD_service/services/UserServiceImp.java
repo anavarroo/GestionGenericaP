@@ -2,12 +2,16 @@ package com.viewnext.CRUD_service.services;
 
 
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
 import com.viewnext.CRUD_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImp implements UserServiceI {
@@ -27,7 +31,7 @@ public class UserServiceImp implements UserServiceI {
      * @return El objeto User creado y guardado en la base de datos.
      */
     @Override
-    public User crearUsuario(User user) {
+    public UserDto crearUsuario(User user) {
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -35,23 +39,9 @@ public class UserServiceImp implements UserServiceI {
 
         user.setContrasena(contrasenaEncriptada);
 
-         return userRepositoryI.save(user);
-    }
-
-
-    /**
-     * Encuentra un usuario por su correo y devuelve su DTO.
-     *
-     * @param correo Correo del usuario a buscar.
-     * @return DTO del usuario encontrado.
-     */
-    @Override
-    public UserDto consultarUsuario(String correo) {
-        User user = userRepositoryI.findByCorreo(correo);
-
+        userRepositoryI.save(user);
         return convertToDto(user);
     }
-
 
     /**
      * Actualiza la informacion de un usuario y devuelve su DTO actualizado.
@@ -66,7 +56,6 @@ public class UserServiceImp implements UserServiceI {
 
         user.setNombre(userDto.getNombre());
         user.setApellidos(userDto.getApellidos());
-        user.setCorreo(userDto.getCorreo());
         user.setEdad(userDto.getEdad());
         user.setDireccion(userDto.getDireccion());
         user.setTelefono(userDto.getTelefono());
@@ -93,6 +82,125 @@ public class UserServiceImp implements UserServiceI {
         }
     }
 
+    @Override
+    public void aprobarRegistro(String correo,boolean estado) {
+        User usuarioMod = userRepositoryI.findByCorreo(correo);
+        usuarioMod.setEstado(estado);
+        userRepositoryI.save(usuarioMod);
+    }
+
+    @Override
+    public List<UserDtoRegister> devolverUsuariosConEstadoFalse() {
+        List<User> users = userRepositoryI.findByEstadoFalse();
+        List<UserDtoRegister> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDtoRegister(user));
+        }
+
+        return userDtos;
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param nombre Nombre del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public List<UserDto> consultarUsuarioPorNombre(String nombre) {
+        List<User> users = userRepositoryI.findByNombre(nombre);
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param apellidos Apellidos del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public List<UserDto> consultarUsuarioPorApellidos(String apellidos) {
+        List<User> users = userRepositoryI.findByApellidos(apellidos);
+
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param edad Edad del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public List<UserDto> consultarUsuarioPorEdad(int edad) {
+        List<User> users = userRepositoryI.findByEdad(edad);
+
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param correo Correo del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public List<UserDto> consultarUsuarioPorCorreo(String correo) {
+        User user = userRepositoryI.findByCorreo(correo);
+
+        List<UserDto> userDtos = new ArrayList<>();
+        userDtos.add(convertToDto(user));
+
+        return userDtos;
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param direccion Direccion del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public List<UserDto> consultarUsuarioPorDireccion(String direccion) {
+        List<User> users = userRepositoryI.findByDireccion(direccion);
+
+        List<UserDto> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDto(user));
+        }
+
+        return userDtos;
+    }
+
+    /**
+     * Encuentra un usuario por su correo y devuelve su DTO.
+     *
+     * @param telefono Telefono del usuario a buscar.
+     * @return DTO del usuario encontrado.
+     */
+    @Override
+    public List<UserDto> consultarUsuarioPorTelefono(int telefono) {
+        User user = userRepositoryI.findByTelefono(telefono);
+        List<UserDto> userDtos = new ArrayList<>();
+        userDtos.add(convertToDto(user));
+
+        return userDtos;
+    }
 
     /**
      * Convierte un objeto User en un objeto UserDto.
@@ -108,6 +216,21 @@ public class UserServiceImp implements UserServiceI {
         userDto.setEdad(user.getEdad());
         userDto.setDireccion(user.getDireccion());
         userDto.setTelefono(user.getTelefono());
+        return userDto;
+    }
+
+    /**
+     * Convierte un objeto User en un objeto UserDto.
+     *
+     * @param user Objeto User a convertir.
+     * @return Objeto UserDto convertido.
+     */
+    private UserDtoRegister convertToDtoRegister(User user) {
+        UserDtoRegister userDto = new UserDtoRegister();
+        userDto.setNombre(user.getNombre());
+        userDto.setApellidos(user.getApellidos());
+        userDto.setCorreo(user.getCorreo());
+
         return userDto;
     }
 }
