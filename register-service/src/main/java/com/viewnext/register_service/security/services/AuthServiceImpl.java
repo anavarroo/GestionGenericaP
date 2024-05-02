@@ -1,7 +1,6 @@
 package com.viewnext.register_service.security.services;
 
 import com.viewnext.register_service.persistence.dto.UserDto;
-import com.viewnext.register_service.persistence.model.Role;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
 import com.viewnext.register_service.security.model.AuthResponse;
@@ -25,7 +24,9 @@ public class AuthServiceImpl implements AuthServiceI {
     private final AuthenticationManager authenticationManager;
 
     @Autowired
-    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm,
+                           PasswordEncoder passwordEncoder,
+                           AuthenticationManager authenticationManager) {
         this.userRepo = userRepo;
         this.jwtMngm = jwtMngm;
         this.passwordEncoder = passwordEncoder;
@@ -39,16 +40,30 @@ public class AuthServiceImpl implements AuthServiceI {
      * @return La respuesta de autenticación.
      */
     @Override
-    public UserDto register(RegisterRequest request) {
-        User user = new User(request.getNombre(),
-                request.getApellidos(), request.getEdad(), request.getCorreo(),
-                request.getDireccion(), request.getTelefono(),
-                passwordEncoder.encode(request.getContrasena()), request.isEstado(),
-                Role.USER);
+    public AuthResponse register(RegisterRequest request) {
+        var user = User.builder()
+                        .nombre(request.getNombre())
+                        .apellidos(request.getApellidos())
+                        .correo(request.getCorreo())
+                        .contrasena(passwordEncoder.encode(request.getContrasena()))
+                        .role(request.getRole())
+                        .mfaEnable(request.isMfaEnable())
+                        .build();
+
+        if (request.isMfaEnable()) {
+            user.setSecret("");
+        }
 
         userRepo.save(user);
 
-        return convertToDto(user);
+        var jwtToken = jwtMngm.getToken(user);
+        var refreshToken = jwtMngm.generateRefreshToken(user);
+
+        return AuthResponse.builder()
+                .accessToken(jwtToken)
+                .refreshToken(refreshToken)
+                .mfaEnable(user.isMfaEnable())
+                .build();
     }
 
     /**

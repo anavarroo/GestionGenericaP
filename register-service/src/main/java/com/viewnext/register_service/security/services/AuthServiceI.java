@@ -14,7 +14,7 @@ public interface AuthServiceI {
      * @param request La solicitud de registro.
      * @return La respuesta de autenticación.
      */
-    UserDto register(RegisterRequest request);
+    AuthResponse register(RegisterRequest request);
 
     /**
      * Inicia sesión en el sistema.

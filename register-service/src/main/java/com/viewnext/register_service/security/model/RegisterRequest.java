@@ -1,5 +1,6 @@
 package com.viewnext.register_service.security.model;
 
+import com.viewnext.register_service.persistence.model.Role;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,17 +18,13 @@ public class RegisterRequest {
     /** Los apellidos proporcionados en la solicitud de registro **/
     private String apellidos;
 
-    private int edad;
-
     /** El correo electrónico proporcionado en la solicitud de registro. */
     private String correo;
-
-    private String direccion;
-
-    private int telefono;
 
     /** La contraseña proporcionada en la solicitud de registro. */
     private String contrasena;
 
-    private boolean estado;
+    private Role role;
+
+    private boolean mfaEnable;
 }

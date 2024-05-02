@@ -1,5 +1,6 @@
 package com.viewnext.register_service.security.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthResponse {
 
-    /** El token de autenticación generado. */
-    private String token;
+    private String accessToken;
+    private String refreshToken;
+    private boolean mfaEnable;
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.List;
 @Entity
 @Table(name = "Usuarios")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable, UserDetails {
@@ -65,10 +67,12 @@ public class User implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    private boolean mfaEnable;
 
+    private String secret;
 
     public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado,Role role) {
+                String direccion, int telefono, String contrasena, boolean estado, Role role) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
@@ -79,7 +83,6 @@ public class User implements Serializable, UserDetails {
         this.estado = false;
         this.role = role;
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
