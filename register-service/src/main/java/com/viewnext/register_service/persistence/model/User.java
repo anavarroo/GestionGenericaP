@@ -67,7 +67,7 @@ public class User implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
+// hola
     private String secret;
 
     public User(String nombre, String apellidos, int edad, String correo,
