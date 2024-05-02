@@ -39,7 +39,7 @@ public class AuthController {
         if (request.isMfaEnabled()) {
             return ResponseEntity.ok(response);
         }
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.ok(response);
     }
 
     /**

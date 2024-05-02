@@ -46,7 +46,7 @@ public class AuthServiceImpl implements AuthServiceI {
      * @return La respuesta de autenticación.
      */
     @Override
-    public AuthResponse register(RegisterRequest request) {
+    public UserDto register(RegisterRequest request) {
         User user = new User(request.getNombre(),
                 request.getApellidos(), request.getEdad(), request.getCorreo(),
                 request.getDireccion(), request.getTelefono(),
@@ -59,13 +59,8 @@ public class AuthServiceImpl implements AuthServiceI {
         }
         userRepo.save(user);
 
-        var jwtToken = jwtMngm.getToken(user);
 
-        return AuthResponse.builder()
-                .secretImageUri(tfaService.generateQrCodeImageUri(user.getSecret()))
-                .token(jwtToken)
-                .mfaEnabled(user.isMfaEnabled())
-                .build();
+        return convertToDto(user);
     }
 
     /**
@@ -81,13 +76,14 @@ public class AuthServiceImpl implements AuthServiceI {
                 request.getContrasena()));
         User user = userRepo.findByCorreo(request.getCorreo());
 
+        var jwtToken = jwtMngm.getToken(user);
+
         if (user.isMfaEnabled()){
             return AuthResponse.builder()
                     .token("")
                     .mfaEnabled(true)
                     .build();
         }
-        var jwtToken = jwtMngm.getToken(user);
 
         return AuthResponse.builder()
                 .token(jwtToken)
@@ -109,6 +105,7 @@ public class AuthServiceImpl implements AuthServiceI {
         userDto.setEdad(user.getEdad());
         userDto.setDireccion(user.getDireccion());
         userDto.setTelefono(user.getTelefono());
+        userDto.setMfaEnabled(user.isMfaEnabled());
         return userDto;
     }
 
