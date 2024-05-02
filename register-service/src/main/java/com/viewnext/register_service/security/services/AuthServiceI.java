@@ -1,7 +1,5 @@
 package com.viewnext.register_service.security.services;
 
-import com.viewnext.register_service.persistence.dto.UserDto;
-import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;

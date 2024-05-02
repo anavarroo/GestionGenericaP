@@ -24,7 +24,15 @@ public class RegisterRequest {
     /** La contraseña proporcionada en la solicitud de registro. */
     private String contrasena;
 
+<<<<<<< HEAD
     private Role role;
 
     private boolean mfaEnable;
+=======
+    private boolean estado;
+
+    private boolean mfaEnabled;
+
+    private String secret;
+>>>>>>> origin/feature-alberto
 }
