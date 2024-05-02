@@ -30,4 +30,8 @@ public class RegisterRequest {
     private String contrasena;
 
     private boolean estado;
+
+    private boolean mfaEnabled;
+
+    private String secret;
 }
