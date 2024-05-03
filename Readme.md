@@ -36,15 +36,6 @@ El proyecto está organizado en varias carpetas:
 
 La arquitectura del sistema sigue un enfoque de microservicios, donde cada componente tiene una responsabilidad específica y se comunica con otros a través de una API Gateway. El frontend interactúa con la API Gateway para realizar operaciones CRUD sobre los datos de los empleados, y esta a su vez redirige las solicitudes a los microservicios correspondientes en el backend.
 
-## Instalación y Configuración
-
-### Backend
-
-1. Para cada microservicio, navega a su carpeta correspondiente y sigue las instrucciones de instalación y ejecución.
-2. Asegúrate de tener MySQL instalado y configurado correctamente.
-3. Tener instalado Sonarqube para conocer la cobertura del código, se necesita tener instalado java 17 
-para que funcione.
-
 ## JWT
 
 ## JWT: Clase JwtAuthenticationFilter
