@@ -109,6 +109,17 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
 
 4. **Revisar Respuestas:**
    - Después de enviar una solicitud, revisa la respuesta para asegurarte de que se recibió correctamente y contiene los datos esperados.
+  
+5. **Ejemplos de solicidudes:**
+  - **Registro:** `http://localhost:8080/auth/register`
+  - **Login:** `http://localhost:8080/auth/login`
+  - **Crear Usuarios:** `http://localhost:8080/api/v1/usuarios/crear`
+  - **Editar Usuarios:** `http://localhost:8080/api/v1/usuarios/editar/{correo}`
+  - **Eliminar Usuarios:** `http://localhost:8080/api/v1/usuarios/borrar/{correo}`
+  - **Consultar Usuarios:** `http://localhost:8080/api/v1/usuarios/(parametro de busqueda)/{variable}`
+    - Parametros de busqueda: `nombre`, `apellidos`, `edad`, `correo`, `direccion`, `telefono`.
+  - **Mostar Usuarios Pendientes de Registro:** `http://localhost:8080/api/v1/usuarios/pendientes`
+  - **Aprobar Registro de Usuarios:** `http://localhost:8080/api/v1/usuarios/aprobar/{correo}`
 
 ## 4. Contribución
 
