@@ -58,16 +58,19 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-
+    /** Estado para aprobar el registro de usuarios **/
     @Column(name = "estado")
     private boolean estado;
 
+    /** Rol del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    /** Facotor de doble autenticacion **/
     @Column(name = "mfaEnabled")
     private boolean mfaEnabled;
 
+    /** Clave secretea del factor de doble autenticacion **/
     @Column(name = "FAKey")
     private String secret;
 
