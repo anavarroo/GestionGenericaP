@@ -12,14 +12,6 @@ Este proyecto es una aplicación de gestión genérica de empleados que utiliza 
 ## Estructura de Archivos y Directorios
 
 El proyecto está organizado en varias carpetas:
-- `back-end`: Contiene los microservicios implementados en Java.
-  - `CRUD-service`: Servicio encargado de realizar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los datos de los empleados.
-  - `discovery-server`: Servidor de descubrimiento Eureka para la gestión de microservicios.
-  - `register-service`: Servicio encargado del registro de nuevos empleados.
-  - `api-gateway`: API Gateway para la gestión de las peticiones entre los microservicios y el frontend.
-  ## Estructura de Archivos y Directorios
-
-El proyecto está organizado en varias carpetas:
 
 - `back-end`: Contiene los microservicios implementados en Java. Cada microservicio tiene su propia carpeta dentro de esta carpeta principal.
   - `CRUD-service`: Servicio encargado de realizar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los datos de los empleados.
@@ -50,7 +42,8 @@ La arquitectura del sistema sigue un enfoque de microservicios, donde cada compo
 
 1. Para cada microservicio, navega a su carpeta correspondiente y sigue las instrucciones de instalación y ejecución.
 2. Asegúrate de tener MySQL instalado y configurado correctamente.
-3. Tener instalado Sonarqube para conocer la cobertura del código, se necesita tener instalado java con la versión 17 para que funcione.
+3. Tener instalado Sonarqube para conocer la cobertura del código, se necesita tener instalado java 17 
+para que funcione.
 
 ## Cómo Contribuir
 
