@@ -1,7 +1,7 @@
 # Gestión Genérica de Empleados
 
 Este proyecto es una aplicación de gestión genérica de empleados que utiliza microservicios implementados en Java para el backend, una base de datos MySQL para almacenar los datos y Node.js para el frontend. La arquitectura del sistema se basa en microservicios que se comunican entre sí a través de una API Gateway.
-
+a
 ## Índice
 1. [Tecnologias Utilizadas](#tecnologías-utilizadas)
 2. [Requisitos minimos](#EstructuradeArchivosyDirectorios)
