@@ -32,6 +32,8 @@ public class UserDto implements Serializable {
 
     private boolean mfaEnabled;
 
+    private String secret;
+
 
 
 }
