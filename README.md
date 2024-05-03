@@ -78,12 +78,37 @@
 
 ## 3. Instrucciones de Uso
 
+### 3.1 Configuración del Entorno
+
 1. **Clonar el Repositorio:** Clona este repositorio en tu máquina local.
+
 2. **Instalar Dependencias:** Ejecuta `mvn install` en cada carpeta de microservicio para instalar todas las dependencias requeridas.
+
 3. **Configuración de la Base de Datos:** Configura la conexión a la base de datos MySQL en los archivos de propiedades de cada microservicio.
+
 4. **Compilar y Ejecutar:** Compila cada microservicio con `mvn spring-boot:run`.
+
 5. **Acceder a la Aplicación:** Accede a la aplicación a través de la URL proporcionada por el servicio Eureka Server.
-6. **Usar los Servicios:** Utiliza los servicios proporcionados por cada microservicio según la documentación correspondiente.
+
+### 3.2 Uso de Postman
+
+Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
+
+1. Instala la aplicacion de Postman. [Descarga e Instalación de Postman](https://www.postman.com/downloads/)
+
+2. **Configurar Variables de Entorno:**
+   - Abre Postman y haz click en `Create New Collection`.
+   - Tras crear una colección haz click en `Add Request`.
+   - Cuando crees una solicitud, en la ventana que se abre tendrás:
+     - `Method`: Por defecto aparece `GET` ero ajusta el metodo al que necesites, para ello puedes mirar que metodo esta definido en el controller de la api.
+     - `base_url`: La URL base de la aplicación, por ejemplo, `http://localhost:8080` para el API Gateway. Para el resto de la ruta puedes mirar la ruta que se ha definido a cada metodo en el controller.
+       
+3. **Enviar Solicitudes:**
+   - Asegúrate de configurar correctamente los parámetros y el cuerpo de la solicitud según la documentación de la API. Por ejemplo cuando haces login te devuelve un token que deberás copiar y pegar siempre que vayas a ejecutar métodos que no sean públicos.
+   - `Authorization`: Cuando clikas en authorization te aparecera un desplegable `Type`, clikas `Bearer Token` y pegas el token.
+
+4. **Revisar Respuestas:**
+   - Después de enviar una solicitud, revisa la respuesta para asegurarte de que se recibió correctamente y contiene los datos esperados.
 
 ## 4. Contribución
 
