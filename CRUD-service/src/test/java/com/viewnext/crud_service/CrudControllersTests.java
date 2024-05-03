@@ -1,4 +1,4 @@
-package com.viewnext.CRUD_service;
+package com.viewnext.crud_service;
 
 class CrudControllersTests {
     

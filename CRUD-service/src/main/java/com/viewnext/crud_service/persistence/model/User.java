@@ -1,4 +1,4 @@
-package com.viewnext.CRUD_service.persistence.model;
+package com.viewnext.crud_service.persistence.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -66,19 +65,6 @@ public class User implements Serializable, UserDetails {
     /** Roles del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado, Role role) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.edad = edad;
-        this.correo = correo;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.contrasena = contrasena;
-        this.estado = true;
-        this.role = role;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

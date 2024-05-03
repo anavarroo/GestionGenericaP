@@ -1,8 +1,6 @@
-package com.viewnext.CRUD_service.persistence.repository;
+package com.viewnext.crud_service.persistence.repository;
 
-import com.viewnext.CRUD_service.persistence.dto.UserDto;
-import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
-import com.viewnext.CRUD_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

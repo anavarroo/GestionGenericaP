@@ -6,6 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.security.Key;
 import java.util.Map;
 
+/**
+ * Interfaz para el servicio de gestión de tokens JWT.
+ */
 public interface JWTServiceI {
 
     /**

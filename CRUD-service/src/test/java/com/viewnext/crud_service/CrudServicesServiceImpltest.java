@@ -1,4 +1,4 @@
-package com.viewnext.CRUD_service;
+package com.viewnext.crud_service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,10 +7,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.viewnext.CRUD_service.persistence.dto.UserDto;
-import com.viewnext.CRUD_service.persistence.model.User;
-import com.viewnext.CRUD_service.persistence.repository.UserRepositoryI;
-import com.viewnext.CRUD_service.services.UserServiceImp;
+import com.viewnext.crud_service.persistence.dto.UserDto;
+import com.viewnext.crud_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
+import com.viewnext.crud_service.services.UserServiceImp;
 
 public class CrudServicesServiceImpltest {
     

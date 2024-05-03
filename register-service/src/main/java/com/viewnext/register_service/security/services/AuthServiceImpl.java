@@ -1,16 +1,13 @@
 package com.viewnext.register_service.security.services;
 
-import com.viewnext.register_service.persistence.dto.UserDto;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
-import com.viewnext.register_service.persistence.model.Role;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
 import com.viewnext.register_service.security.model.VerificationRequest;
-import com.viewnext.register_service.security.twoFA.TwoFactorAuthenticationService;
-import jakarta.persistence.EntityNotFoundException;
+import com.viewnext.register_service.security.twofa.TwoFactorAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -18,6 +15,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementación del servicio de autenticación.
+ */
 @Service
 public class AuthServiceImpl implements AuthServiceI {
 

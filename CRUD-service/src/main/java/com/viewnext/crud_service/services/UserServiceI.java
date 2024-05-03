@@ -1,10 +1,10 @@
-package com.viewnext.CRUD_service.services;
+package com.viewnext.crud_service.services;
 
 
 
-import com.viewnext.CRUD_service.persistence.dto.UserDto;
-import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
-import com.viewnext.CRUD_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.dto.UserDto;
+import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
+import com.viewnext.crud_service.persistence.model.User;
 
 import java.util.List;
 

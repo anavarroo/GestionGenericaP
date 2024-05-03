@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Representa una respuesta de autenticación.
+ */
 @Data
 @Builder
 @AllArgsConstructor
@@ -16,7 +19,9 @@ public class AuthResponse {
     /** El token de autenticación generado. */
     private String token;
 
+    /** Factor de doble autenticacion **/
     private boolean mfaEnabled;
 
+    /** Clave secreta doble factor de atutenticacion **/
     private String secretImageUri;
 }

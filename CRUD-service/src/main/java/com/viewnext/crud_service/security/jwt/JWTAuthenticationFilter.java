@@ -1,6 +1,6 @@
-package com.viewnext.CRUD_service.security.jwt;
+package com.viewnext.crud_service.security.jwt;
 
-import com.viewnext.CRUD_service.security.services.JWTServiceImpl;
+import com.viewnext.crud_service.security.services.JWTServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

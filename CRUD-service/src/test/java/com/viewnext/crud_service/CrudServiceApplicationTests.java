@@ -1,24 +1,16 @@
-package com.viewnext.CRUD_service;
+package com.viewnext.crud_service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.viewnext.CRUD_service.persistence.model.Role;
-import com.viewnext.CRUD_service.persistence.model.User;
-import com.viewnext.CRUD_service.persistence.repository.UserRepositoryI;
-import com.viewnext.CRUD_service.services.UserServiceImp;
-import java.util.Collection;
+import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
+import com.viewnext.crud_service.services.UserServiceImp;
 
 @SpringBootTest
 class CrudServiceApplicationTests {
