@@ -2,6 +2,7 @@ package com.viewnext.CRUD_service.services;
 
 
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
 import com.viewnext.CRUD_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +67,13 @@ public class UserServiceImp implements UserServiceI {
 
 
     /**
-     * Elimina un usuario de la base de datos utilizando su dirección de correo electrónico como identificador único.
+     * Elimina un usuario de la base de datos utilizando su dirección de
+     * correo electrónico como identificador único.
      *
-     * @param correo La dirección de correo electrónico del usuario que se va a eliminar.
-     * @throws UsernameNotFoundException Si no se encuentra ningún usuario con la dirección de correo electrónico proporcionada.
+     * @param correo La dirección de correo electrónico del usuario que
+     *               se va a eliminar.
+     * @throws UsernameNotFoundException Si no se encuentra ningún usuario con
+     *              la dirección de correo electrónico proporcionada.
      */
     @Override
     public void borrarUsuarioPorEmail(String correo) {
@@ -81,11 +85,33 @@ public class UserServiceImp implements UserServiceI {
         }
     }
 
+    /**
+     * Aprueba el registro de un usuario cambiando el estado a true.
+     *
+     * @param correo La dirección de correo electrónico del usuario a aprobar.
+     * @param estado Estado del usuario a aprobar
+     */
     @Override
-    public void aprobarRegistro(String correo,boolean estado) {
+    public void aprobarRegistro(String correo, boolean estado) {
         User usuarioMod = userRepositoryI.findByCorreo(correo);
         usuarioMod.setEstado(estado);
         userRepositoryI.save(usuarioMod);
+    }
+
+    /**
+     * Muestra los usuarios con estado = false.
+     *
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    @Override
+    public List<UserDtoRegister> devolverUsuariosConEstadoFalse() {
+        List<User> users = userRepositoryI.findByEstadoFalse();
+        List<UserDtoRegister> userDtos = new ArrayList<>();
+        for (User user : users) {
+            userDtos.add(convertToDtoRegister(user));
+        }
+
+        return userDtos;
     }
 
     /**
@@ -204,6 +230,21 @@ public class UserServiceImp implements UserServiceI {
         userDto.setEdad(user.getEdad());
         userDto.setDireccion(user.getDireccion());
         userDto.setTelefono(user.getTelefono());
+        return userDto;
+    }
+
+    /**
+     * Convierte un objeto User en un objeto UserDtoRegister.
+     *
+     * @param user Objeto User a convertir.
+     * @return Objeto UserDtoRegister convertido.
+     */
+    private UserDtoRegister convertToDtoRegister(User user) {
+        UserDtoRegister userDto = new UserDtoRegister();
+        userDto.setNombre(user.getNombre());
+        userDto.setApellidos(user.getApellidos());
+        userDto.setCorreo(user.getCorreo());
+
         return userDto;
     }
 }

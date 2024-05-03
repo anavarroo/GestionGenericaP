@@ -85,8 +85,6 @@ public class JWTServiceImpl implements JWTServiceI{
         return (correo.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    // Metodos privados
-
     /**
      * Obtiene todos los reclamos del token JWT.
      *

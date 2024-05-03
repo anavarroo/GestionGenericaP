@@ -53,7 +53,8 @@ public class User implements Serializable, UserDetails {
     @Column(name = "telefono")
     private int telefono;
 
-    @Column(name = "estado")
+    /** Estado para aprobar el registro de usuarios **/
+    @Column(name = "estado", nullable = false)
     boolean estado;
 
     /** Contraseña del usuario **/
@@ -61,8 +62,7 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-
-
+    /** Roles del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 

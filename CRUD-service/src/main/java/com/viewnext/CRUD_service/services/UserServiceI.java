@@ -3,6 +3,7 @@ package com.viewnext.CRUD_service.services;
 
 
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
 
 import java.util.List;
@@ -81,5 +82,18 @@ public interface UserServiceI {
      */
     void borrarUsuarioPorEmail(String email);
 
-    void aprobarRegistro(String correo,boolean estado);
+    /**
+     * Muestra los usuarios con estado = false.
+     *
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDtoRegister> devolverUsuariosConEstadoFalse();
+
+    /**
+     * Aprueba el registro de un usuario cambiando el estado a true.
+     *
+     * @param correo La dirección de correo electrónico del usuario a aprobar.
+     * @param estado Estado del usuario a aprobar
+     */
+    void aprobarRegistro(String correo, boolean estado);
 }
