@@ -2,6 +2,10 @@ package com.viewnext.register_service.persistence.model;
 
 public enum Role {
 
-    ADMIN, USER
+    /** Rol de ADMIN **/
+    ADMIN,
+
+    /** Rol de USER **/
+    USER
 
 }

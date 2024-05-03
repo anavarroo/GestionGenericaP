@@ -10,8 +10,6 @@ import java.util.List;
 
 public interface UserServiceI {
 
-    List<UserDtoRegister> devolverUsuariosConEstadoFalse();
-
     /**
      * Muestra un usuario segun su correo.
      *
@@ -84,5 +82,18 @@ public interface UserServiceI {
      */
     void borrarUsuarioPorEmail(String email);
 
-    void aprobarRegistro(String correo,boolean estado);
+    /**
+     * Muestra los usuarios con estado = false.
+     *
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
+    List<UserDtoRegister> devolverUsuariosConEstadoFalse();
+
+    /**
+     * Aprueba el registro de un usuario cambiando el estado a true.
+     *
+     * @param correo La dirección de correo electrónico del usuario a aprobar.
+     * @param estado Estado del usuario a aprobar
+     */
+    void aprobarRegistro(String correo, boolean estado);
 }

@@ -24,7 +24,6 @@ public class UserController {
         this.userServiceI = userServiceI;
     }
 
-
     /**
      * Crea un nuevo usuario en el sistema utilizando los datos proporcionados en el cuerpo de la solicitud.
      *
@@ -36,9 +35,6 @@ public class UserController {
         UserDto nuevoUsuario = userServiceI.crearUsuario(user);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
     }
-
-
-
 
     /**
      * Edita los datos de un usuario.
@@ -54,7 +50,6 @@ public class UserController {
         UserDto usuarioActualizado = userServiceI.actualizarUsuario(correo, userDto);
         return ResponseEntity.ok(usuarioActualizado);
     }
-
 
     /**
      * Elimina un usuario de la base de datos utilizando su direccion de correo electrónico como identificador único.
@@ -144,11 +139,22 @@ public class UserController {
         return ResponseEntity.ok(userDto);
     }
 
+    /**
+     * Aprueba el registro de un usuario cambiando el estado a true.
+     *
+     * @param correo La dirección de correo electrónico del usuario a aprobar.
+     * @param estado Estado del usuario a aprobar
+     */
     @PutMapping("/aprobar/{correo}")
     public void confirmarUsuario (@PathVariable String correo, @RequestParam boolean estado){
         userServiceI.aprobarRegistro(correo,estado);
     }
 
+    /**
+     * Muestra los usuarios con estado = false.
+     *
+     * @return Lista de DTOs de los usuarios encontrados.
+     */
     @GetMapping("/pendientes")
     public ResponseEntity<List<UserDtoRegister>> encontrarConEstadoFalse() {
         return ResponseEntity.ok(userServiceI.devolverUsuariosConEstadoFalse());

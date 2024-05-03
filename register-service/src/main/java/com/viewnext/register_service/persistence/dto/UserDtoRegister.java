@@ -20,6 +20,7 @@ public class UserDtoRegister implements Serializable {
     /** Email del usuario **/
     private String correo;
 
+    /** Factor de doble autenticacion **/
     private boolean mfaEnabled;
 
 }
