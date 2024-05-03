@@ -32,6 +32,8 @@ public class UserDto implements Serializable {
     /** Factor de doble autenticacion **/
     private boolean mfaEnabled;
 
+    private String secret;
+
 
 
 }
