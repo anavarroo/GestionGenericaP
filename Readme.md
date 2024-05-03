@@ -1,128 +1,6 @@
-# Gestión Genérica de Empleados
-
-Este proyecto es una aplicación de gestión genérica de empleados que utiliza microservicios implementados en Java para el backend, una base de datos MySQL para almacenar los datos y Node.js para el frontend. La arquitectura del sistema se basa en microservicios que se comunican entre sí a través de una API Gateway.
-a
-## Índice
-1. [Tecnologias Utilizadas](#tecnologías-utilizadas)
-2. [Requisitos minimos](#EstructuradeArchivosyDirectorios)
-3. [Arquitectura de Alto Nivel](#ArquitecturadeAltoNivel)     
-4. [JWT](#JWT)
-     - [JWT: Clase JwtAuthenticationFilter](#JWT:ClaseJwtAuthenticationFilter)
-     - [Métodos](#Métodos)
-     - [JWT: Clase JwtService](#JWT:ClaseJwtService)
-     - [Generar Token JWT](#GenerarTokenJWT)
-     - [Verificar Validez del Token](#VerificarValidezdelToken)
-     - [Obtener Clave de Firma](#ObtenerClavedeFirma)
-5. [Descripción de los Microservicios](#DescripcióndelosMicroservicios)
-     - [API Gateway](#APIGateway)
-     - [Eureka Server](#EurekaServer)
-     - [CRUD Service](#CRUDService)
-     - [Register Service](#RegisterService)
-     - [Verificar Validez del Token](#VerificarValidezdelToken)
-6. [Requisitos del Sistema](#RequisitosdelSistema)
-     - [Java](#Java)
-     - [Maven](#Maven)
-     - [MySQL](#MySQL)
-
-7. [Instrucciones de Uso](#InstruccionesdeUso)
-     - [Configuración del Entorno](#ConfiguracióndelEntorno)
-     - [Uso de Postman](#UsodePostman)
-     - [CRUD Service](#CRUDService)
-     - [Register Service](#RegisterService)
-     - [Verificar Validez del Token](#VerificarValidezdelToken)
-8. [Licencia](#Licencia)
-9. [Contacto](#Contacto)
-
-## 1. Tecnologías Utilizadas
-
-- Java
-- Spring Boot
-- MySQL
-- SonarQube (Test)
-
-## 2. Estructura de Archivos y Directorios
-
-El proyecto está organizado en varias carpetas:
-
-- `back-end`: Contiene los microservicios implementados en Java. Cada microservicio tiene su propia carpeta dentro de esta carpeta principal.
-  - `CRUD-service`: Servicio encargado de realizar las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre los datos de los empleados.
-    - `controllers`: Contiene los controladores que manejan las solicitudes HTTP.
-    - `exceptionHandler`: Maneja las excepciones lanzadas por el servicio.
-    - `persistence`: Capa de persistencia que interactúa con la base de datos MySQL.
-    - `security`: Configuración de seguridad para proteger el servicio.
-    - `services`: Lógica de negocio que implementa las operaciones CRUD.
-  - `discovery-server`: Servidor de descubrimiento Eureka para la gestión de microservicios. Este servicio permite a los microservicios       registrarse y descubrirse entre sí de manera dinámica.
-    - `DiscoveryServer.java`: Clase principal que inicia el servidor de descubrimiento Eureka.
-  - `register-service`: Servicio encargado del registro de nuevos empleados.
-    - `exceptionHandler`: Maneja las excepciones lanzadas por el servicio.
-    - `persistence`: Capa de persistencia que interactúa con la base de datos MySQL.
-    - `security`: Configuración de seguridad para proteger el servicio.
-- `api-gateway`: API Gateway para la gestión de las peticiones entre los microservicios y el frontend. Este componente enruta las solicitudes del frontend a los microservicios correspondientes y agrega funcionalidades como autenticación y autorización.
-  - `appconfig`: Configuración de la aplicación.
-  - `AuthenticationFilter`: Filtro para autenticar las solicitudes entrantes.
-  - `routeValidator`: Validador de rutas para garantizar que las solicitudes se enrutan correctamente.
-  - `JwtUtil`: Utilidad para generar y verificar tokens JWT.
-
-## 3. Arquitectura de Alto Nivel
-
-La arquitectura del sistema sigue un enfoque de microservicios, donde cada componente tiene una responsabilidad específica y se comunica con otros a través de una API Gateway. El frontend interactúa con la API Gateway para realizar operaciones CRUD sobre los datos de los empleados, y esta a su vez redirige las solicitudes a los microservicios correspondientes en el backend.
-
-## 4. JWT
-
-## JWT: Clase JwtAuthenticationFilter
-
-Esta clase representa un filtro de seguridad que maneja la autenticación basada en tokens JWT.
-
-## Métodos
-
-- **Descripción:** Obtiene el token del encabezado de autorización de la solicitud.
-- **Método:** `getTokenFromRequest`
-- **Parámetros:**
-    - `request` - La solicitud HTTP.
-- **Respuesta:**
-    - Tipo: `String`
-    - Descripción: El token JWT si existe en el encabezado de autorización, de lo contrario, null.
-
-## JWT: Clase JwtService
-
-Esta clase representa un servicio encargado de gestionar tokens JWT para la autenticación.
-
-## Métodos
-
-### Generar Token JWT
-
-- **Descripción:** Genera un token JWT para el usuario proporcionado.
-- **Método:** `getToken`
-- **Parámetros:**
-    - `user` - Detalles del usuario.
-- **Respuesta:**
-    - Tipo: `String`
-    - Descripción: Token JWT generado.
-
-### Verificar Validez del Token
-
-- **Descripción:** Verifica si un token JWT es válido para los detalles del usuario proporcionados.
-- **Método:** `isTokenValid`
-- **Parámetros:**
-    - `token` - Token JWT a verificar.
-    - `userDetails` - Detalles del usuario.
-- **Respuesta:**
-    - Tipo: `boolean`
-    - Descripción: `true` si el token es válido, `false` en caso contrario.
-
-### Obtener Clave de Firma
-
-- **Descripción:** Obtiene la clave utilizada para firmar los tokens JWT.
-- **Método:** `getKey`
-- **Respuesta:**
-    - Tipo: `Key`
-    - Descripción: Clave de firma.
-
-
-
 # Entorno
 
-## 5. Descripción de los Microservicios
+## 1. Descripción de los Microservicios
 
 ### API Gateway
 - **Artefacto:** api-gateway
@@ -192,15 +70,15 @@ Esta clase representa un servicio encargado de gestionar tokens JWT para la aute
   - dev.samstevens.totp
   - jacoco-maven-plugin
 
-## 6. Requisitos del Sistema
+## 2. Requisitos del Sistema
 
 - **Java:** Se requiere Java 17 o superior.
 - **Maven:** Se requiere Maven para la gestión de dependencias y la compilación del proyecto.
 - **MySQL:** Se necesita un servidor de base de datos MySQL para el almacenamiento de datos.
 
-## 7. Instrucciones de Uso
+## 3. Instrucciones de Uso
 
-### 7.1 Configuración del Entorno
+### 3.1 Configuración del Entorno
 
 1. **Clonar el Repositorio:** Clona este repositorio en tu máquina local.
 
@@ -212,7 +90,7 @@ Esta clase representa un servicio encargado de gestionar tokens JWT para la aute
 
 5. **Acceder a la Aplicación:** Accede a la aplicación a través de la URL proporcionada por el servicio Eureka Server.
 
-### 7.2 Uso de Postman
+### 3.2 Uso de Postman
 
 Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
 
@@ -243,10 +121,16 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
   - **Mostar Usuarios Pendientes de Registro:** `http://localhost:8080/api/v1/usuarios/pendientes`
   - **Aprobar Registro de Usuarios:** `http://localhost:8080/api/v1/usuarios/aprobar/{correo}`
 
-## 8. Licencia
+## 4. Contribución
+
+¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
+
+1. Haz un fork del proyecto.
+2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`).
+3. Realiza tus cambios y haz commit de ellos (`git commit -m 'Add some AmazingFeature'`).
+4. Empuja tus cambios a la rama (`git push origin feature/AmazingFeature`).
+5. Abre una solicitud de extracción.
+
+## 5. Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
-
-## 9. Contacto
-
-Si tienes alguna pregunta, sugerencia o encuentras algún problema con este proyecto, no dudes en ponerte en contacto con nosotros a través de [correo electrónico](gestiongenerica@gmail.com). ¡Estamos aquí para ayudarte!
