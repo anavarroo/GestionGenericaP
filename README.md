@@ -96,7 +96,7 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
 
 1. **Instala la aplicacion de Postman.** [Descarga e Instalación de Postman](https://www.postman.com/downloads/)
 
-2. **Configurar Variables de Entorno:**
+2. **Uso:**
    - Abre Postman y haz click en `Create New Collection`.
    - Tras crear una colección haz click en `Add Request`.
    - Cuando crees una solicitud, en la ventana que se abre tendrás:
