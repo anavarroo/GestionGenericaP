@@ -80,11 +80,16 @@ public class AuthServiceImpl implements AuthServiceI {
 
         var jwtToken = jwtMngm.getToken(user);
 
+        String secret = user.getSecret();
+
+
         if (user.isMfaEnabled()){
             return AuthResponse.builder()
-                    .token("")
+                    .token(jwtToken)
                     .mfaEnabled(true)
+                    .secretImageUri(secret)
                     .build();
+
         }
 
         return AuthResponse.builder()
@@ -105,6 +110,7 @@ public class AuthServiceImpl implements AuthServiceI {
         userDto.setApellidos(user.getApellidos());
         userDto.setCorreo(user.getCorreo());
         userDto.setMfaEnabled(user.isMfaEnabled());
+        userDto.setSecret(user.getSecret());
         return userDto;
     }
 

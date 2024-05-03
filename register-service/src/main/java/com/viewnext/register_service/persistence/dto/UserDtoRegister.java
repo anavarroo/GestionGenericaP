@@ -22,4 +22,8 @@ public class UserDtoRegister implements Serializable {
 
     private boolean mfaEnabled;
 
+    private String secret;
+
+
+
 }
