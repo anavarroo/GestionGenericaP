@@ -45,6 +45,58 @@ La arquitectura del sistema sigue un enfoque de microservicios, donde cada compo
 3. Tener instalado Sonarqube para conocer la cobertura del código, se necesita tener instalado java 17 
 para que funcione.
 
+## JWT
+
+## JWT: Clase JwtAuthenticationFilter
+
+Esta clase representa un filtro de seguridad que maneja la autenticación basada en tokens JWT.
+
+## Métodos
+
+- **Descripción:** Obtiene el token del encabezado de autorización de la solicitud.
+- **Método:** `getTokenFromRequest`
+- **Parámetros:**
+    - `request` - La solicitud HTTP.
+- **Respuesta:**
+    - Tipo: `String`
+    - Descripción: El token JWT si existe en el encabezado de autorización, de lo contrario, null.
+
+## JWT: Clase JwtService
+
+Esta clase representa un servicio encargado de gestionar tokens JWT para la autenticación.
+
+## Métodos
+
+### Generar Token JWT
+
+- **Descripción:** Genera un token JWT para el usuario proporcionado.
+- **Método:** `getToken`
+- **Parámetros:**
+    - `user` - Detalles del usuario.
+- **Respuesta:**
+    - Tipo: `String`
+    - Descripción: Token JWT generado.
+
+### Verificar Validez del Token
+
+- **Descripción:** Verifica si un token JWT es válido para los detalles del usuario proporcionados.
+- **Método:** `isTokenValid`
+- **Parámetros:**
+    - `token` - Token JWT a verificar.
+    - `userDetails` - Detalles del usuario.
+- **Respuesta:**
+    - Tipo: `boolean`
+    - Descripción: `true` si el token es válido, `false` en caso contrario.
+
+### Obtener Clave de Firma
+
+- **Descripción:** Obtiene la clave utilizada para firmar los tokens JWT.
+- **Método:** `getKey`
+- **Respuesta:**
+    - Tipo: `Key`
+    - Descripción: Clave de firma.
+
+
 ## Cómo Contribuir
 
 Si deseas contribuir a este proyecto, sigue estos pasos:
