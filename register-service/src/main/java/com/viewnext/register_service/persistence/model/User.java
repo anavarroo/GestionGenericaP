@@ -58,16 +58,19 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-
+    /** Estado para aprobar el registro de usuarios **/
     @Column(name = "estado")
     private boolean estado;
 
+    /** Rol del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    /** Facotor de doble autenticacion **/
     @Column(name = "mfaEnabled")
     private boolean mfaEnabled;
 
+    /** Clave secretea del factor de doble autenticacion **/
     @Column(name = "FAKey")
     private String secret;
 
@@ -84,6 +87,15 @@ public class User implements Serializable, UserDetails {
         this.contrasena = contrasena;
         this.estado = false;
         this.role = role;
+        this.mfaEnabled = mfaEnabled;
+    }
+
+    public User(String nombre, String apellidos, String correo, String contrasena,
+                boolean mfaEnabled) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.contrasena = contrasena;
         this.mfaEnabled = mfaEnabled;
     }
 
