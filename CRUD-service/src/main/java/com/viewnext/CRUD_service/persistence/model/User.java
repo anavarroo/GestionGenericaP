@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -68,7 +67,7 @@ public class User implements Serializable, UserDetails {
     private Role role;
 
     public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado, Role role) {
+                String direccion, int telefono, String contrasena, Role role) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
