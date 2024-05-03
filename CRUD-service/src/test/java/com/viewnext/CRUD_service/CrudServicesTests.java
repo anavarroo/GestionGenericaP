@@ -20,7 +20,7 @@ import com.viewnext.CRUD_service.persistence.model.User;
 import com.viewnext.CRUD_service.persistence.repository.UserRepositoryI;
 import com.viewnext.CRUD_service.services.UserServiceImp;
 
-public class CrudServicesTests {
+ class CrudServicesTests {
 
     @Mock
     private UserRepositoryI userRepository;
