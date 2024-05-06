@@ -1,4 +1,4 @@
-package com.viewnext.register_service.persistence.dto;
+package com.viewnext.crud_service.persistence.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDtoRegister implements Serializable {
+public class UserDto implements Serializable {
 
     /** Nombre de usuario **/
     private String nombre;
@@ -17,14 +17,16 @@ public class UserDtoRegister implements Serializable {
     /** Apellidos del usuario **/
     private String apellidos;
 
+    /** Edad del usuario **/
+    private int edad;
+
     /** Email del usuario **/
     private String correo;
 
-    /** Factor de doble autenticacion **/
-    private boolean mfaEnabled;
+    /** Direccion del usuario **/
+    private String direccion;
 
-    private String secret;
-
-
+    /** Telefono del usuario **/
+    private int telefono;
 
 }

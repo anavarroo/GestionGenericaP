@@ -1,13 +1,11 @@
 package com.viewnext.register_service.security.controllers;
 
-import com.viewnext.register_service.persistence.dto.UserDto;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
 import com.viewnext.register_service.security.model.VerificationRequest;
 import com.viewnext.register_service.security.services.AuthServiceImpl;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +32,7 @@ public class AuthController {
      * @return Respuesta con el token de autenticación.
      */
     @PostMapping(value = "/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<UserDtoRegister> register(@RequestBody RegisterRequest request) {
 
         UserDtoRegister response = authMngm.register(request);
 
@@ -53,7 +51,7 @@ public class AuthController {
     }
 
     @PostMapping("/verify")
-    public ResponseEntity<?> verifyCode(
+    public ResponseEntity<AuthResponse> verifyCode(
             @RequestBody VerificationRequest verificationRequest
     ) {
         return ResponseEntity.ok(authMngm.verifyCode(verificationRequest));
