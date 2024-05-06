@@ -2,15 +2,16 @@
 
 Este proyecto es una aplicación de gestión genérica de empleados que utiliza microservicios implementados en Java para el backend, una base de datos MySQL para almacenar los datos y Node.js para el frontend. La arquitectura del sistema se basa en microservicios que se comunican entre sí a través de una API Gateway.
 
-1. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-2. [Estructura de Archivos y Directorios](#estructura-de-archivos-y-directorios)
-3. [Arquitectura de Alto Nivel](#arquitectura-de-alto-nivel)
-4. [JWT](#jwt)
-5. [Entorno](#entorno)
-6. [Requisitos del Sistema](#requisitos-del-sistema)
-7. [Instrucciones de Uso](#instrucciones-de-uso)
-8. [Licencia](#licencia)
-9. [Contacto](#contacto)
+1. [Tecnologías Utilizadas](#1-tecnologías-utilizadas)
+2. [Estructura de Archivos y Directorios](#2-estructura-de-archivos-y-directorios)
+3. [Arquitectura de Alto Nivel](#3-arquitectura-de-alto-nivel)
+4. [JWT](#4-jwt)
+5. [Entorno](#5-entorno)
+6. [Requisitos del Sistema](#6-requisitos-del-sistema)
+7. [Instrucciones de Uso](#7-instrucciones-de-uso)
+8. [Licencia](#8-licencia)
+9. [Contacto](#9-contacto)
+
 
 
 ## 1. Tecnologías Utilizadas 
