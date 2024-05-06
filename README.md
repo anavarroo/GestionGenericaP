@@ -2,7 +2,7 @@
 
 Este proyecto es una aplicación de gestión genérica de empleados que utiliza microservicios implementados en Java para el backend, una base de datos MySQL para almacenar los datos y Node.js para el frontend. La arquitectura del sistema se basa en microservicios que se comunican entre sí a través de una API Gateway.
 
-1. [Tecnologías Utilizadas](#tecnologias-utilizadas)
+1. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 2. [Estructura de Archivos y Directorios](#estructura-de-archivos-y-directorios)
 3. [Arquitectura de Alto Nivel](#arquitectura-de-alto-nivel)
 4. [JWT](#jwt)
@@ -219,7 +219,7 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
   - **Editar Usuarios:** `http://localhost:8080/api/v1/usuarios/editar/{correo}`
   - **Eliminar Usuarios:** `http://localhost:8080/api/v1/usuarios/borrar/{correo}`
   - **Consultar Usuarios:** `http://localhost:8080/api/v1/usuarios/(parámetro de búsqueda)/{variable}`
-    - Parámetros de búsqueda: `nombre`, `apellidos`, `edad`, `correo`, `dirección`, `teléfono`.
+  - Parámetros de búsqueda: `nombre`, `apellidos`, `edad`, `correo`, `dirección`, `teléfono`.
   - **Mostar Usuarios Pendientes de Registro:** `http://localhost:8080/api/v1/usuarios/pendientes`
   - **Aprobar Registro de Usuarios:** `http://localhost:8080/api/v1/usuarios/aprobar/{correo}`
 
@@ -230,5 +230,6 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENS
 ## 9. Contacto 
 
 Si tienes alguna pregunta, sugerencia o encuentras algún problema con este proyecto, no dudes en ponerte en contacto con nosotros a través de [correo electrónico](gestiongenerica@gmail.com). ¡Estamos aquí para ayudarte!
+
 
 
