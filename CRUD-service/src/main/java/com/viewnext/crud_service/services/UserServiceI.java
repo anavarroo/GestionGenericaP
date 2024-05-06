@@ -56,7 +56,7 @@ public interface UserServiceI {
      * @param telefono Telefono del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorTelefono(int telefono);
+    List<UserDto> consultarUsuarioPorTelefono(String telefono);
 
     /**
      * Actualiza la descripción de un usuario.

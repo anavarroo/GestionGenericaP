@@ -134,7 +134,7 @@ public class UserController {
      */
     @GetMapping("/telefono/{telefono}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorTelefono(
-            @PathVariable int telefono) {
+            @PathVariable String telefono) {
         List<UserDto> userDto = userServiceI.consultarUsuarioPorTelefono(telefono);
         return ResponseEntity.ok(userDto);
     }

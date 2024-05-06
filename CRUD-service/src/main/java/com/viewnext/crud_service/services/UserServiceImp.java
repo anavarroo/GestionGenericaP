@@ -208,7 +208,7 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorTelefono(int telefono) {
+    public List<UserDto> consultarUsuarioPorTelefono(String telefono) {
         User user = userRepositoryI.findByTelefono(telefono);
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));

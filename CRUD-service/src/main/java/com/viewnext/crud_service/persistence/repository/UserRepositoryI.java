@@ -55,7 +55,7 @@ public interface UserRepositoryI extends JpaRepository<User, Long>{
      * @param telefono Telefono de usuario a buscar.
      * @return Usuario encontrado.
      */
-    User findByTelefono(int telefono);
+    User findByTelefono(String telefono);
 
     /**
      * Busca un usuario por su estado.
