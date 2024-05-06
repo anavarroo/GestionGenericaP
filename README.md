@@ -13,14 +13,14 @@ Este proyecto es una aplicación de gestión genérica de empleados que utiliza 
 9. [Contacto](#contacto)
 
 
-## 1. Tecnologías Utilizadas
+## 1. Tecnologías Utilizadas {#tecnologías-utilizadas}
 
 - Java
 - Spring Boot
 - MySQL
 - SonarQube (Test)
 
-## 2. Estructura de Archivos y Directorios
+## 2. Estructura de Archivos y Directorios {#estructura-de-archivos-y-directorios}
 
 El proyecto está organizado en varias carpetas:
 
@@ -43,11 +43,11 @@ El proyecto está organizado en varias carpetas:
   - `routeValidator`: Validador de rutas para garantizar que las solicitudes se enrutan correctamente.
   - `JwtUtil`: Utilidad para generar y verificar tokens JWT.
 
-## 3. Arquitectura de Alto Nivel
+## 3. Arquitectura de Alto Nivel {#arquitectura-de-alto-nivel}
 
 La arquitectura del sistema sigue un enfoque de microservicios, donde cada componente tiene una responsabilidad específica y se comunica con otros a través de una API Gateway. El frontend interactúa con la API Gateway para realizar operaciones CRUD sobre los datos de los empleados, y esta a su vez redirige las solicitudes a los microservicios correspondientes en el backend.
 
-## 4. JWT
+## 4. JWT {#jwt}
 
 ## JWT: Clase JwtAuthenticationFilter
 
@@ -100,7 +100,7 @@ Esta clase representa un servicio encargado de gestionar tokens JWT para la aute
 
 
 
-# Entorno
+# Entorno {#entorno}
 
 ## 5. Descripción de los Microservicios
 
@@ -172,13 +172,13 @@ Esta clase representa un servicio encargado de gestionar tokens JWT para la aute
   - dev.samstevens.totp
   - jacoco-maven-plugin
 
-## 6. Requisitos del Sistema
+## 6. Requisitos del Sistema {#requisitos-del-sistema}
 
 - **Java:** Se requiere Java 17 o superior.
 - **Maven:** Se requiere Maven para la gestión de dependencias y la compilación del proyecto.
 - **MySQL:** Se necesita un servidor de base de datos MySQL para el almacenamiento de datos.
 
-## 7. Instrucciones de Uso
+## 7. Instrucciones de Uso {#instrucciones-de-uso}
 
 ### 7.1 Configuración del Entorno
 
@@ -223,11 +223,11 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
   - **Mostar Usuarios Pendientes de Registro:** `http://localhost:8080/api/v1/usuarios/pendientes`
   - **Aprobar Registro de Usuarios:** `http://localhost:8080/api/v1/usuarios/aprobar/{correo}`
 
-## 8. Licencia
+## 8. Licencia {#licencia}
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
 
-## 9. Contacto
+## 9. Contacto {#contacto}
 
 Si tienes alguna pregunta, sugerencia o encuentras algún problema con este proyecto, no dudes en ponerte en contacto con nosotros a través de [correo electrónico](gestiongenerica@gmail.com). ¡Estamos aquí para ayudarte!
 
