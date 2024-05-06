@@ -1,4 +1,4 @@
-package com.viewnext.register_service.exceptionhandler;
+package com.viewnext.crud_service.exceptionhandler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +11,6 @@ public class CustomExceptionHandler extends RuntimeException{
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<String> handleUsernameNotFoundException(UsernameNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(UsuarioNoHabilitadoExeption.class)
-    public ResponseEntity<String> handleUsuarioNoHabilitadoException(UsuarioNoHabilitadoExeption ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
 }

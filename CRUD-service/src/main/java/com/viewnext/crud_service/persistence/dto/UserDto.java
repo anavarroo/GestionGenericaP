@@ -1,4 +1,4 @@
-package com.viewnext.register_service.persistence.dto;
+package com.viewnext.crud_service.persistence.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,13 +27,6 @@ public class UserDto implements Serializable {
     private String direccion;
 
     /** Telefono del usuario **/
-    private int telefono;
-
-    /** Factor de doble autenticacion **/
-    private boolean mfaEnabled;
-
-    private String secret;
-
-
+    private String telefono;
 
 }
