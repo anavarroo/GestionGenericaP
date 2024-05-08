@@ -121,55 +121,56 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
   - **Mostar Usuarios Pendientes de Registro:** `http://localhost:8080/api/v1/usuarios/pendientes`
   - **Aprobar Registro de Usuarios:** `http://localhost:8080/api/v1/usuarios/aprobar/{correo}`
 
-## 4. Dockerizar los micros servicios con docker compose
+## 4. Dockerizar los microservicios con Docker Compose
 
-### 4.1 Instalacion de docker
-  - Instala Docker Desktop desde [Descargar Docker Desktop](https://www.docker.com/products/docker-desktop/)
+### 4.1 Instalación de Docker
+- Instala Docker Desktop desde [Descargar Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-### 4.2 Implementación de dockerfile en los microservicios
-1. **Dockerfile**
-  - Dentro de la raiz de la carpeta de cada microservicio añade un documento llamado dockerfile
-  - Añade `FROM tuJDK`. Este comando especifica la imagen base que se utilizará para construir la imagen de Docker. Esto significa que nuestra aplicación se ejecutará en un entorno Java dentro de un contenedor Docker basado en `tuJDK`
-  - La proxima linea es `COPY target/nombreArchivo-SNAPSHOT.jar tuApodoArchivo.jar`. Este comando copia el archivo JAR de la aplicación de destino (nombreArchivo-0.0.1-SNAPSHOT.jar) desde el directorio target del sistema de archivos del host al directorio raíz del contenedor Docker, y le da el nombre tuApodoArchivo.jar.
-  - Por último tenemos `ENTRYPOINT ["java", "-jar", "discovery-server.jar"]`. Esto significa que nuestra aplicación Spring Boot se ejecutará cuando se inicie el contenedor Docker.
-2. **Docker-compose** [Ver archivo docker.compose.yml](docker-compose.yml)
+### 4.2 Implementación de Dockerfile en los microservicios
+- Dentro de la raíz de la carpeta de cada microservicio añade un documento llamado Dockerfile.
+- Agrega `FROM tuJDK`. Este comando especifica la imagen base que se utilizará para construir la imagen de Docker. Esto significa que nuestra aplicación se ejecutará en un entorno Java dentro de un contenedor Docker basado en `tuJDK`.
+- La siguiente línea es `COPY target/nombreArchivo-SNAPSHOT.jar tuApodoArchivo.jar`. Este comando copia el archivo JAR de la aplicación de destino (nombreArchivo-0.0.1-SNAPSHOT.jar) desde el directorio target del sistema de archivos del host al directorio raíz del contenedor Docker, y le da el nombre tuApodoArchivo.jar.
+- Por último, tenemos `ENTRYPOINT ["java", "-jar", "discovery-server.jar"]`. Esto significa que nuestra aplicación Spring Boot se ejecutará cuando se inicie el contenedor Docker.
 
-  - ``version``: '4'. Este indica la versión de Docker Compose que se utilizará para interpretar el archivo. En este caso, se está utilizando la versión 4 de Docker Compose.
-  - ``services``:
-    Aquí comienza la sección donde se definen los servicios que se ejecutarán como contenedores Docker.
-  - ``register-db``:
-    Este es el primer servicio definido y se refiere al contenedor de la base de datos MySQL que se utilizará en el sistema. register-db es el nombre del servicio.
-  - ``container_name``: register-db
-    Esto establece el nombre del contenedor como register-db.
-  - ``image``: mysql:5
-    Esta línea especifica la imagen de Docker que se utilizará para crear el contenedor de MySQL. En este caso, se está utilizando la imagen oficial de MySQL con la versión 5.
-  - ``restart``: always
-    Esta configuración indica que el contenedor se reiniciará automáticamente en caso de fallo o reinicio del sistema.
-  - ``environment``:
-    Aquí se definen las variables de entorno que se pasarán al contenedor. En este caso, se establece la contraseña de root de MySQL y el nombre de la base de datos.
-  - ``ports``:
-    Esta sección mapea los puertos del contenedor al host. En este caso, el puerto 3306 del contenedor MySQL se mapea al puerto 3307 del host.
-  - ``networks``:
-    Aquí se especifica la red a la que pertenecerá el contenedor.
-    Los siguientes bloques (register-service, crud-service, discovery-server, api-gateway) siguen una estructura similar, pero para cada uno se especifica su propio contenedor, imagen, puertos, variables de entorno y red.
-  - `networks`:
-    Al final del archivo, se define una red llamada generics que será utilizada por todos los contenedores para que puedan comunicarse entre sí.
+### 4.3 Implementación de docker-compose
+[Ver archivo docker-compose.yml](docker-compose.yml)
 
-Adapta el docker compose a tu proyecto adaptando cada elemento a tus microservicios y no olvides hacer un `clean` seguido de un `install` cuando acabes los dockerfiles para que tu archivo .jar se actualize en target. [Pincha aqui para mas información sobre docker](https://docs.docker.com/guides/)
+- `version`: '4'. Este indica la versión de Docker Compose que se utilizará para interpretar el archivo. En este caso, se está utilizando la versión 4 de Docker Compose.
+- `services`:
+  Aquí comienza la sección donde se definen los servicios que se ejecutarán como contenedores Docker.
+- `register-db`:
+  Este es el primer servicio definido y se refiere al contenedor de la base de datos MySQL que se utilizará en el sistema. register-db es el nombre del servicio.
+- `container_name`: register-db
+  Esto establece el nombre del contenedor como register-db.
+- `image`: mysql:5
+  Esta línea especifica la imagen de Docker que se utilizará para crear el contenedor de MySQL. En este caso, se está utilizando la imagen oficial de MySQL con la versión 5.
+- `restart`: always
+  Esta configuración indica que el contenedor se reiniciará automáticamente en caso de fallo o reinicio del sistema.
+- `environment`:
+  Aquí se definen las variables de entorno que se pasarán al contenedor. En este caso, se establece la contraseña de root de MySQL y el nombre de la base de datos.
+- `ports`:
+  Esta sección mapea los puertos del contenedor al host. En este caso, el puerto 3306 del contenedor MySQL se mapea al puerto 3307 del host.
+- `networks`:
+  Aquí se especifica la red a la que pertenecerá el contenedor.
+  Los siguientes bloques (register-service, crud-service, discovery-server, api-gateway) siguen una estructura similar, pero para cada uno se especifica su propio contenedor, imagen, puertos, variables de entorno y red.
+- `networks`:
+  Al final del archivo, se define una red llamada generics que será utilizada por todos los contenedores para que puedan comunicarse entre sí.
 
-### **Ejecucion de contenedores**
+Adapta el docker compose a tu proyecto, ajustando cada elemento a tus microservicios. No olvides realizar un `clean` seguido de un `install` cuando acabes los Dockerfiles para que tu archivo .jar se actualice en target. [Haz clic aquí para más información sobre Docker](https://docs.docker.com/guides/)
 
-Para levantar tus microservicios en contenedores de docker necesitaras ejecutar cada uno de estos comandos es una terminal:
+### 4.4 Ejecución de contenedores
 
-1. ``docker build -t apodoDeTuArchivo.jar .`` Este comando se utiliza para construir una imagen Docker a partir de un ``dockerfile`` en el directorio actual. Este comando se deberá ejecutar sobre la carpeta raíz de cada microservicio para construir sus imagenes, por ejemplo:  `C:\Desarrollo\Proyecto\api-gateway`
-2. ``docker-compose up`` Se encarga de levantar los archivos especificados en el docker-compose.yml. Este comando se lanzara sobre la raíz del proyecto padre donde se encuentra el docker-compose.yml, por ejemplo: `C:\Desarrollo\Proyecto`
-3. Ante cualquier problema o cambio que se haga en los microservicios podrás lanzar los siguientes comandos para parar la ejecución de los contenedores y eliminarlos:
-  - ``Cntrl + c`` Si ejecutas esta combinacón de teclas en la terminal mientras estan corriendo los contenedores estos se dentendran pero no se borrarán.
-  - ``docker ps -a`` Te mostrará una lista de todos los contenedores que has ejecutado anteriormente, incluidos los que están actualmente en ejecución y los que están detenidos con su información.
-  - ``docker container rm 'primeros numeros del id'`` Elimina uno o más contenedores de Docker.
-  - ``Docker-compose down`` se utiliza para detener y eliminar los contenedores, las redes y los volúmenes creados por ``docker-compose up``.
-  - ``docker-compose down --rmi all`` Detiene y elimina los contenedores de un servicio definido en un archivo docker-compose.yml, así como para eliminar las imágenes asociadas a esos contenedores.
-  - ``docker system prune -a`` Se utiliza para eliminar todos los recursos de Docker que no están en uso.
+Para levantar tus microservicios en contenedores de Docker, necesitarás ejecutar cada uno de estos comandos en una terminal:
+
+1. `docker build -t apodoDeTuArchivo.jar .`: Este comando se utiliza para construir una imagen Docker a partir de un Dockerfile en el directorio actual. Deberás ejecutar este comando sobre la carpeta raíz de cada microservicio para construir sus imágenes, por ejemplo: `C:\Desarrollo\Proyecto\api-gateway`.
+2. `docker-compose up`: Se encarga de levantar los archivos especificados en el docker-compose.yml. Este comando se lanzará sobre la raíz del proyecto padre donde se encuentra el docker-compose.yml, por ejemplo: `C:\Desarrollo\Proyecto`.
+3. Ante cualquier problema o cambio que se haga en los microservicios, podrás lanzar los siguientes comandos para detener la ejecución de los contenedores y eliminarlos:
+- `Cntrl + c`: Si ejecutas esta combinación de teclas en la terminal mientras están corriendo los contenedores, estos se detendrán pero no se borrarán.
+- `docker ps -a`: Te mostrará una lista de todos los contenedores que has ejecutado anteriormente, incluidos los que están actualmente en ejecución y los que están detenidos con su información.
+- `docker container rm 'primeros números del id'`: Elimina uno o más contenedores de Docker.
+- `docker-compose down`: Se utiliza para detener y eliminar los contenedores, las redes y los volúmenes creados por `docker-compose up`.
+- `docker-compose down --rmi all`: Detiene y elimina los contenedores de un servicio definido en un archivo docker-compose.yml, así como para eliminar las imágenes asociadas a esos contenedores.
+- `docker system prune -a`: Se utiliza para eliminar todos los recursos de Docker que no están en uso.
 
 ## 5. Contribución
 
