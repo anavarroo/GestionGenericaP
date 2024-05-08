@@ -172,7 +172,7 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 - `docker-compose down --rmi all`: Detiene y elimina los contenedores de un servicio definido en un archivo docker-compose.yml, así como para eliminar las imágenes asociadas a esos contenedores.
 - `docker system prune -a`: Se utiliza para eliminar todos los recursos de Docker que no están en uso.
 
-## 4.5 Posibles problemas
+### 4.5 Posibles problemas
 1. Puerto en uso:
    - Asegúrate de que ningún otro programa esté utilizando el puerto especificado.
    - Si el problema persiste, considera cambiar el puerto a uno diferente.
