@@ -172,6 +172,23 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 - `docker-compose down --rmi all`: Detiene y elimina los contenedores de un servicio definido en un archivo docker-compose.yml, así como para eliminar las imágenes asociadas a esos contenedores.
 - `docker system prune -a`: Se utiliza para eliminar todos los recursos de Docker que no están en uso.
 
+## 4.5 Posibles problemas
+1. Puerto en uso:
+   - Asegúrate de que ningún otro programa esté utilizando el puerto especificado.
+   - Si el problema persiste, considera cambiar el puerto a uno diferente.
+2. Problemas de Conexión del Microservicio a la Base de Datos:
+  - Verifica que todos los atributos necesarios estén configurados correctamente para la conexión a la base de datos.
+  - Confirma que tanto el DATABASE_USERNAME como el DATABASE_PASSWORD coincidan con las credenciales configuradas en la base de datos.
+  - Aunque un microservicio no se comunique directamente con la base de datos, es necesario proporcionar la misma configuración en el archivo docker-compose.yml.
+3. Problemas de Comunicación entre el Cliente y el Servidor:
+  - Asegúrate de que las rutas estén correctamente configuradas en tu controlador.
+  - Verifica que al levantar los contenedores, cada uno de ellos utilice el archivo .jar correspondiente.
+4. Problemas de Recursos Insuficientes:
+  - Si los contenedores se detienen inesperadamente, verifica si hay suficientes recursos asignados a Docker. Puedes ajustar la asignación de recursos en la configuración de Docker Desktop.
+  - También puedes ejecutar el comando ``docker system prune -a`` para eliminar todos los datos antiguos y que no haya ningún posible conflicto con los actuales.
+5. Errores de Compilación:
+   - Si encuentras errores de compilación al construir las imágenes Docker, verifica que todas las dependencias estén correctamente configuradas y que el código esté actualizado. Ejecuta mvn clean install para asegurarte de que todas las dependencias se resuelvan correctamente.
+
 ## 5. Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
