@@ -3,11 +3,14 @@ package com.viewnext.CRUD_service.services;
 
 
 import com.viewnext.CRUD_service.persistence.dto.UserDto;
+import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
 import com.viewnext.CRUD_service.persistence.model.User;
 
 import java.util.List;
 
 public interface UserServiceI {
+
+    List<UserDtoRegister> devolverUsuariosConEstadoFalse();
 
     /**
      * Muestra un usuario segun su correo.

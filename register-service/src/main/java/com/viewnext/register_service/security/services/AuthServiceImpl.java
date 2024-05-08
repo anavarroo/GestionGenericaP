@@ -1,6 +1,7 @@
 package com.viewnext.register_service.security.services;
 
 import com.viewnext.register_service.persistence.dto.UserDto;
+import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.persistence.model.Role;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
@@ -46,26 +47,22 @@ public class AuthServiceImpl implements AuthServiceI {
      * @return La respuesta de autenticación.
      */
     @Override
-    public AuthResponse register(RegisterRequest request) {
+    public UserDtoRegister register(RegisterRequest request) {
         User user = new User(request.getNombre(),
-                request.getApellidos(), request.getEdad(), request.getCorreo(),
-                request.getDireccion(), request.getTelefono(),
-                passwordEncoder.encode(request.getContrasena()), request.isEstado(),
-                Role.USER, request.isMfaEnabled());
+                request.getApellidos(), request.getCorreo(),
+                passwordEncoder.encode(request.getContrasena()),
+                request.isMfaEnabled());
 
 
         if(request.isMfaEnabled()) {
             user.setSecret(tfaService.generateNewSecret());
         }
+
+
         userRepo.save(user);
 
-        var jwtToken = jwtMngm.getToken(user);
 
-        return AuthResponse.builder()
-                .secretImageUri(tfaService.generateQrCodeImageUri(user.getSecret()))
-                .token(jwtToken)
-                .mfaEnabled(user.isMfaEnabled())
-                .build();
+        return convertToDtoRegister(user);
     }
 
     /**
@@ -81,13 +78,14 @@ public class AuthServiceImpl implements AuthServiceI {
                 request.getContrasena()));
         User user = userRepo.findByCorreo(request.getCorreo());
 
+        var jwtToken = jwtMngm.getToken(user);
+
         if (user.isMfaEnabled()){
             return AuthResponse.builder()
                     .token("")
                     .mfaEnabled(true)
                     .build();
         }
-        var jwtToken = jwtMngm.getToken(user);
 
         return AuthResponse.builder()
                 .token(jwtToken)
@@ -101,14 +99,12 @@ public class AuthServiceImpl implements AuthServiceI {
      * @param user Objeto User a convertir.
      * @return Objeto UserDto convertido.
      */
-    private UserDto convertToDto(User user) {
-        UserDto userDto = new UserDto();
+    private UserDtoRegister convertToDtoRegister(User user) {
+        UserDtoRegister userDto = new UserDtoRegister();
         userDto.setNombre(user.getNombre());
         userDto.setApellidos(user.getApellidos());
         userDto.setCorreo(user.getCorreo());
-        userDto.setEdad(user.getEdad());
-        userDto.setDireccion(user.getDireccion());
-        userDto.setTelefono(user.getTelefono());
+        userDto.setMfaEnabled(user.isMfaEnabled());
         return userDto;
     }
 
