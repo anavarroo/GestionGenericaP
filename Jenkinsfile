@@ -35,8 +35,8 @@ pipeline {
                 def services = ['api-gateway', 'crud-service', 'discovery-server', 'register-service']
 
                 services.each { service ->
-                    bat "docker tag $service aleramiirez/generics:$service" // Etiqueta la imagen con el nombre completo
-                    bat "docker push aleramiirez/generics:$service" // Realiza el push de la imagen etiquetada
+                    bat "docker tag $service aleramiirez/generics:$service"
+                    bat "docker push aleramiirez/generics:$service"
                 }
                 }
             }
