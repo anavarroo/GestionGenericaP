@@ -19,7 +19,7 @@ services:
     image: api-gateway
     build: .
     ports:
-      - 8080:8080
+      - 8084:8084
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
