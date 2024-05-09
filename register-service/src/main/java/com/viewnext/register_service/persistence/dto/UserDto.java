@@ -29,4 +29,11 @@ public class UserDto implements Serializable {
     /** Telefono del usuario **/
     private int telefono;
 
+    /** Factor de doble autenticacion **/
+    private boolean mfaEnabled;
+
+    private String secret;
+
+
+
 }

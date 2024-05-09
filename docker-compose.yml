@@ -1,0 +1,80 @@
+version: '4'
+
+services:
+  discovery-server:
+    container_name: discovery-server
+    image: aleramiirez/generics:discovery-server
+    ports:
+      - 8761:8761
+    environment:
+      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    networks:
+      - generics
+
+  api-gateway:
+    container_name: api-gateway
+    image: aleramiirez/generics:api-gateway
+    ports:
+      - 8084:8084
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - discovery-server
+    networks:
+      - generics
+
+  register-db:
+    container_name: register-db
+    image: mysql:5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gestiongenerica
+      PMA_HOST: mysql
+    ports:
+      - 3307:3306
+    networks:
+      - generics
+
+  register-service:
+    container_name: register-service
+    image: aleramiirez/generics:register-service
+    ports:
+      - 8081:8081
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - register-db
+      - discovery-server
+      - api-gateway
+    networks:
+      - generics
+
+  crud-service:
+    container_name: crud-service
+    image: aleramiirez/generics:crud-service
+    ports:
+      - 8082:8082
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - register-db
+      - discovery-server
+      - api-gateway
+    networks:
+      - generics
+
+networks:
+  generics:
+    driver: bridge

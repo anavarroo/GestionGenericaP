@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Representa una solicitud de inicio de sesión.
+ */
 @Data
 @Builder
 @AllArgsConstructor

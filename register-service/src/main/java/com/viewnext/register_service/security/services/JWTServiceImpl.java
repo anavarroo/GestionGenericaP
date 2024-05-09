@@ -1,5 +1,6 @@
 package com.viewnext.register_service.security.services;
 
+import com.viewnext.register_service.exceptionhandler.UsuarioNoHabilitadoExeption;
 import com.viewnext.register_service.persistence.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -8,12 +9,14 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Implementación del servicio para la gestión de tokens JWT.
+ */
 @Service
 public class JWTServiceImpl implements JWTServiceI{
 
@@ -28,6 +31,12 @@ public class JWTServiceImpl implements JWTServiceI{
      */
     @Override
     public String getToken(User user) {
+        if (!user.isEstado()) {
+            // Si el estado del usuario es false, no se genera el token
+            throw new UsuarioNoHabilitadoExeption("El usuario " +
+                    "no esta habilitado para generar el token");
+        }
+
         return getToken(Map.of("id", user.getId(),
                 "correo", user.getCorreo()), user);
     }

@@ -37,7 +37,7 @@ public class User implements Serializable, UserDetails {
     private String apellidos;
 
     /** Edad del usuario **/
-    @Column(name = "edad", nullable = false)
+    @Column(name = "edad")
     private int edad;
 
     /** Email del usuario **/
@@ -46,12 +46,11 @@ public class User implements Serializable, UserDetails {
     private String correo;
 
     /** Direccion del usuario **/
-    @Column(name = "direccion", nullable = false)
-    @NotBlank(message = "La direccion no puede estar vacia")
+    @Column(name = "direccion")
     private String direccion;
 
     /** Telefono del usuario **/
-    @Column(name = "telefono", nullable = false)
+    @Column(name = "telefono")
     private int telefono;
 
     /** Contraseña del usuario **/
@@ -59,20 +58,31 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
+    /** Estado para aprobar el registro de usuarios **/
+    @Column(name = "estado")
+    private boolean estado;
+
+    /** Rol del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, Role role) {
+    /** Facotor de doble autenticacion **/
+    @Column(name = "mfaEnabled")
+    private boolean mfaEnabled;
+
+    /** Clave secretea del factor de doble autenticacion **/
+    @Column(name = "FAKey")
+    private String secret;
+
+    public User(String nombre, String apellidos, String correo, String contrasena,
+                boolean mfaEnabled) {
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.edad = edad;
         this.correo = correo;
-        this.direccion = direccion;
-        this.telefono = telefono;
         this.contrasena = contrasena;
-        this.role = role;
+        this.mfaEnabled = mfaEnabled;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -108,4 +118,6 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
