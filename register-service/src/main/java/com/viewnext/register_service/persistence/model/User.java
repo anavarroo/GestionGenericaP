@@ -68,13 +68,6 @@ public class User implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-<<<<<<< HEAD
-// hola
-    private String secret;
-
-    public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado,Role role) {
-=======
     /** Facotor de doble autenticacion **/
     @Column(name = "mfaEnabled")
     private boolean mfaEnabled;
@@ -85,17 +78,13 @@ public class User implements Serializable, UserDetails {
 
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {
->>>>>>> origin/develop
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.contrasena = contrasena;
-<<<<<<< HEAD
         this.estado = false;
         this.role = role;
-=======
         this.mfaEnabled = mfaEnabled;
->>>>>>> origin/develop
     }
 
     @Override
