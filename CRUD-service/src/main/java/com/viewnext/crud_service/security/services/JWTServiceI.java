@@ -1,14 +1,11 @@
-package com.viewnext.register_service.security.services;
+package com.viewnext.crud_service.security.services;
 
-import com.viewnext.register_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Key;
 import java.util.Map;
 
-/**
- * Interfaz para el servicio de gestión de tokens JWT.
- */
 public interface JWTServiceI {
 
     /**

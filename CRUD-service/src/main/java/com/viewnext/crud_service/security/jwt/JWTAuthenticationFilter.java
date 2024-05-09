@@ -1,6 +1,6 @@
-package com.viewnext.register_service.security.jwt;
+package com.viewnext.crud_service.security.jwt;
 
-import com.viewnext.register_service.security.services.JWTServiceImpl;
+import com.viewnext.crud_service.security.services.JWTServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,11 +18,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-/**
- * Filtro para autenticación basada en JWT.
- * Extrae el token del encabezado de autorización, valida el token y establece la autenticación en el
- * contexto de seguridad.
- */
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter{
 

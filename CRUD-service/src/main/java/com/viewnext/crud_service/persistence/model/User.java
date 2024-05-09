@@ -1,8 +1,9 @@
-package com.viewnext.register_service.persistence.model;
+package com.viewnext.crud_service.persistence.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,40 +50,32 @@ public class User implements Serializable, UserDetails {
     @Column(name = "direccion")
     private String direccion;
 
-    /** Telefono del usuario **/
+    /** Teléfono del usuario **/
     @Column(name = "telefono")
-    private int telefono;
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "El teléfono debe contener solo números y puede tener un prefijo opcional con el símbolo '+'")
+    private String telefono;
+    /** Estado para aprobar el registro de usuarios **/
+    @Column(name = "estado", nullable = false)
+    boolean estado;
 
     /** Contraseña del usuario **/
     @Column(name = "contrasena", nullable = false)
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-    /** Estado para aprobar el registro de usuarios **/
-    @Column(name = "estado")
-    private boolean estado;
-
-    /** Rol del usuario **/
+    /** Roles del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    /** Facotor de doble autenticacion **/
-    @Column(name = "mfaEnabled")
-    private boolean mfaEnabled;
+    public void setTelefono(String telefono) {
+        /** Verificar si el teléfono ya tiene el prefijo '+' **/
+        if (!telefono.startsWith("+")) {
 
-    /** Clave secretea del factor de doble autenticacion **/
-    @Column(name = "FAKey")
-    private String secret;
-
-    public User(String nombre, String apellidos, String correo, String contrasena,
-                boolean mfaEnabled) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.mfaEnabled = mfaEnabled;
+            this.telefono = "+" + telefono;
+        } else {
+            this.telefono = telefono;
+        }
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -118,6 +111,4 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-
 }

@@ -1,9 +1,10 @@
 package com.viewnext.register_service.security.controllers;
 
-import com.viewnext.register_service.persistence.dto.UserDto;
+import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
+import com.viewnext.register_service.security.model.VerificationRequest;
 import com.viewnext.register_service.security.services.AuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 @CrossOrigin
 @Order(1)
+
 public class AuthController {
 
     private final AuthServiceImpl authMngm;
@@ -30,8 +32,11 @@ public class AuthController {
      * @return Respuesta con el token de autenticación.
      */
     @PostMapping(value = "/register")
-    public ResponseEntity<UserDto> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authMngm.register(request));
+    public ResponseEntity<UserDtoRegister> register(@RequestBody RegisterRequest request) {
+
+        UserDtoRegister response = authMngm.register(request);
+
+        return ResponseEntity.ok(response);
     }
 
     /**
@@ -44,4 +49,15 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authMngm.login(request));
     }
+
+    @PostMapping("/verify")
+    public ResponseEntity<AuthResponse> verifyCode(
+            @RequestBody VerificationRequest verificationRequest
+    ) {
+        return ResponseEntity.ok(authMngm.verifyCode(verificationRequest));
+    }
+
+
+
+
 }
