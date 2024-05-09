@@ -204,7 +204,7 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 
 ### 5.4 Creacion de Pipeline
   - Pulsa en ``Nueva Tarea`` y selecciona `Pipeline`
-  - 
+  - ggg
 ## 6. Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
