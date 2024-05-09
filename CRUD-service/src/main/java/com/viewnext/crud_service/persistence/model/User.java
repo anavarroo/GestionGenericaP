@@ -1,10 +1,10 @@
-package com.viewnext.register_service.persistence.model;
+package com.viewnext.crud_service.persistence.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +17,6 @@ import java.util.List;
 @Entity
 @Table(name = "Usuarios")
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable, UserDetails {
@@ -51,51 +50,31 @@ public class User implements Serializable, UserDetails {
     @Column(name = "direccion")
     private String direccion;
 
-    /** Telefono del usuario **/
+    /** Teléfono del usuario **/
     @Column(name = "telefono")
-    private int telefono;
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "El teléfono debe contener solo números y puede tener un prefijo opcional con el símbolo '+'")
+    private String telefono;
+    /** Estado para aprobar el registro de usuarios **/
+    @Column(name = "estado", nullable = false)
+    boolean estado;
 
     /** Contraseña del usuario **/
     @Column(name = "contrasena", nullable = false)
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-    /** Estado para aprobar el registro de usuarios **/
-    @Column(name = "estado")
-    private boolean estado;
-
-    /** Rol del usuario **/
+    /** Roles del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 
-<<<<<<< HEAD
-// hola
-    private String secret;
+    public void setTelefono(String telefono) {
+        /** Verificar si el teléfono ya tiene el prefijo '+' **/
+        if (!telefono.startsWith("+")) {
 
-    public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado,Role role) {
-=======
-    /** Facotor de doble autenticacion **/
-    @Column(name = "mfaEnabled")
-    private boolean mfaEnabled;
-
-    /** Clave secretea del factor de doble autenticacion **/
-    @Column(name = "FAKey")
-    private String secret;
-
-    public User(String nombre, String apellidos, String correo, String contrasena,
-                boolean mfaEnabled) {
->>>>>>> origin/develop
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.correo = correo;
-        this.contrasena = contrasena;
-<<<<<<< HEAD
-        this.estado = false;
-        this.role = role;
-=======
-        this.mfaEnabled = mfaEnabled;
->>>>>>> origin/develop
+            this.telefono = "+" + telefono;
+        } else {
+            this.telefono = telefono;
+        }
     }
 
     @Override
@@ -132,6 +111,4 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    private boolean mfaEnable;
-
 }
