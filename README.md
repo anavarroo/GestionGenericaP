@@ -14,3 +14,12 @@
 4. Despues ejecuta `mvn spring-boot:run` para entrar en cada carpeta y iniciar la aplicación.
 
 Para ver lo documentación completa del proyecto: [Wiki](https://github.com/anavarroo/GestionGenericaP/wiki)
+
+## Contacto
+
+Para cualquier duda, no dudes en contactar con nosotros:
+  - navarrovegaalberto@gmail.com
+  - alejandro1052004@gmail.com
+  - joseluisgonzalezalamao@gmail.com
+  - eXdesy@gmail.com
+    
