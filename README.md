@@ -203,11 +203,26 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
 
-2. [Despligue](#Despligue)
+
+## Índice
+
+### Punto de vista usuario
+1. [Guia de instalacion del entorno](#Entorno)
+      - [Configuracion local](#Configuracion-Local)
+      - [Usando docker](#ConfiguracionConDocker) 
+
+### Punto de vista técnico
+1. [Arquitectura](#Arquitectura)
+     - [Explicación de cada servicio](#Servicios)
+     - [Spring Security](#Spring-Security)
+     - [Testing](#Testing)
+     - [SonarQube](#SonarQube)
+       
+3. [Despligue](#Despligue)
      - [Elementos](#estructura)
-         - [DockerFile]
-         - [Docker Compose]
-         - [Jenkins File]
+         - DockerFile
+         - Docker Compose
+         - Jenkins File
      - [Experiencia/Promas implementandolos](#bbdd-mysql)
 
 ## Despliegue
