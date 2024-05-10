@@ -191,21 +191,42 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 
 ## 5. Jenkins
 
-### 5.1 Instalacion de Jenkins. 
+### 5.1 Instalación de Jenkins
   - [Instala Jenkins desde aqui](https://www.jenkins.io)
-  - 
-### 5.2 Inicializacion de Jenkins
-  - Pulsa ``Windows + r`` y escribe `services.msc`. Busca el servicio de Jenkins, haz click derecho sobre el y dale a iniciar.
-  - Abre el navegador y escribe ``localhost:8080`` (el puerto dependerá del que hayas elegido, pero el predeterminado es el 8080).
+
+### 5.2 Inicialización de Jenkins
+  - Pulsa ``Windows + r`` y escribe ``services.msc``. Busca el servicio de Jenkins, haz click derecho sobre el y dale a iniciar.
+  - Abre el navegador y escribe ``localhost:8080`` (el puerto dependerá del que hayas elegido, pero el predeterminado es el ``8080``).
   - Escribe en el navegador de archivos la ruta que te aparece al ejecutar Jenkins por primera vez, esta te llevara a la contraseña que se establece inicialmente.
 
 ### 5.3 Configuración de Jenkins
-  - Entra el ``Administrar Jenkins``, luego pulsa en `Tools` y configuralo atendiendo a tus necesidades.
+  - Entra el ``Administrar Jenkins``, luego pulsa en Tools y configuralo atendiendo a tus necesidades.
 
 ### 5.4 Creacion y configuración del Pipeline
-  - Pulsa en ``Nueva Tarea`` y selecciona `Pipeline`
-  - Una vez creada pincha en la casilla GitHub proyect e introduce la url de tu proyecto, como por ejemplo, ``https://github.com/anavarroo/GestionGenericaP``
+  - Pulsa en ``Nueva Tarea`` y selecciona ``Pipeline``
+  - Una vez creada pincha en la casilla ``GitHub proyect`` e introduce la url de tu proyecto, como por ejemplo, ``https://github.com/anavarroo/GestionGenericaP``
   - Si quieres automatizar el proyecto para que se ejecute el jenkins cuando hagas un commit pincha también en ``GitHub hook trigger for GITScm polling``
+  - Por último personaliza el srcipt segun tus necesidades y las tareas que quieras automatizar.
+  - Si cambias el ``Pipeline`` script a ``Pipeline script from SCM`` seleccionas ``git`` y pones la url a tu repositorio podrás crear el archivo ``Jenkinsfile`` en tu proyecto.
+
+### 5.5 Construccion del proyecto
+  - Pulsa en ``Construir ahora`` y espera a que todos los pasos se ejecuten correctamente, para ver la consola le puedes dar al botón ``logs`` y ver la consola.
+
+### 5.6 Webhook
+Para poder automatizar el proyecto de manera que al hacer un commit se ejecute automaticamente el jenkins necesitas añadir un webhook a GitHub
+
+1. Entra en tu repositorio y dale a ``Settings``.
+2. Pincha en ``Webhooks`` en el menu lateral de la derecha.
+3. Añade la url de tu servidor Jenkins y dale a guardar
+
+Hay que tener en cuenta que si estas ejecutando Jenkins en tu servidor local (``locahost``) es posible que te de fallo por que no se pueda comunicar bien con el servidor de jenkins, para ello te explicaré una posible solución:
+
+  - Entra en ``Ngrok`` y descargalo. [Descargar ngrok](https://ngrok.com/download)
+  - Inicia sesión y sigue los pasos que te pone en ``Setup & Installation`` sobre los comandos de la terminal.
+  - Cuando hayas introducido el token pon el siguiente comando, ``ngrok http http://localhost:8080``, ajusta el puesto al que tengas levantado.
+  - Cuando hayas hecho eso Ngrok habrá creado un túnel seguro hacia tu servidor local y te proporciona una URL pública que redirige al servidor local.
+  - Por último introduce la url que te proporciona Ngrok en tu webhook.
+
 ## 6. Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
