@@ -6,6 +6,7 @@ Aplicación para la gestión de usuarios, operaciones CRUD para el manejo de los
 
 ## Punto de vista usuario
 1. [Guia de instalacion del entorno](#Entorno)
+   
       - [Configuracion local](#Configuracion-Local)
       - [Usando docker](#ConfiguracionConDocker) 
 
