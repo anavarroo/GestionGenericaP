@@ -204,7 +204,8 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 
 ### 5.4 Creacion y configuración del Pipeline
   - Pulsa en ``Nueva Tarea`` y selecciona `Pipeline`
-  - Una vez creada pincha
+  - Una vez creada pincha en la casilla GitHub proyect e introduce la url de tu proyecto, como por ejemplo, ``https://github.com/anavarroo/GestionGenericaP``
+  - Si quieres automatizar el proyecto para que se ejecute el jenkins cuando hagas un commit pincha también en ``GitHub hook trigger for GITScm polling``
 ## 6. Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
