@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Aplicacion de Gestion Generica
 
 Aplicación para la gestión de usuarios, operaciones CRUD para el manejo de los mismos con un registro con posibilidad de 2Outh para el registro en ella.
@@ -36,77 +37,28 @@ Aplicación para la gestión de usuarios, operaciones CRUD para el manejo de los
 # Entorno
 
 ## 1. Descripción de los Microservicios h
+=======
+# Aplicación Genérica
 
-### API Gateway
-- **Artefacto:** api-gateway
-- **Descripción:** API Gateway de los Servicios.
-- **Versión:** 0.0.1-SNAPSHOT
-- **Dependencias:**
-  - Spring Cloud Starter Gateway
-  - Spring Boot DevTools
-  - Spring Boot Configuration Processor
-  - Project Lombok
-  - Spring Boot Starter Test
-  - Spring Cloud Starter Netflix Eureka Client
-  - jjwt-api
-  - jjwt-impl
-  - jjwt-jackson
-  - Spring Boot Starter Webflux
+## Como ejecutar la aplicación con Docker
+>>>>>>> origin/main
 
-### Eureka Server (Discovery Server)
-- **Artefacto:** discovery-server
-- **Descripción:** Servidor de descubrimiento de servicios (Eureka Server).
-- **Versión:** 0.0.1-SNAPSHOT
-- **Dependencias:**
-  - Spring Cloud Starter Netflix Eureka Server
-  - Spring Boot DevTools
-  - Spring Boot Configuration Processor
-  - Project Lombok
-  - Spring Boot Starter Test
+1. Escribe en la terminal el comando `git clone https://github.com/anavarroo/GestionGenericaP.git`
+2. Escribe en la terminal el comando `mvn clean package -DskipTest` para limpiar la aplicación.
+3. Escibe `docker-compose up` para iniciar la aplicación.
 
-### CRUD Service
-- **Artefacto:** CRUD-service
-- **Descripción:** Microservicio de CRUD de usuarios.
-- **Versión:** 0.0.1-SNAPSHOT
-- **Dependencias:**
-  - Spring Boot Starter Data JPA
-  - Spring Boot Starter Security
-  - Spring Boot Starter Validation
-  - Spring Boot Starter Web
-  - Spring Boot DevTools
-  - MySQL Connector J
-  - Project Lombok
-  - Spring Boot Starter Test
-  - Spring Security Test
-  - Spring Cloud Starter Netflix Eureka Client
-  - jjwt-api
-  - jjwt-impl
-  - jjwt-jackson
-  - jacoco-maven-plugin
+## Como ejecutar la aplicación sin Docker
 
-### Register Service
-- **Artefacto:** register-service
-- **Descripción:** Microservicio de registro y login.
-- **Versión:** 0.0.1-SNAPSHOT
-- **Dependencias:**
-  - Spring Boot Starter Data JPA
-  - Spring Boot Starter Security
-  - Spring Boot Starter Validation
-  - Spring Boot Starter Web
-  - Spring Boot DevTools
-  - MySQL Connector J
-  - Project Lombok
-  - Spring Boot Starter Test
-  - Spring Security Test
-  - Spring Cloud Starter Netflix Eureka Client
-  - jjwt-api
-  - jjwt-impl
-  - jjwt-jackson
-  - dev.samstevens.totp
-  - jacoco-maven-plugin
+1. Escribe en la terminal el comando `git clone https://github.com/anavarroo/GestionGenericaP.git`
+2. Comprueba que tienes todas las versiones correctas de [Entorno](https://github.com/anavarroo/GestionGenericaP/wiki/Punto-de-vista-Tecnico#--requisitos-del-sistema)
+3. Escribe en la terminal el comando `mvn clean verify -DskipTest` para entrar en cada carpeta y construit la aplicación.
+4. Despues ejecuta `mvn spring-boot:run` para entrar en cada carpeta y iniciar la aplicación.
 
-## 2. Requisitos del Sistema
+Para ver lo documentación completa del proyecto: [Wiki](https://github.com/anavarroo/GestionGenericaP/wiki)
 
+## Contacto
+
+<<<<<<< HEAD
 - **Java:** Se requiere Java 17 o superior.
 - **Maven:** Se requiere Maven para la gestión de dependencias y la compilación del proyecto.
 - **MySQL:** Se necesita un servidor de base de datos MySQL para el almacenamiento de datos.
@@ -244,3 +196,12 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENS
   ### Estructura
   
 
+=======
+Para cualquier duda, no dudes en contactar con nosotros:
+  - navarrovegaalberto@gmail.com
+  - alejandro1052004@gmail.com
+  - joseluisgonzalezalamao@gmail.com
+  - eXdesy@gmail.com
+  - nico@gmail.com
+    
+>>>>>>> origin/main

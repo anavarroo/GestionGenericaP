@@ -27,6 +27,6 @@ public class UserDto implements Serializable {
     private String direccion;
 
     /** Telefono del usuario **/
-    private int telefono;
+    private String telefono;
 
 }
