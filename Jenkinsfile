@@ -7,7 +7,18 @@ pipeline {
         stage('Build Maven') {
             steps {
                 checkout scmGit(branches: [[name: '*/feature-ale-v.2']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/anavarroo/GestionGenericaP']])
-                bat 'mvn clean install'
+                script {
+                    bat 'mvn clean test'
+                }
+                script {
+                    currentBuild.result = 'SUCCESS'
+                    if (currentBuild.result == 'FAILURE') {
+                        error "Build failed due to failing tests"
+                    }
+                }
+                script {
+                    bat 'mvn clean install'
+                }
             }
         }
         stage('Build docker images') {
