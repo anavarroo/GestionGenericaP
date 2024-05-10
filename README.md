@@ -202,9 +202,9 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 ### 5.3 Configuración de Jenkins
   - Entra el ``Administrar Jenkins``, luego pulsa en `Tools` y configuralo atendiendo a tus necesidades.
 
-### 5.4 Creacion de Pipeline
+### 5.4 Creacion y configuración del Pipeline
   - Pulsa en ``Nueva Tarea`` y selecciona `Pipeline`
-  - gggg
+  - Una vez creada pincha
 ## 6. Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:

@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build Maven') {
             steps {
+                //checkout scmGit(branches: [[name: '*/feature-ale-v.2']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/anavarroo/GestionGenericaP']])
                 checkout scmGit(branches: [[name: '*/feature-ale-v.2']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/anavarroo/GestionGenericaP']])
                 script {
                     bat 'mvn clean test'
@@ -41,7 +42,7 @@ pipeline {
             steps {
                 script{
                     withCredentials([string(credentialsId: 'DockerHubPassword', variable: 'DockerPassword')]) {
-                        bat 'docker login -u aleramiirez -p Arosama4_'
+                        bat 'docker login -u aleramiirez -p '
                     }
                 def services = ['api-gateway', 'crud-service', 'discovery-server', 'register-service']
 
