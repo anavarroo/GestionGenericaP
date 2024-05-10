@@ -74,22 +74,6 @@ public class User implements Serializable, UserDetails {
     @Column(name = "FAKey")
     private String secret;
 
-
-
-    public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, boolean estado,Role role, boolean mfaEnabled) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.edad = edad;
-        this.correo = correo;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.contrasena = contrasena;
-        this.estado = false;
-        this.role = role;
-        this.mfaEnabled = mfaEnabled;
-    }
-
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {
         this.nombre = nombre;

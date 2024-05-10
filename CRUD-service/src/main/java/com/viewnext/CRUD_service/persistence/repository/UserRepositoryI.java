@@ -1,8 +1,6 @@
-package com.viewnext.CRUD_service.persistence.repository;
+package com.viewnext.crud_service.persistence.repository;
 
-import com.viewnext.CRUD_service.persistence.dto.UserDto;
-import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
-import com.viewnext.CRUD_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -57,7 +55,7 @@ public interface UserRepositoryI extends JpaRepository<User, Long>{
      * @param telefono Telefono de usuario a buscar.
      * @return Usuario encontrado.
      */
-    User findByTelefono(int telefono);
+    User findByTelefono(String telefono);
 
     /**
      * Busca un usuario por su estado.

@@ -1,4 +1,4 @@
-package com.viewnext.CRUD_service.persistence.dto;
+package com.viewnext.crud_service.persistence.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

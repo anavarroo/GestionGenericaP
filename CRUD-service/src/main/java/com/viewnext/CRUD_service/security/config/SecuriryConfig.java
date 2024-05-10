@@ -1,6 +1,6 @@
-package com.viewnext.CRUD_service.security.config;
+package com.viewnext.crud_service.security.config;
 
-import com.viewnext.CRUD_service.security.jwt.JWTAuthenticationFilter;
+import com.viewnext.crud_service.security.jwt.JWTAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

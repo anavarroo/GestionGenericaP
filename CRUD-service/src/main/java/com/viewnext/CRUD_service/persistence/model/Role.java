@@ -1,4 +1,4 @@
-package com.viewnext.CRUD_service.persistence.model;
+package com.viewnext.crud_service.persistence.model;
 
 public enum Role {
 

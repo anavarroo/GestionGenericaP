@@ -23,4 +23,8 @@ public class UserDtoRegister implements Serializable {
     /** Factor de doble autenticacion **/
     private boolean mfaEnabled;
 
+    private String secret;
+
+
+
 }

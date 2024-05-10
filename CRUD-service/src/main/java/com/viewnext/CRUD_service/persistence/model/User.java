@@ -1,8 +1,9 @@
-package com.viewnext.CRUD_service.persistence.model;
+package com.viewnext.crud_service.persistence.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,10 +50,10 @@ public class User implements Serializable, UserDetails {
     @Column(name = "direccion")
     private String direccion;
 
-    /** Telefono del usuario **/
+    /** Teléfono del usuario **/
     @Column(name = "telefono")
-    private int telefono;
-
+    @Pattern(regexp = "^\\+?[0-9]*$", message = "El teléfono debe contener solo números y puede tener un prefijo opcional con el símbolo '+'")
+    private String telefono;
     /** Estado para aprobar el registro de usuarios **/
     @Column(name = "estado", nullable = false)
     boolean estado;
@@ -66,17 +67,14 @@ public class User implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String nombre, String apellidos, int edad, String correo,
-                String direccion, int telefono, String contrasena, Role role) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.edad = edad;
-        this.correo = correo;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.contrasena = contrasena;
-        this.estado = true;
-        this.role = role;
+    public void setTelefono(String telefono) {
+        /** Verificar si el teléfono ya tiene el prefijo '+' **/
+        if (!telefono.startsWith("+")) {
+
+            this.telefono = "+" + telefono;
+        } else {
+            this.telefono = telefono;
+        }
     }
 
     @Override

@@ -1,10 +1,10 @@
-package com.viewnext.CRUD_service.services;
+package com.viewnext.crud_service.services;
 
 
-import com.viewnext.CRUD_service.persistence.dto.UserDto;
-import com.viewnext.CRUD_service.persistence.dto.UserDtoRegister;
-import com.viewnext.CRUD_service.persistence.model.User;
-import com.viewnext.CRUD_service.persistence.repository.UserRepositoryI;
+import com.viewnext.crud_service.persistence.dto.UserDto;
+import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
+import com.viewnext.crud_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -208,7 +208,7 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorTelefono(int telefono) {
+    public List<UserDto> consultarUsuarioPorTelefono(String telefono) {
         User user = userRepositoryI.findByTelefono(telefono);
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));

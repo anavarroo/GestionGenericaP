@@ -13,4 +13,9 @@ public class CustomExceptionHandler extends RuntimeException{
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UsuarioNoHabilitadoExeption.class)
+    public ResponseEntity<String> handleUsuarioNoHabilitadoException(UsuarioNoHabilitadoExeption ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }

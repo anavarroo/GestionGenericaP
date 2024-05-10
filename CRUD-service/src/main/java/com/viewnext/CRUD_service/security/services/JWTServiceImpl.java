@@ -1,6 +1,6 @@
-package com.viewnext.CRUD_service.security.services;
+package com.viewnext.crud_service.security.services;
 
-import com.viewnext.CRUD_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

@@ -1,6 +1,5 @@
 package com.viewnext.register_service.persistence.dto;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +29,10 @@ public class UserDto implements Serializable {
     /** Telefono del usuario **/
     private int telefono;
 
+    /** Factor de doble autenticacion **/
     private boolean mfaEnabled;
+
+    private String secret;
 
 
 
