@@ -243,17 +243,7 @@ Para interactuar con los microservicios utilizando Postman, sigue estos pasos:
   - **Mostar Usuarios Pendientes de Registro:** `http://localhost:8080/api/v1/usuarios/pendientes`
   - **Aprobar Registro de Usuarios:** `http://localhost:8080/api/v1/usuarios/aprobar/{correo}`
 
-## 4. Contribución
-
-¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
-
-1. Haz un fork del proyecto.
-2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`).
-3. Realiza tus cambios y haz commit de ellos (`git commit -m 'Add some AmazingFeature'`).
-4. Empuja tus cambios a la rama (`git push origin feature/AmazingFeature`).
-5. Abre una solicitud de extracción.
-
-## 5. Licencia
+## 8. Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
 
