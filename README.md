@@ -22,5 +22,5 @@ Para cualquier duda, no dudes en contactar con nosotros:
   - alejandro1052004@gmail.com
   - joseluisgonzalezalamao@gmail.com
   - eXdesy@gmail.com
-  - nico@gmail.com
+  - nicolasDavid@gmail.com
     
