@@ -202,3 +202,15 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 ## 5. Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
+
+2. [Despligue](#Despligue)
+     - [Elementos](#estructura)
+         - [DockerFile]
+         - [Docker Compose]
+         - [Jenkins File]
+     - [Experiencia/Promas implementandolos](#bbdd-mysql)
+
+## Despliegue
+  ### Estructura
+  
+
