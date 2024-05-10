@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script{
                     withCredentials([string(credentialsId: 'DockerHubPassword', variable: 'DockerPassword')]) {
-                        bat 'docker login -u aleramiirez -p Arosama4_'
+                        bat 'docker login -u username -p DockerPassword'
                     }
                 def services = ['api-gateway', 'crud-service', 'discovery-server', 'register-service']
 
