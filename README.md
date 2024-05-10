@@ -189,7 +189,23 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 5. Errores de Compilación:
    - Si encuentras errores de compilación al construir las imágenes Docker, verifica que todas las dependencias estén correctamente configuradas y que el código esté actualizado. Ejecuta mvn clean install para asegurarte de que todas las dependencias se resuelvan correctamente.
 
-## 5. Contribución
+## 5. Jenkins
+
+### 5.1 Instalacion de Jenkins. 
+  - [Instala Jenkins desde aqui](https://www.jenkins.io)
+  - 
+### 5.2 Inicializacion de Jenkins
+  - Pulsa ``Windows + r`` y escribe `services.msc`. Busca el servicio de Jenkins, haz click derecho sobre el y dale a iniciar.
+  - Abre el navegador y escribe ``localhost:8080`` (el puerto dependerá del que hayas elegido, pero el predeterminado es el 8080).
+  - Escribe en el navegador de archivos la ruta que te aparece al ejecutar Jenkins por primera vez, esta te llevara a la contraseña que se establece inicialmente.
+
+### 5.3 Configuración de Jenkins
+  - Entra el ``Administrar Jenkins``, luego pulsa en `Tools` y configuralo atendiendo a tus necesidades.
+
+### 5.4 Creacion de Pipeline
+  - Pulsa en ``Nueva Tarea`` y selecciona `Pipeline`
+  - gggg
+## 6. Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 
@@ -199,6 +215,6 @@ Para levantar tus microservicios en contenedores de Docker, necesitarás ejecuta
 4. Empuja tus cambios a la rama (`git push origin feature/AmazingFeature`).
 5. Abre una solicitud de extracción.
 
-## 5. Licencia
+## 7. Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
