@@ -2,7 +2,7 @@
 
 ## Como ejecutar la aplicación con Docker
 
-1. Escribe en la terminal el comando `mvn clean package -DskipTest` para construir la aplicación y crear las imagenes de docker.
+1. Escribe en la terminal el comando `mvn clean package -DskipTest` para limpiar la aplicación.
 2. Escibe `docker-compose up` para iniciar la aplicación.
 
 ## Como ejecutar la aplicación sin Docker
