@@ -17,11 +17,11 @@ Aplicación para la gestión de usuarios, operaciones CRUD para el manejo de los
       - [SonarQube](#SonarQube)
        
 3. [Despligue](#Despligue)
-     - [Elementos](#estructura)
+      - [Elementos](#estructura)
          - DockerFile
          - Docker Compose
          - Jenkins File
-     - [Experiencia/Promas implementandolos](#bbdd-mysql)
+      - [Experiencia/Problemas implementandolos](#Problemas)
 
 
 
