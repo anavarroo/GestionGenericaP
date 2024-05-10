@@ -11,7 +11,7 @@ Aplicación para la gestión de usuarios, operaciones CRUD para el manejo de los
 
 ## Punto de vista técnico
 1. [Arquitectura](#Arquitectura)
-     - [Explicación de cada servicio](#Servicios)
+  - [Explicación de cada servicio](#Servicios)
      - [Spring Security](#Spring-Security)
      - [Testing](#Testing)
      - [SonarQube](#SonarQube)
