@@ -63,9 +63,6 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-    /** Roles del usuario **/
-    @Enumerated(EnumType.STRING)
-    private Role role;
 
     public void setTelefono(String telefono) {
         /** Verificar si el teléfono ya tiene el prefijo '+' **/
