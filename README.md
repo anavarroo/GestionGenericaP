@@ -1,34 +1,26 @@
-# Aplicacion de Gestion Generica
+# Aplicación Genérica
 
-Aplicación para la gestión de usuarios, operaciones CRUD para el manejo de los mismos con un registro con posibilidad de 2Outh para el registro en ella.
+## Como ejecutar la aplicación con Docker
 
-# Índice
+1. Escribe en la terminal el comando `git clone https://github.com/anavarroo/GestionGenericaP.git`
+2. Escribe en la terminal el comando `mvn clean package -DskipTest` para limpiar la aplicación.
+3. Escibe `docker-compose up` para iniciar la aplicación.
 
-## Punto de vista usuario
-1. [Guia de instalacion del entorno](#Entorno)
-   
-      - [Configuracion local](#Configuracion-Local)
-      - [Usando docker](#ConfiguracionConDocker) 
+## Como ejecutar la aplicación sin Docker
 
-## Punto de vista técnico
-1. [Arquitectura](#Arquitectura)
+1. Escribe en la terminal el comando `git clone https://github.com/anavarroo/GestionGenericaP.git`
+2. Comprueba que tienes todas las versiones correctas de [Entorno](https://github.com/anavarroo/GestionGenericaP/wiki/Punto-de-vista-Tecnico#--requisitos-del-sistema)
+3. Escribe en la terminal el comando `mvn clean verify -DskipTest` para entrar en cada carpeta y construit la aplicación.
+4. Despues ejecuta `mvn spring-boot:run` para entrar en cada carpeta y iniciar la aplicación.
 
-      - [Explicación de cada servicio](#Servicios)
-      - [Spring Security](#Spring-Security)
-      - [Testing](#Testing)
-      - [SonarQube](#SonarQube)
-       
-3. [Despligue](#Despligue)
-   
-      - [Elementos](#estructura)
-         - DockerFile
-         - Docker Compose
-         - Jenkins File
-      - [Experiencia/Problemas implementandolos](#Problemas)
+Para ver lo documentación completa del proyecto: [Wiki](https://github.com/anavarroo/GestionGenericaP/wiki)
 
+## Contacto
 
-
-
-
-
-
+Para cualquier duda, no dudes en contactar con nosotros:
+  - navarrovegaalberto@gmail.com
+  - alejandro1052004@gmail.com
+  - joseluisgonzalezalamao@gmail.com
+  - eXdesy@gmail.com
+  - nico@gmail.com
+    
