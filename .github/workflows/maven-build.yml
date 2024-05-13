@@ -30,3 +30,11 @@ jobs:
       - name: Build and test with Maven
         run: mvn --batch-mode package
 
+      - name: Construir imágenes de Docker
+        run: |
+          docker build -t api-gateway api-gateway
+          docker build -t crud-service crud-service
+          docker build -t discovery-server discovery-server
+          docker build -t register-service register-service
+      
+
