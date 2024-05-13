@@ -25,7 +25,7 @@
 
 
 	<modules>
-		<module>CRUD-service</module>
+		<module>crud-service</module>
 		<module>register-service</module>
 		<module>api-gateway</module>
 		<module>discovery-server</module>
