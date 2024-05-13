@@ -3,7 +3,7 @@
   on:
     pull_request:
       branches:
-        - feature-ale-v.2
+        - main
 
   jobs:
     build:
