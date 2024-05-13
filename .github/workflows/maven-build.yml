@@ -24,3 +24,20 @@
             cache: maven
         - name: Build and test with Maven
           run: mvn --batch-mode package
+
+        - name: Log in to Docker Hub
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u aleramiirez --password-stdin
+
+        - name: Build and push Docker images
+          run: |
+            docker build -t aleramiirez/generics:api-gateway api-gateway
+            docker push aleramiirez/generics:api-gateway
+
+            docker build -t aleramiirez/generics:crud-service crud-service
+            docker push aleramiirez/generics:crud-service
+
+            docker build -t aleramiirez/generics:discovery-server discovery-server
+            docker push aleramiirez/generics:discovery-server
+
+            docker build -t aleramiirez/generics:register-service register-service
+            docker push aleramiirez/generics:register-service
