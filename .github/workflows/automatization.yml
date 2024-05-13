@@ -26,7 +26,7 @@
           run: mvn --batch-mode package
 
         - name: Log in to Docker Hub
-          run: echo "$DOCKER_PASSWORD" | docker login -u aleramiirez --password-stdin
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u aleramiirez --password-stdin
 
         - name: Build and push Docker images for api-gateway
           run: |
