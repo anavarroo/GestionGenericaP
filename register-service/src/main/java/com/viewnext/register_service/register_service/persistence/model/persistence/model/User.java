@@ -1,4 +1,4 @@
-package com.viewnext.register_service.persistence.model;
+package com.viewnext.register_service.register_service.persistence.model.persistence.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -60,31 +60,27 @@ public class User implements Serializable, UserDetails {
     @NotBlank(message = "La contraseña no puede estar vacia")
     private String contrasena;
 
-    /** Estado para aprobar el registro de usuarios **/
+
     @Column(name = "estado")
     private boolean estado;
 
-    /** Rol del usuario **/
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    /** Facotor de doble autenticacion **/
-    @Column(name = "mfaEnabled")
-    private boolean mfaEnabled;
-
-    /** Clave secretea del factor de doble autenticacion **/
-    @Column(name = "FAKey")
+// hola
     private String secret;
 
-    public User(String nombre, String apellidos, String correo, String contrasena,
-                boolean mfaEnabled) {
+    public User(String nombre, String apellidos, int edad, String correo,
+                String direccion, int telefono, String contrasena, boolean estado, Role role) {
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.edad = edad;
         this.correo = correo;
+        this.direccion = direccion;
+        this.telefono = telefono;
         this.contrasena = contrasena;
         this.estado = false;
         this.role = role;
-        this.mfaEnabled = mfaEnabled;
     }
 
     @Override
