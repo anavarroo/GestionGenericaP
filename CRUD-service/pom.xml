@@ -9,9 +9,9 @@
     </parent>
 
 
-    <artifactId>crud-service</artifactId>
+    <artifactId>CRUD-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>crud-service</name>
+    <name>CRUD-service</name>
     <description>Microservicio de CRUD de usuarios</description>
 
 
