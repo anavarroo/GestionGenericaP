@@ -4,9 +4,9 @@
 
   on:
     push:
-      branches: ['feature-ale-v.2']
+      branches: ['main']
     pull_request:
-      branches: ['feature-ale-v.2']
+      branches: ['main']
 
   jobs:
     build:
