@@ -33,29 +33,49 @@
             cd api-gateway
             docker build -t aleramiirez/generics:api-gateway .
             docker push aleramiirez/generics:api-gateway
-            docker build -t aleramiirez/generics.azurecr.io:api-gateway .
-
 
         - name: Build and push Docker images for crud-service
           run: |
             cd CRUD-service
             docker build -t aleramiirez/generics:crud-service .
             docker push aleramiirez/generics:crud-service
-            docker build -t aleramiirez/generics.azurecr.io:crud-service .
-
 
         - name: Build and push Docker images for discovery-server
           run: |
             cd discovery-server
             docker build -t aleramiirez/generics:discovery-server .
             docker push aleramiirez/generics:discovery-server
-            docker build -t aleramiirez/generics.azurecr.io:discovery-server .
-
 
         - name: Build and push Docker images for register-service
           run: |
             cd register-service
             docker build -t aleramiirez/generics:register-service .
             docker push aleramiirez/generics:register-service
-            docker build -t aleramiirez/generics.azurecr.io:register-service .
+
+        - name: Login Azure
+          run: docker login generics.azurecr.io -u generics -p r6pV7tqZZ8K/fgFoWjTOUuIq9npaG6H4TcJfwGBS2b+ACRAPIrE4
+
+        - name: Build and push Docker images for api-gateway to azure
+          run: |
+            cd api-gateway
+            docker build -t generics.azurecr.io/generics:api-gateway .
+            docker push generics.azurecr.io/generics:api-gateway
+
+        - name: Build and push Docker images for crud-service to azure
+          run: |
+            cd CRUD-service
+            docker build -t generics.azurecr.io/generics:crud-service .
+            docker push generics.azurecr.io/generics:crud-service
+
+        - name: Build and push Docker images for discovery-server to azure
+          run: |
+            cd discovery-server
+            docker build -t generics.azurecr.io/generics:discovery-server .
+            docker push generics.azurecr.io/generics:discovery-server
+
+        - name: Build and push Docker images for register-service to azure
+          run: |
+            cd register-service
+            docker build -t generics.azurecr.io/generics:register-service .
+            docker push generics.azurecr.io/generics:register-service
 
