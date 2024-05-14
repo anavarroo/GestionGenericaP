@@ -34,7 +34,7 @@
             docker build -t aleramiirez/generics:api-gateway .
             docker push aleramiirez/generics:api-gateway
             docker build -t aleramiirez/generics.azurecr.io:api-gateway .
-            docker push aleramiirez/generics.azurecr.io:api-gateway
+
 
         - name: Build and push Docker images for crud-service
           run: |
@@ -42,7 +42,7 @@
             docker build -t aleramiirez/generics:crud-service .
             docker push aleramiirez/generics:crud-service
             docker build -t aleramiirez/generics.azurecr.io:crud-service .
-            docker push aleramiirez/generics.azurecr.io:crud-service
+
 
         - name: Build and push Docker images for discovery-server
           run: |
@@ -50,7 +50,7 @@
             docker build -t aleramiirez/generics:discovery-server .
             docker push aleramiirez/generics:discovery-server
             docker build -t aleramiirez/generics.azurecr.io:discovery-server .
-            docker push aleramiirez/generics.azurecr.io:discovery-server
+
 
         - name: Build and push Docker images for register-service
           run: |
@@ -58,4 +58,4 @@
             docker build -t aleramiirez/generics:register-service .
             docker push aleramiirez/generics:register-service
             docker build -t aleramiirez/generics.azurecr.io:register-service .
-            docker push aleramiirez/generics.azurecr.io:register-service
+
