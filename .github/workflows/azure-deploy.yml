@@ -21,4 +21,4 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure Container Instances
-        run: az deployment group create --resource-group <resource-group-name> --template-file azure-deployment.yaml
+        run: az deployment group create --resource-group pruebas --template-file azure-deployment.yaml
