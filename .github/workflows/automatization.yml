@@ -53,7 +53,7 @@
             docker push aleramiirez/generics:register-service
 
         - name: Login Azure
-          run: docker login generics.azurecr.io -u generics -p r6pV7tqZZ8K/fgFoWjTOUuIq9npaG6H4TcJfwGBS2b+ACRAPIrE4
+          run: docker login generics.azurecr.io -u generics -p S/YCNjVFIpR/eAgAqRJACd9GDR9EUUoh+xpC5q+sUc+ACRCyDdRC
 
         - name: Build and push Docker images for api-gateway to azure
           run: |
