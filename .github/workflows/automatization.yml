@@ -1,0 +1,53 @@
+  name: Java CI with Maven
+
+  on:
+    push:
+      branches: ['main']
+    pull_request:
+      branches: ['main']
+
+  jobs:
+    build:
+
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Check out the repository
+          uses: actions/checkout@v4
+
+        - name: Set up JDK 17
+          uses: actions/setup-java@v3
+          with:
+            java-version: '17'
+            distribution: 'temurin'
+            cache: maven
+
+        - name: Build and test with Maven
+          run: mvn --batch-mode package
+
+        - name: Log in to Docker Hub
+          run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u aleramiirez --password-stdin
+
+        - name: Build and push Docker images for api-gateway
+          run: |
+            cd api-gateway
+            docker build -t aleramiirez/generics:api-gateway .
+            docker push aleramiirez/generics:api-gateway
+
+        - name: Build and push Docker images for crud-service
+          run: |
+            cd CRUD-service
+            docker build -t aleramiirez/generics:crud-service .
+            docker push aleramiirez/generics:crud-service
+
+        - name: Build and push Docker images for discovery-server
+          run: |
+            cd discovery-server
+            docker build -t aleramiirez/generics:discovery-server .
+            docker push aleramiirez/generics:discovery-server
+
+        - name: Build and push Docker images for register-service
+          run: |
+            cd register-service
+            docker build -t aleramiirez/generics:register-service .
+            docker push aleramiirez/generics:register-service
