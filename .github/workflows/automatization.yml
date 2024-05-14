@@ -39,8 +39,6 @@
         - name: Build and push Docker images for crud-service
           run: |
             cd CRUD-service
-            docker build -t aleramiirez/generics:crud-service .
-            docker push aleramiirez/generics:crud-service
             docker build -t aleramiirez/generics.azurecr.io:crud-service .
 
 
