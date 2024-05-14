@@ -52,10 +52,7 @@ jobs:
           docker build -t anavarrooo/generics:register-service .
           docker push anavarrooo/generics:register-service
 
-      - name: Login via Azure CLI
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
 
 
 
