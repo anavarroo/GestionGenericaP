@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nlb-service
+spec:
+  ports:
+    - port: 8084
+      targetPort: 8084
+      protocol: TCP
+      name: api-gateway
+    - port: 8081
+      targetPort: 8081
+      protocol: TCP
+      name: register-service
+    - port: 8082
+      targetPort: 8082
+      protocol: TCP
+      name: crud-service
+  type: LoadBalancer
+  selector:
+    app: micros
