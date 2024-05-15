@@ -40,12 +40,6 @@
             docker build -t aleramiirez/generics:crud-service .
             docker push aleramiirez/generics:crud-service
 
-        - name: Build and push Docker images for discovery-server
-          run: |
-            cd discovery-server
-            docker build -t aleramiirez/generics:discovery-server .
-            docker push aleramiirez/generics:discovery-server
-
         - name: Build and push Docker images for register-service
           run: |
             cd register-service
