@@ -9,9 +9,14 @@ services:
       - 8084:8084
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      # Para desplegar en AZURE
       - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
       - DATABASE_USERNAME=aleramiirez
       - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      # - DATABASE_USERNAME=root
+      # - DATABASE_PASSWORD=root
     networks:
       - generics
 
@@ -22,9 +27,14 @@ services:
       - 8081:8081
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      # Para desplegar en AZURE
       - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
       - DATABASE_USERNAME=aleramiirez
       - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      # - DATABASE_USERNAME=root
+      # - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
     networks:
@@ -37,9 +47,14 @@ services:
       - 8082:8082
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      # Para desplegar en AZURE
       - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
       - DATABASE_USERNAME=aleramiirez
       - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      # - DATABASE_USERNAME=root
+      # - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
     networks:
@@ -51,9 +66,14 @@ services:
     ports:
       - 3000:3000
     environment:
+      # Para desplegar en AZURE
       - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
       - DATABASE_USERNAME=aleramiirez
       - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      # - DATABASE_USERNAME=root
+      # - DATABASE_PASSWORD=root
     networks:
       - generics
 
