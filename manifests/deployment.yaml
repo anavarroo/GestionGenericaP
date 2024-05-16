@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: generics-flow
+  labels:
+    app: generics-flow
+  namespace: generics-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: generics-flow
+  template:
+    metadata:
+      labels:
+        app: generics-flow
+    spec:
+      containers:
+        - name: generics-flow
+          image: genericsrepository.azurecr.io/generics-deploy:latest
+          ports:
+            - containerPort: 8080
