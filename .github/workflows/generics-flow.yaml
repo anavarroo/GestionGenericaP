@@ -22,13 +22,21 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: azure/login@92a5484dfaf04ca78a94597f4f19fea633851fa2
-        name: Azure login
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build and test with Maven
+        run: mvn --batch-mode package
+      - name: Login Azure
+        run: echo "${{ secrets.AZURE_REPO_PASSWORD }}" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
+
       - name: Build and push Docker images for api-gateway to azure
         run: |
           cd api-gateway
