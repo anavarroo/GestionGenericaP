@@ -12,8 +12,8 @@ spring:
           # URL para despliegue con docker-compose
           #uri: http://register-service:8081
 
-          # URL para despliegue con docker-compose
-          uri: http://20.19.192.89:8081
+          # URL para despliegue con kubernetes
+          uri: http://register-service.default.svc.cluster.local
           predicates:
             - Path=/auth/**
 
@@ -27,8 +27,8 @@ spring:
           # URL para despliegue con docker-compose
           #uri: http://crud-service:8082
 
-          # URL para despliegue con docker-compose
-          uri: http://20.19.192.89:8082
+          # URL para despliegue con kubernetes
+          uri: http://crud-service.default.svc.cluster.local
           predicates:
             - Path=/api/v1/usuarios/**
 
