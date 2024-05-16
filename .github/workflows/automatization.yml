@@ -49,7 +49,7 @@
 
         # Build and Push Images to AZURE
         - name: Login Azure
-          run: docker login genericsrepository.azurecr.io -u genericsrepository -p sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS
+          run: echo "${{ secrets.AZURE_REPO_PASSWORD }}" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
 
         - name: Build and push Docker images for api-gateway to azure
           run: |
