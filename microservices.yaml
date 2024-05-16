@@ -23,5 +23,6 @@ spec:
       protocol: TCP
       name: generics-front
   type: LoadBalancer
+  loadBalancerIP: 108.141.162.231
   selector:
     app: micros
