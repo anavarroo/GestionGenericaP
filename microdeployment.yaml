@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: aleramiirez/generics:api-gateway
+          image: genericsrepository.azurecr.io/generics:api-gateway
           ports:
             - containerPort: 8084
           env:
@@ -29,11 +29,11 @@ spec:
             - name: DATABASE_URL
               value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
             - name: DATABASE_USERNAME
-              value: aleramiirez
+              value: generics
             - name: DATABASE_PASSWORD
               value: Password0
         - name: register-service
-          image: aleramiirez/generics:register-service
+          image: genericsrepository.azurecr.io/generics:register-service
           ports:
             - containerPort: 8081
           env:
@@ -44,11 +44,11 @@ spec:
             - name: DATABASE_URL
               value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
             - name: DATABASE_USERNAME
-              value: aleramiirez
+              value: generics
             - name: DATABASE_PASSWORD
               value: Password0
         - name: crud-service
-          image: aleramiirez/generics:crud-service
+          image: genericsrepository.azurecr.io/generics:crud-service
           ports:
             - containerPort: 8082
           env:
@@ -59,17 +59,17 @@ spec:
             - name: DATABASE_URL
               value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
             - name: DATABASE_USERNAME
-              value: aleramiirez
+              value: generics
             - name: DATABASE_PASSWORD
               value: Password0
         - name: generics-front
-          image: aleramiirez/generics:generics-front
+          image: genericsrepository.azurecr.io/generics:generics-front
           ports:
             - containerPort: 3000
           env:
             - name: DATABASE_URL
               value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
             - name: DATABASE_USERNAME
-              value: aleramiirez
+              value: generics
             - name: DATABASE_PASSWORD
               value: Password0
