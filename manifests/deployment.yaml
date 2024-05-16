@@ -1,22 +1,75 @@
+# Despliegue servicios
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: generics-flow
+  name: deployment-services
   labels:
-    app: generics-flow
-  namespace: generics-namespace
+    app: micros
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: generics-flow
+      app: micros
   template:
     metadata:
       labels:
-        app: generics-flow
+        app: micros
     spec:
       containers:
-        - name: generics-flow
-          image: genericsrepository.azurecr.io/generics-deploy:latest
+        - name: api-gateway
+          image: genericsrepository.azurecr.io/generics:api-gateway
           ports:
-            - containerPort: 8080
+            - containerPort: 8084
+          env:
+            - name: AUDIT_API
+              value: http://nlb-service:8084
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+            - name: DATABASE_URL
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+            - name: DATABASE_USERNAME
+              value: generics
+            - name: DATABASE_PASSWORD
+              value: Password0
+        - name: register-service
+          image: genericsrepository.azurecr.io/generics:register-service
+          ports:
+            - containerPort: 8081
+          env:
+            - name: AUDIT_API
+              value: http://nlb-service:8081
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+            - name: DATABASE_URL
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+            - name: DATABASE_USERNAME
+              value: generics
+            - name: DATABASE_PASSWORD
+              value: Password0
+        - name: crud-service
+          image: genericsrepository.azurecr.io/generics:crud-service
+          ports:
+            - containerPort: 8082
+          env:
+            - name: AUDIT_API
+              value: http://nlb-service:8082
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+            - name: DATABASE_URL
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+            - name: DATABASE_USERNAME
+              value: generics
+            - name: DATABASE_PASSWORD
+              value: Password0
+        - name: generics-front
+          image: genericsrepository.azurecr.io/generics:generics-front
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+            - name: DATABASE_USERNAME
+              value: generics
+            - name: DATABASE_PASSWORD
+              value: Password0
