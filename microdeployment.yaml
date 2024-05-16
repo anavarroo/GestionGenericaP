@@ -27,7 +27,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
             - name: DATABASE_URL
-              value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
             - name: DATABASE_USERNAME
               value: generics
             - name: DATABASE_PASSWORD
@@ -42,7 +42,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
             - name: DATABASE_URL
-              value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
             - name: DATABASE_USERNAME
               value: generics
             - name: DATABASE_PASSWORD
@@ -57,7 +57,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
             - name: DATABASE_URL
-              value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
             - name: DATABASE_USERNAME
               value: generics
             - name: DATABASE_PASSWORD
@@ -68,7 +68,7 @@ spec:
             - containerPort: 3000
           env:
             - name: DATABASE_URL
-              value: jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
+              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
             - name: DATABASE_USERNAME
               value: generics
             - name: DATABASE_PASSWORD
