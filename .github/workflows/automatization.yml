@@ -68,17 +68,3 @@ jobs:
           cd register-service
           docker build -t genericsrepository.azurecr.io/generics:register-service .
           docker push genericsrepository.azurecr.io/generics:register-service
-
-      - uses: Azure/k8s-deploy@v5
-        with:
-          resource-group: Generics-group
-          name: generics-cluster
-          action: deploy
-          strategy: basic
-
-          private-cluster: true
-          manifests: |
-            courses/microdeployment.yaml
-            courses/microservice.yaml
-          images: |
-            genericsrepository.azurecr.io
