@@ -78,7 +78,7 @@
 
             private-cluster: true
             manifests: |
-              manifests/microdeployment.yaml
-              manifests/microservice.yaml
+              courses/microdeployment.yaml
+              courses/microservice.yaml
             images: |
               genericsrepository.azurecr.io
