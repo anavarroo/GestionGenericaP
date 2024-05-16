@@ -10,8 +10,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       # Para desplegar en AZURE
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
+      - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      - DATABASE_USERNAME=generics
       - DATABASE_PASSWORD=Password0
       # Para desplegar en local
       # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
@@ -28,8 +28,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       # Para desplegar en AZURE
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
+      - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      - DATABASE_USERNAME=generics
       - DATABASE_PASSWORD=Password0
       # Para desplegar en local
       # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
@@ -48,8 +48,8 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       # Para desplegar en AZURE
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
+      - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      - DATABASE_USERNAME=generics
       - DATABASE_PASSWORD=Password0
       # Para desplegar en local
       # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
@@ -67,8 +67,8 @@ services:
       - 3000:3000
     environment:
       # Para desplegar en AZURE
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
+      - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      - DATABASE_USERNAME=gsnerics
       - DATABASE_PASSWORD=Password0
       # Para desplegar en local
       # - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false

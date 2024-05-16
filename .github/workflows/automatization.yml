@@ -49,22 +49,22 @@
 
         # Build and Push Images to AZURE
         - name: Login Azure
-          run: docker login genericsregistry.azurecr.io -u genericsregistry -p cjgIkEpfUn3hwhx3/Mp0vxIBNz5pbA+7u6PP2KjWUN+ACRA1lPoa
+          run: docker login genericsrepository.azurecr.io -u genericsrepository -p sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS
 
         - name: Build and push Docker images for api-gateway to azure
           run: |
             cd api-gateway
-            docker build -t genericsregistry.azurecr.io/generics:api-gateway .
-            docker push genericsregistry.azurecr.io/generics:api-gateway
+            docker build -t genericsrepository.azurecr.io/generics:api-gateway .
+            docker push genericsrepository.azurecr.io/generics:api-gateway
 
         - name: Build and push Docker images for crud-service to azure
           run: |
             cd CRUD-service
-            docker build -t genericsregistry.azurecr.io/generics:crud-service .
-            docker push genericsregistry.azurecr.io/generics:crud-service
+            docker build -t genericsrepository.azurecr.io/generics:crud-service .
+            docker push genericsrepository.azurecr.io/generics:crud-service
 
         - name: Build and push Docker images for register-service to azure
           run: |
             cd register-service
-            docker build -t genericsregistry.azurecr.io/generics:register-service .
-            docker push genericsregistry.azurecr.io/generics:register-service
+            docker build -t genericsrepository.azurecr.io/generics:register-service .
+            docker push genericsrepository.azurecr.io/generics:register-service
