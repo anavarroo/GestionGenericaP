@@ -68,12 +68,17 @@
             cd register-service
             docker build -t genericsrepository.azurecr.io/generics:register-service .
             docker push genericsrepository.azurecr.io/generics:register-service
-        - name: Install kubectl
-          uses: azure/setup-kubectl@v1
 
-        - name: Apply Kubernetes resources
-          run: |
-            dir
-            cd courses
-            kubectl apply -f microdeployment.yaml -n generisspace
-            kubectl apply -f microservices.yaml -n generisspace
+        - uses: Azure/k8s-deploy@v5
+          with:
+            resource-group: Generics-group
+            name: generics-cluster
+            action: deploy
+            strategy: basic
+
+            private-cluster: true
+            manifests: |
+              manifests/microdeployment.yaml
+              manifests/microservice.yaml
+            images: |
+              genericsrepository.azurecr.io
