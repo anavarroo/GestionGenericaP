@@ -65,6 +65,7 @@
 
         - name: Build and push Docker images for register-service to azure
           run: |
+            dir
             cd register-service
             docker build -t genericsrepository.azurecr.io/generics:register-service .
             docker push genericsrepository.azurecr.io/generics:register-service
