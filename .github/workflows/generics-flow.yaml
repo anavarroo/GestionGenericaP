@@ -10,7 +10,7 @@ env:
   AZURE_CONTAINER_REGISTRY: genericsrepository
   CLUSTER_NAME: generics-cluster
   CLUSTER_RESOURCE_GROUP: Generics-group
-  CONTAINER_NAME: generics
+  CONTAINER_NAME: generics-deploy
   DEPLOYMENT_MANIFEST_PATH: |
     manifests/deployment.yaml
     manifests/service.yaml
@@ -40,18 +40,18 @@ jobs:
       - name: Build and push Docker images for api-gateway to azure
         run: |
           cd api-gateway
-          docker build -t genericsrepository.azurecr.io/generics:api-gateway .
-          docker push genericsrepository.azurecr.io/generics:api-gateway
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway-${{ github.sha }} .
+          docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway-${{ github.sha }}
       - name: Build and push Docker images for crud-service to azure
         run: |
           cd CRUD-service
-          docker build -t genericsrepository.azurecr.io/generics:crud-service .
-          docker push genericsrepository.azurecr.io/generics:crud-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service-${{ github.sha }} .
+          docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service-${{ github.sha }}
       - name: Build and push Docker images for register-service to azure
         run: |
           cd register-service
-          docker build -t genericsrepository.azurecr.io/generics:register-service .
-          docker push genericsrepository.azurecr.io/generics:register-service
+          docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service-${{ github.sha }} .
+          docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service-${{ github.sha }}
 
   deploy:
     permissions:
@@ -92,10 +92,6 @@ jobs:
         name: Deploys application
         with:
           action: deploy
-          images: |
-            genericsrepository.azurecr.io/generics:api-gateway:api-gateway
-            genericsrepository.azurecr.io/generics:crud-service:crud-service
-            genericsrepository.azurecr.io/generics:register-service:register-service
-            genericsrepository.azurecr.io/generics:generics-front:generics-front
+          images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           namespace: generics-namespace
