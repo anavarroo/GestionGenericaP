@@ -97,11 +97,6 @@ jobs:
         name: Deploys application
         with:
           action: deploy
-          images: |
-            aleramiirez/generics:register-service
-            aleramiirez/generics:crud-service
-            aleramiirez/generics:api-gateway
-            aleramiirez/generics:generics-front
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           namespace: generics-namespace
 
