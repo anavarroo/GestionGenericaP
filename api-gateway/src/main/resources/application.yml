@@ -13,7 +13,7 @@ spring:
           # uri: http://register-service:8081
 
           # URL para despliegue con kubernetes
-          uri: http://nlb-service.generic-namespace.svc.cluster.local:8081
+          uri: http://nlb-service.generics-namespace.svc.cluster.local:8081
           predicates:
             - Path=/auth/**
 
