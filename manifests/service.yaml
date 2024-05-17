@@ -18,10 +18,10 @@ spec:
       targetPort: 8082
       protocol: TCP
       name: crud-service
-#    - port: 3000
-#      targetPort: 3000
-#      protocol: TCP
-#      name: generics-front
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: generics-front
   type: LoadBalancer
   selector:
     app: micros

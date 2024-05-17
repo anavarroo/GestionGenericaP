@@ -88,7 +88,7 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
           resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
           use-kubelogin: "true"
-      - name: Login Azure
+      - name: Login Azure Repo
         run: echo "sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
       - uses: Azure/k8s-deploy@v4
         name: Deploys application
@@ -98,6 +98,6 @@ jobs:
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service
-#            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:generics-front
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:generics-front
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           namespace: generics-namespace
