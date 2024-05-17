@@ -88,10 +88,10 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
           resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
           use-kubelogin: "true"
+      - name: Login Azure
+        run: echo "sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
       - uses: Azure/k8s-deploy@v4
         name: Deploys application
-      - name: Login Azure Repo
-        run: echo "sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
         with:
           action: deploy
           images: |
