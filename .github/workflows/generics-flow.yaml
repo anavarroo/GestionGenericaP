@@ -42,16 +42,19 @@ jobs:
           cd api-gateway
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway .
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway
+          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway
       - name: Build and push Docker images for crud-service to azure
         run: |
           cd CRUD-service
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service .
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service
+          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service
       - name: Build and push Docker images for register-service to azure
         run: |
           cd register-service
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service .
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service
+          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service
 
   deploy:
     permissions:
