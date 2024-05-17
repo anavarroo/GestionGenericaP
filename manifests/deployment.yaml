@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: genericsrepository.azurecr.io/generics:api-gateway-${{ github.sha }}
+          image: genericsrepository.azurecr.io/generics:api-gateway
           ports:
             - containerPort: 8084
           env:
@@ -33,7 +33,7 @@ spec:
             - name: DATABASE_PASSWORD
               value: Password0
         - name: register-service
-          image: genericsrepository.azurecr.io/generics:register-service-${{ github.sha }}
+          image: genericsrepository.azurecr.io/generics:register-service
           ports:
             - containerPort: 8081
           env:
@@ -48,7 +48,7 @@ spec:
             - name: DATABASE_PASSWORD
               value: Password0
         - name: crud-service
-          image: genericsrepository.azurecr.io/generics:crud-service-${{ github.sha }}
+          image: genericsrepository.azurecr.io/generics:crud-service
           ports:
             - containerPort: 8082
           env:
