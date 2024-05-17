@@ -34,7 +34,15 @@ jobs:
 
       - name: Build and test with Maven
         run: mvn --batch-mode package
-      - name: Login Azure
+
+      - uses: azure/login@92a5484dfaf04ca78a94597f4f19fea633851fa2
+        name: Azure login
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+
+      - name: Login Azure Repo
         run: echo "sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
 
       - name: Build and push Docker images for api-gateway to azure
