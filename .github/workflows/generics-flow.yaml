@@ -130,7 +130,7 @@ jobs:
 
       # Build and Push Images to Docker Hub
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKERPASSWORD }}" | docker login -u aleramiirez --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u aleramiirez --password-stdin
 
       - name: Build and push Docker images for api-gateway
         run: |
