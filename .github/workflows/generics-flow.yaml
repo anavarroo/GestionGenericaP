@@ -34,6 +34,29 @@ jobs:
 
       - name: Build and test with Maven
         run: mvn --batch-mode package
+
+      # Build and Push Images to Docker Hub
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERPASSWORD }}" | docker login -u aleramiirez --password-stdin
+
+      - name: Build and push Docker images for api-gateway
+        run: |
+          cd api-gateway
+          docker build -t aleramiirez/generics:api-gateway .
+         docker push aleramiirez/generics:api-gateway
+
+      - name: Build and push Docker images for crud-service
+        run: |
+          cd CRUD-service
+          docker build -t aleramiirez/generics:crud-service .
+          docker push aleramiirez/generics:crud-service
+
+      - name: Build and push Docker images for register-service
+        run: |
+          cd register-service
+          docker build -t aleramiirez/generics:register-service .
+          docker push aleramiirez/generics:register-service
+
       - name: Login Azure
         run: echo "sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
 
