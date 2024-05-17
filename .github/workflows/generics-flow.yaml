@@ -90,6 +90,8 @@ jobs:
           use-kubelogin: "true"
       - uses: Azure/k8s-deploy@v4
         name: Deploys application
+      - name: Login Azure Repo
+        run: echo "sNVjOmpVKPPmEbqERoC7sNDfBaiBF9DqQBUZC3tHol+ACRDFOcuS" | docker login genericsrepository.azurecr.io -u genericsrepository --password-stdin
         with:
           action: deploy
           images: |
