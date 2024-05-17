@@ -92,6 +92,10 @@ jobs:
         name: Deploys application
         with:
           action: deploy
-          images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          images: |
+            genericsrepository.azurecr.io/generics:api-gateway:api-gateway
+            genericsrepository.azurecr.io/generics:crud-service:crud-service
+            genericsrepository.azurecr.io/generics:register-service:register-service
+            genericsrepository.azurecr.io/generics:generics-front:generics-front
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           namespace: generics-namespace
