@@ -10,7 +10,7 @@ env:
   AZURE_CONTAINER_REGISTRY: genericsrepository
   CLUSTER_NAME: generics-cluster
   CLUSTER_RESOURCE_GROUP: Generics-group
-  CONTAINER_NAME: generics-deploy
+  CONTAINER_NAME: generics
   DEPLOYMENT_MANIFEST_PATH: |
     manifests/deployment.yaml
     manifests/service.yaml
