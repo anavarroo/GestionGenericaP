@@ -96,10 +96,5 @@ jobs:
           action: deploy
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           namespace: generics-namespace
-        run: |
-          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service
-          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service
-          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway
-          docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:generics-front
 
 
