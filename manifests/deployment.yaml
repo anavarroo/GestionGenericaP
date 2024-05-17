@@ -62,14 +62,14 @@ spec:
               value: generics
             - name: DATABASE_PASSWORD
               value: Password0
-        - name: generics-front
-          image: genericsrepository.azurecr.io/generics:generics-front
-          ports:
-            - containerPort: 3000
-          env:
-            - name: DATABASE_URL
-              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-            - name: DATABASE_USERNAME
-              value: generics
-            - name: DATABASE_PASSWORD
-              value: Password0
+#        - name: generics-front
+#          image: genericsrepository.azurecr.io/generics:generics-front
+#          ports:
+#            - containerPort: 3000
+#          env:
+#            - name: DATABASE_URL
+#              value: jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+#            - name: DATABASE_USERNAME
+#              value: generics
+#            - name: DATABASE_PASSWORD
+#              value: Password0
