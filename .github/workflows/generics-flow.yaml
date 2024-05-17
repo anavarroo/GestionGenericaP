@@ -94,7 +94,7 @@ jobs:
         name: Deploys application
         with:
           action: deploy
-          image: |
+          images: |
             docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:api-gateway
             docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:register-service
             docker pull ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:crud-service
