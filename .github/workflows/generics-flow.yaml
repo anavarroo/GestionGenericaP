@@ -96,6 +96,4 @@ jobs:
           action: deploy
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           namespace: generics-namespace
-          run: |
-            kubect apply -f deployment.yaml -n generics-namespace
-            kubect apply -f services.yaml -n generics-namespace
+
