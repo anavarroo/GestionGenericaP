@@ -44,10 +44,23 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: generics
+      PMA_HOST: mysql
     ports:
       - 3007:3306
-    volumes:
-      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - generics
+
+  generics-audit-bd:
+    container_name: generics-audit-bd
+    image: mysql:5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: generics_audit
+      PMA_HOST: mysql
+    ports:
+      - 3008:3306
     networks:
       - generics
 
