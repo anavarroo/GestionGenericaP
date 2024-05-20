@@ -95,7 +95,7 @@ services:
     container_name: user-audit-service
     image: aleramiirez/generics:user-audit-service
     ports:
-      - 8082:8082
+      - 8083:8083
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       # Para desplegar en AZURE
