@@ -1,9 +1,9 @@
 
 ”
-java:S22590"LA "NullPointerException" could be thrown; "getStatusCode()" can return null.(å‡í³úÿÿÿÿ8Ç¯Ùù1J$182366cb-b509-416b-b6a9-6aa4e0028d45
+java:S22594"LA "NullPointerException" could be thrown; "getStatusCode()" can return null.(å‡í³úÿÿÿÿ8¨Ù¶Úù1J$3eea299d-a748-4991-807a-e08a51d4eac6
 ‰
-java:S1075"ARefactor your code to get this URI from a customizable parameter.(¨ÑÈÌûÿÿÿÿ8Í¯Ùù1J$730fc778-55f9-4e5e-b59e-792a9155a38f
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ƒÈ÷®ûÿÿÿÿ8½Ù¶Úù1J$b726fc31-e785-4b6b-94bc-198c203f2d5d
 t
-java:S1602 ",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8Ñ¯Ùù1J$0fa41d5d-3845-4094-848d-61b7b0e5b72c
+java:S1602#",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8ÉÙ¶Úù1J$79ba28e8-7107-4ad7-af3c-9e91fe401fc7
 Š
-java:S2094?"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8×¯Ùù1J$635999e7-3732-4cf8-bcf6-1f0a2349c28b
+java:S2094E"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8×¯Ùù1J$701ecd71-b258-4385-8dae-cbbb2cc7d919

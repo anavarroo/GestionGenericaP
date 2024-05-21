@@ -11,13 +11,16 @@ import reactor.core.publisher.Mono;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
 
 @Component
 public class AuditFilter extends AbstractGatewayFilterFactory<AuditFilter.Config> {
 
     private static final Logger logger = Logger.getLogger(AuditFilter.class.getName());
-    private static final String LOG_FILE_PATH = "C:\\Desarrollo\\GestionGenericaP\\api-gateway\\api_gateway_audit.log"; // Cambia a .csv si lo prefieres
+    private static final String LOG_FILE_PATH = "C:\\Desarrollo\\GestionGenericaP\\api-gateway\\api_gateway_audit.log"; // Ruta absoluta del archivo de log
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public AuditFilter() {
         super(Config.class);
@@ -40,14 +43,16 @@ public class AuditFilter extends AbstractGatewayFilterFactory<AuditFilter.Config
         HttpMethod method = exchange.getRequest().getMethod();
         String path = exchange.getRequest().getURI().getPath();
         HttpHeaders headers = exchange.getRequest().getHeaders();
-        String log = String.format("Request - Method: %s, Path: %s, Headers: %s", method, path, headers);
+        String timestamp = LocalDateTime.now().format(formatter);
+        String log = String.format("Request - Time: %s, Method: %s, Path: %s, Headers: %s", timestamp, method, path, headers);
         writeLog(log);
     }
 
     private void logResponse(ServerWebExchange exchange) {
         int statusCode = exchange.getResponse().getStatusCode().value();
         HttpHeaders headers = exchange.getResponse().getHeaders();
-        String log = String.format("Response - Status Code: %d, Headers: %s", statusCode, headers);
+        String timestamp = LocalDateTime.now().format(formatter);
+        String log = String.format("Response - Time: %s, Status Code: %d, Headers: %s", timestamp, statusCode, headers);
         writeLog(log);
     }
 
@@ -57,6 +62,7 @@ public class AuditFilter extends AbstractGatewayFilterFactory<AuditFilter.Config
             writer.newLine();
         } catch (IOException e) {
             logger.severe("Failed to write log: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
