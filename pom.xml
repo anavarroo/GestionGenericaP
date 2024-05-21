@@ -30,7 +30,7 @@
 		<module>discovery-server</module>
 		<module>register-service</module>
 		<module>user-audit-service</module>
-
+		<module>common-services</module>
 	</modules>
 
 

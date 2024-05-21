@@ -1,6 +1,6 @@
 package com.viewnext.crud_service.persistence.model;
 
-import com.viewnext.userauditservice.persistence.model.AuditingData;
+import com.viewnext.commonservices.persistence.model.AuditingData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

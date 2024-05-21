@@ -99,7 +99,7 @@
         </dependency>
         <dependency>
             <groupId>com.viewnext</groupId>
-            <artifactId>user-audit-service</artifactId>
+            <artifactId>common-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
