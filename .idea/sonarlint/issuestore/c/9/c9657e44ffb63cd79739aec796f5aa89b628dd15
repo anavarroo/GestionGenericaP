@@ -1,5 +1,7 @@
 
-ï¿½
-java:S4165["bRemove this useless assignment; "role" already holds the assigned value along all execution paths.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$349232ea-5350-41ab-b361-f9eaaa624084
-w
-java:S1656["/Remove or correct this useless self-assignment.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½1J$fbd23f1a-5dc8-4882-b389-9221222b5956
+„
+java:S4165\"bRemove this useless assignment; "role" already holds the assigned value along all execution paths.(‚±×øÿÿÿÿ8›’Ğİù1
+Q
+java:S1656\"/Remove or correct this useless self-assignment.(‚±×øÿÿÿÿ8«’Ğİù1
+„
+java:S1128"bRemove this unused import 'com.viewnext.register_service.auditing.persistence.model.AuditingData'.(Ò†¿Ìûÿÿÿÿ8­’Ğİù1
