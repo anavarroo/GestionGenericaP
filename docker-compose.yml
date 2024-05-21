@@ -9,9 +9,58 @@ services:
       - 8084:8084
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
-      - DATABASE_PASSWORD=Password0
+      # Para desplegar en AZURE
+      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      # - DATABASE_USERNAME=generics
+      # - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    networks:
+      - generics
+
+  discovery-server:
+    container_name: discovery-server
+    image: aleramiirez/generics:discovery-server
+    ports:
+      - 8761:8761
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      # Para desplegar en AZURE
+      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      # - DATABASE_USERNAME=generics
+      # - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    networks:
+      - generics
+
+  generics-bd:
+    container_name: generics-bd
+    image: mysql:5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: generics
+      PMA_HOST: mysql
+    ports:
+      - 3007:3306
+    networks:
+      - generics
+
+  generics-audit-bd:
+    container_name: generics-audit-bd
+    image: mysql:5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: generics_audit
+      PMA_HOST: mysql
+    ports:
+      - 3008:3306
     networks:
       - generics
 
@@ -22,9 +71,14 @@ services:
       - 8081:8081
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
-      - DATABASE_PASSWORD=Password0
+      # Para desplegar en AZURE
+      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      # - DATABASE_USERNAME=generics
+      # - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
     networks:
@@ -37,9 +91,34 @@ services:
       - 8082:8082
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
-      - DATABASE_PASSWORD=Password0
+      # Para desplegar en AZURE
+      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      # - DATABASE_USERNAME=generics
+      # - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - api-gateway
+    networks:
+      - generics
+
+  user-audit-service:
+    container_name: user-audit-service
+    image: aleramiirez/generics:user-audit-service
+    ports:
+      - 8083:8083
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      # Para desplegar en AZURE
+      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      # - DATABASE_USERNAME=generics
+      # - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics_audit?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
     networks:
@@ -51,9 +130,14 @@ services:
     ports:
       - 3000:3000
     environment:
-      - DATABASE_URL=jdbc:mysql://generics-sql-server.mysql.database.azure.com:3306/generics_sql?useSSL=true
-      - DATABASE_USERNAME=aleramiirez
-      - DATABASE_PASSWORD=Password0
+      # Para desplegar en AZURE
+      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
+      # - DATABASE_USERNAME=gsnerics
+      # - DATABASE_PASSWORD=Password0
+      # Para desplegar en local
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
     networks:
       - generics
 
