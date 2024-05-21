@@ -16,6 +16,8 @@ spring:
           # uri: http://nlb-service.generics-namespace.svc.cluster.local:8081
           predicates:
             - Path=/auth/**
+          filters:
+            - AuditFilter
 
         - id: crud-service
           # URL para despliege en local
@@ -33,6 +35,7 @@ spring:
             - Path=/api/v1/usuarios/**
 
           filters:
+            - AuditFilter
             - AuthenticationFilter
 
 
@@ -43,4 +46,4 @@ logging:
 
 audit:
   log:
-    path: C:\Desarrollo\GestionGenericaP\api-gateway\api_gateway_audit.log
+    path: C:\\Desarrollo\\GestionGenericaP\\api-gateway\\api_gateway_audit.log

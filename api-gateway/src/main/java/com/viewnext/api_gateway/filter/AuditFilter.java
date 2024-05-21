@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class AuditFilter extends AbstractGatewayFilterFactory<AuditFilter.Config> {
 
     private static final Logger logger = Logger.getLogger(AuditFilter.class.getName());
-    private static final String LOG_FILE_PATH = "api_gateway_audit.log"; // Cambia a .csv si lo prefieres
+    private static final String LOG_FILE_PATH = "C:\\Desarrollo\\GestionGenericaP\\api-gateway\\api_gateway_audit.log"; // Cambia a .csv si lo prefieres
 
     public AuditFilter() {
         super(Config.class);
