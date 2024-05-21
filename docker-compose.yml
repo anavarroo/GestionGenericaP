@@ -42,11 +42,6 @@ services:
       - 8081:8081
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
@@ -62,11 +57,6 @@ services:
       - 8082:8082
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
@@ -81,11 +71,6 @@ services:
     ports:
       - 3000:3000
     environment:
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=gsnerics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root

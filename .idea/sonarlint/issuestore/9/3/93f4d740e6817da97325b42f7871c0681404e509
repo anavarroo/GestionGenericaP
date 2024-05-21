@@ -1,0 +1,9 @@
+
+”
+java:S22594"LA "NullPointerException" could be thrown; "getStatusCode()" can return null.(å‡í³úÿÿÿÿ8¨Ù¶Úù1J$b70deaba-affe-4574-8871-d56d3e27bd89
+‰
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(™Ïì‘üÿÿÿÿ8½Ù¶Úù1J$2cb43266-4383-46fe-822f-4fdcdf831fec
+t
+java:S1602#",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8ÉÙ¶Úù1J$14b35e64-282d-4ca1-b815-b302f2f6a5b8
+Š
+java:S2094E"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8×¯Ùù1J$12a1627f-5157-480e-8298-1f480b8cf2c7
