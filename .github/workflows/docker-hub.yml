@@ -3,6 +3,9 @@ name: Push Docker images to Hub
 on:
   push:
     branches: ['feature-ale-v.2']
+
+  workflow_dispatch: {}
+
   pull_request:
     branches: ['feature-ale-v.2']
 
