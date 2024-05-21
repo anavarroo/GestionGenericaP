@@ -35,19 +35,6 @@ services:
     networks:
       - generics
 
-  generics-audit-db:
-    container_name: generics-audit-db
-    image: mysql:5
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=generics_audit
-      - PMA_HOST=mysql
-    ports:
-      - 3308:3306
-    networks:
-      - generics
-
   register-service:
     container_name: register-service
     image: aleramiirez/generics:register-service
@@ -85,26 +72,6 @@ services:
       - DATABASE_PASSWORD=root
     depends_on:
       - generics-db
-    networks:
-      - generics
-
-  user-audit-service:
-    container_name: user-audit-service
-    image: aleramiirez/generics:user-audit-service
-    ports:
-      - 8083:8083
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
-    depends_on:
-      - generics-audit-db
     networks:
       - generics
 
