@@ -4,37 +4,17 @@ services:
 
   api-gateway:
     container_name: api-gateway
-    image: aleramiirez/generics:api-gateway
+    image: anavarrooo/generics:api-gateway
     ports:
       - 8084:8084
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
     networks:
       - generics
 
   discovery-server:
     container_name: discovery-server
-    image: aleramiirez/generics:discovery-server
+    image: anavarrooo/generics:discovery-server
     ports:
       - 8761:8761
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
     networks:
       - generics
 
@@ -66,7 +46,7 @@ services:
 
   register-service:
     container_name: register-service
-    image: aleramiirez/generics:register-service
+    image: anavarrooo/generics:register-service
     ports:
       - 8081:8081
     environment:
@@ -80,13 +60,13 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
+      - generics-bd
     networks:
       - generics
 
   crud-service:
     container_name: crud-service
-    image: aleramiirez/generics:crud-service
+    image: anavarrooo/generics:crud-service
     ports:
       - 8082:8082
     environment:
@@ -100,13 +80,13 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
+      - generics-bd
     networks:
       - generics
 
   user-audit-service:
     container_name: user-audit-service
-    image: aleramiirez/generics:user-audit-service
+    image: anavarrooo/generics:user-audit-service
     ports:
       - 8083:8083
     environment:
@@ -116,11 +96,11 @@ services:
       # - DATABASE_USERNAME=generics
       # - DATABASE_PASSWORD=Password0
       # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics_audit?autoReconnect=true&useSSL=false
+      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
+      - generics-audit-bd
     networks:
       - generics
 
@@ -138,6 +118,9 @@ services:
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
+    depends_on:
+      - register-service
+      - crud-service
     networks:
       - generics
 
