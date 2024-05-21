@@ -81,6 +81,7 @@ services:
       - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
+      - generics-bd
     networks:
       - generics
 
@@ -101,6 +102,7 @@ services:
       - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
+      - generics-bd
     networks:
       - generics
 
@@ -116,11 +118,12 @@ services:
       # - DATABASE_USERNAME=generics
       # - DATABASE_PASSWORD=Password0
       # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics_audit?autoReconnect=true&useSSL=false
+      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
       - api-gateway
+      - generics-audit-bd
     networks:
       - generics
 
