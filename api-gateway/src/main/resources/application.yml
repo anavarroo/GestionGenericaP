@@ -7,23 +7,12 @@ spring:
           predicates:
             - Path=/auth/**
           filters:
-            - name: AuditFilter
+            - LoggingFilter
 
         - id: crud-service
           uri: http://crud-service:8082
           predicates:
             - Path=/api/v1/usuarios/**
           filters:
-            - name: AuthenticationFilter
-            - name: AuditFilter
-
-logging:
-  level:
-    root: info
-    org.springframework.cloud.gateway: trace
-    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: info
-    com.viewnext.api_gateway.filter.AuditFilter: INFO
-
-audit:
-  log:
-    path: C:\\Desarrollo\\GestionGenericaP\\api-gateway\\api_gateway_audit.log
+            - AuthenticationFilter
+            - LoggingFilter
