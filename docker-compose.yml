@@ -47,7 +47,7 @@ services:
       MYSQL_DATABASE: generics
       PMA_HOST: mysql
     ports:
-      - 3007:3306
+      - 3307:3306
     networks:
       - generics
 
@@ -60,7 +60,7 @@ services:
       MYSQL_DATABASE: generics_audit
       PMA_HOST: mysql
     ports:
-      - 3008:3306
+      - 3308:3306
     networks:
       - generics
 
