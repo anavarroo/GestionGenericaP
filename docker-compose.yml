@@ -4,7 +4,7 @@ services:
 
   api-gateway:
     container_name: api-gateway
-    image: aleramiirez/generics:api-gateway
+    image: anavarrooo/generics:api-gateway
     ports:
       - 8084:8084
     networks:
@@ -12,7 +12,7 @@ services:
 
   discovery-server:
     container_name: discovery-server
-    image: aleramiirez/generics:discovery-server
+    image: anavarrooo/generics:discovery-server
     restart: always
     ports:
       - 8761:8761
@@ -50,7 +50,7 @@ services:
 
   register-service:
     container_name: register-service
-    image: aleramiirez/generics:register-service
+    image: anavarrooo/generics:register-service
     ports:
       - 8081:8081
     environment:
@@ -65,7 +65,7 @@ services:
 
   crud-service:
     container_name: crud-service
-    image: aleramiirez/generics:crud-service
+    image: anavarrooo/generics:crud-service
     ports:
       - 8082:8082
     environment:
@@ -80,7 +80,7 @@ services:
 
   user-audit-service:
     container_name: user-audit-service
-    image: aleramiirez/generics:user-audit-service
+    image: anavarrooo/generics:user-audit-service
     ports:
       - 8083:8083
     environment:
@@ -100,7 +100,7 @@ services:
 
   generics-front:
     container_name: generics-front
-    image: aleramiirez/generics:generics-front
+    image: anavarrooo/generics:generics-front
     ports:
       - 3000:3000
     environment:
