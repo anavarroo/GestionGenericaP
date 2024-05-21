@@ -636,3 +636,9 @@ Q.idea/sonarlint/securityhotspotstore/9/3/93f4d740e6817da97325b42f7871c0681404e5
 Q.idea/sonarlint/securityhotspotstore/9/2/923bb3cf9a31a5e628e53ee2f84bfb61c3098f93,1\7\17c83a5da4aecaabca9d16f6e312043aa1733fb1
 w
 G.idea/sonarlint/issuestore/9/2/923bb3cf9a31a5e628e53ee2f84bfb61c3098f93,8\5\85ae6570276d3d938db5a7c32bf2a2002e0c4623
+\
+,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
+w
+G.idea/sonarlint/issuestore/4/9/496a238a6afa168dbaf6efd37bb459331589579c,6\e\6e9644ddf83ab52f39902ecdbfdf4118285ac40c
+Å
+Q.idea/sonarlint/securityhotspotstore/4/9/496a238a6afa168dbaf6efd37bb459331589579c,b\0\b0bb0a26d88d16d2e82502fe47e034e248a527a2
