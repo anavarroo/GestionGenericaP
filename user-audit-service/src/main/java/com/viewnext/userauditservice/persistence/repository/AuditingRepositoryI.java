@@ -1,6 +1,6 @@
 package com.viewnext.userauditservice.persistence.repository;
 
-import com.viewnext.commonservices.persistence.model.User;
+import com.viewnext.commonservices.model.User;
 
 public interface AuditingRepositoryI {
 

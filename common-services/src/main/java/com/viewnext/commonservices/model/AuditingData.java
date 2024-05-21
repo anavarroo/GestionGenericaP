@@ -1,4 +1,4 @@
-package com.viewnext.commonservices.persistence.model;
+package com.viewnext.commonservices.model;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
