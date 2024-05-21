@@ -90,9 +90,9 @@ services:
       # - DATABASE_USERNAME=generics
       # - DATABASE_PASSWORD=Password0
       # Para desplegar en local
-      - DATABASE_URL = jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME = root
-      - DATABASE_PASSWORD = root
+      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
     depends_on:
       - generics-audit-db
     networks:
@@ -100,7 +100,7 @@ services:
 
   generics-front:
     container_name: generics-front
-    image: anavarrooo/generics:generics-front
+    image: aleramiirez/generics:generics-front
     ports:
       - 3000:3000
     environment:
