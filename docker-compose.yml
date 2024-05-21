@@ -22,16 +22,6 @@ services:
     networks:
       - generics
 
-  api-gateway:
-    container_name: api-gateway
-    image: anavarrooo/generics:api-gateway
-    ports:
-      - 8084:8084
-    depends_on:
-      - discoveryserver
-    networks:
-      - generics
-
   generics-bd:
     container_name: generics-bd
     image: mysql:5
@@ -60,7 +50,7 @@ services:
 
   register-service:
     container_name: register-service
-    image: anavarrooo/generics:register-service
+    image: aleramiirez/generics:register-service
     ports:
       - 8081:8081
     environment:
@@ -80,7 +70,7 @@ services:
 
   crud-service:
     container_name: crud-service
-    image: anavarrooo/generics:crud-service
+    image: aleramiirez/generics:crud-service
     ports:
       - 8082:8082
     environment:
@@ -100,7 +90,7 @@ services:
 
   user-audit-service:
     container_name: user-audit-service
-    image: anavarrooo/generics:user-audit-service
+    image: aleramiirez/generics:user-audit-service
     ports:
       - 8083:8083
     environment:
