@@ -18,7 +18,19 @@ services:
       - 8761:8761
     environment:
       eureka.instance.hostname: discoveryserver
-      eureka.client.serviceUrl.defaultZone: http://discovery-server:8761/eureka
+      eureka.client.serviceUrl.defaultZone: http://discoveryserver:8761/eureka
+    networks:
+      - generics
+
+  api-gateway:
+    container_name: api-gateway
+    image: anavarrooo/generics:api-gateway
+    ports:
+      - 8084:8084
+    depends_on:
+      - discoveryserver
+    networks:
+      - generics
 
   generics-bd:
     container_name: generics-bd
@@ -48,7 +60,7 @@ services:
 
   register-service:
     container_name: register-service
-    image: aleramiirez/generics:register-service
+    image: anavarrooo/generics:register-service
     ports:
       - 8081:8081
     environment:
@@ -62,14 +74,13 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
       - generics-bd
     networks:
       - generics
 
   crud-service:
     container_name: crud-service
-    image: aleramiirez/generics:crud-service
+    image: anavarrooo/generics:crud-service
     ports:
       - 8082:8082
     environment:
@@ -83,14 +94,13 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
       - generics-bd
     networks:
       - generics
 
   user-audit-service:
     container_name: user-audit-service
-    image: aleramiirez/generics:user-audit-service
+    image: anavarrooo/generics:user-audit-service
     ports:
       - 8083:8083
     environment:
@@ -104,7 +114,6 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
       - generics-audit-bd
     networks:
       - generics
@@ -123,6 +132,9 @@ services:
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
+    depends_on:
+      - register-service
+      - crud-service
     networks:
       - generics
 
