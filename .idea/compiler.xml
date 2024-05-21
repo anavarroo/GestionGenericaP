@@ -10,8 +10,8 @@
         <module name="api-gateway" />
         <module name="register-service" />
         <module name="discovery-server" />
-        <module name="user-audit-service" />
         <module name="CRUD-service" />
+        <module name="user-audit-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
