@@ -1,5 +1,6 @@
 package com.viewnext.register_service.persistence.model;
 
+import com.viewnext.register_service.auditing.persistence.model.AuditingData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +21,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable, UserDetails {
+public class User extends AuditingData implements Serializable, UserDetails {
 
     /** Identificador unico del usuario **/
     @Id
@@ -75,6 +76,9 @@ public class User implements Serializable, UserDetails {
     /** Clave secretea del factor de doble autenticacion **/
     @Column(name = "FAKey")
     private String secret;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private AuditingData auditingData;
 
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {

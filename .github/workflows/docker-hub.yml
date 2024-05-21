@@ -53,9 +53,3 @@ jobs:
           cd discovery-server
           docker build -t aleramiirez/generics:discovery-server .
           docker push aleramiirez/generics:discovery-server
-
-      - name: Build and push Docker images for user-audit-service
-        run: |
-          cd user-audit-service
-          docker build -t aleramiirez/generics:user-audit-service .
-          docker push aleramiirez/generics:user-audit-service

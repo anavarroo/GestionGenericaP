@@ -1,5 +1,6 @@
-package com.viewnext.crud_service.auditing.persistence.model;
+package com.viewnext.register_service.auditing.persistence.model;
 
+import com.viewnext.register_service.persistence.model.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
@@ -36,4 +37,8 @@ public class AuditingData {
     @LastModifiedBy
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

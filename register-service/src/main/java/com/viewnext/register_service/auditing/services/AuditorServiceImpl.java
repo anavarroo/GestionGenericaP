@@ -1,7 +1,7 @@
-package com.viewnext.crud_service.auditing.services;
+package com.viewnext.register_service.auditing.services;
 
-import com.viewnext.crud_service.persistence.model.User;
-import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
+import com.viewnext.register_service.persistence.model.User;
+import com.viewnext.register_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
