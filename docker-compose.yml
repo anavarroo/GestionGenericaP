@@ -7,36 +7,18 @@ services:
     image: aleramiirez/generics:api-gateway
     ports:
       - 8084:8084
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
     networks:
       - generics
 
   discovery-server:
     container_name: discovery-server
     image: aleramiirez/generics:discovery-server
+    restart: always
     ports:
       - 8761:8761
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
-    networks:
-      - generics
+      eureka.instance.hostname: discoveryserver
+      eureka.client.serviceUrl.defaultZone: http://discovery-server:8761/eureka
 
   generics-bd:
     container_name: generics-bd
@@ -47,7 +29,7 @@ services:
       MYSQL_DATABASE: generics
       PMA_HOST: mysql
     ports:
-      - 3007:3306
+      - 3307:3306
     networks:
       - generics
 
@@ -60,7 +42,7 @@ services:
       MYSQL_DATABASE: generics_audit
       PMA_HOST: mysql
     ports:
-      - 3008:3306
+      - 3308:3306
     networks:
       - generics
 
