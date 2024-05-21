@@ -1,6 +1,5 @@
 package com.viewnext.register_service.auditing.persistence.model;
 
-import com.viewnext.register_service.persistence.model.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
