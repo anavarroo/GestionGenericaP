@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/common-/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -11,17 +14,19 @@
         <module name="register-service" />
         <module name="discovery-server" />
         <module name="CRUD-service" />
-        <module name="user-audit-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common-services" target="17" />
       <module name="identity-service" target="17" />
+      <module name="user-audit-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CRUD-service" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
+      <module name="common-services" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="gestiongenerica" options="" />
       <module name="identity-service" options="-parameters" />
