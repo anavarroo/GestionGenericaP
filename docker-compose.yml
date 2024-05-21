@@ -7,11 +7,11 @@ services:
     image: anavarrooo/generics:discovery-server
     ports:
       - 8761:8761
-    networks:
-      - generics
     environment:
       eureka.instance.hostname: discoveryserver
       eureka.client.serviceUrl.defaultZone: http://discoveryserver:8761/eureka
+    networks:
+      - generics
 
   api-gateway:
     container_name: api-gateway
@@ -32,7 +32,7 @@ services:
       MYSQL_DATABASE: generics
       PMA_HOST: mysql
     ports:
-      - 3007:3306
+      - 3307:3306
     networks:
       - generics
 
@@ -45,7 +45,7 @@ services:
       MYSQL_DATABASE: generics_audit
       PMA_HOST: mysql
     ports:
-      - 3008:3306
+      - 3308:3306
     networks:
       - generics
 
