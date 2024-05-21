@@ -6,8 +6,6 @@ spring:
           uri: http://register-service:8081
           predicates:
             - Path=/auth/**
-          filters:
-            - LoggingFilter
 
         - id: crud-service
           uri: http://crud-service:8082
@@ -15,4 +13,3 @@ spring:
             - Path=/api/v1/usuarios/**
           filters:
             - AuthenticationFilter
-            - LoggingFilter
