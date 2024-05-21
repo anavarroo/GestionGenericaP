@@ -60,7 +60,7 @@ services:
       # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
       # - DATABASE_USERNAME=generics
       # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
+      # Para desplegar en locala
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
