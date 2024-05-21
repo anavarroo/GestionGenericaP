@@ -622,3 +622,7 @@ Q.idea/sonarlint/securityhotspotstore/a/2/a29cdc7c924b96cc216da51f734b8b3905720a
 .api-gateway/src/main/resources/application.yml,7\7\77c21751ba88503925a125b16f07eb3b0daf4892
 J
 user-audit-service/pom.xml,d\0\d0a6a217ad0ca4f0074da728767ba3b9bcd9260d
+w
+G.idea/sonarlint/issuestore/d/0/d0a6a217ad0ca4f0074da728767ba3b9bcd9260d,a\0\a05a3b93776071fa7eb93cc3f396468f9af72e40
+è
+_user-audit-service/src/main/java/com/viewnext/userauditservice/UserAuditServiceApplication.java,e\1\e186691c6376832ac3b0a5199a64a0aa2ae869bf
