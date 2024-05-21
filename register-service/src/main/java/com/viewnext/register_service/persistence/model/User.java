@@ -77,9 +77,6 @@ public class User extends AuditingData implements Serializable, UserDetails {
     @Column(name = "FAKey")
     private String secret;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private AuditingData auditingData;
-
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {
         this.nombre = nombre;

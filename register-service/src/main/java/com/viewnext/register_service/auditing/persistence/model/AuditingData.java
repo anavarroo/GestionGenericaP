@@ -38,7 +38,4 @@ public class AuditingData {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }
