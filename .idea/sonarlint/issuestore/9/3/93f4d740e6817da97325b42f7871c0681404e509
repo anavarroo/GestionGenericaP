@@ -1,0 +1,7 @@
+
+”
+java:S22590"LA "NullPointerException" could be thrown; "getStatusCode()" can return null.(å‡í³úÿÿÿÿ8³ÕÄØù1J$d802ee43-84d9-41a6-aaf4-fc39d8ba2195
+t
+java:S1602 ",Remove useless curly braces around statement(›±–¤øÿÿÿÿ8ÉÕÄØù1J$4adbd344-9b66-472d-aa10-ef4ddef42620
+Š
+java:S2094?"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8úµÂØù1J$20ad98eb-0b23-45fb-bb2a-94a26f4117e0

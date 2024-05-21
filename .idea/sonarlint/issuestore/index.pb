@@ -626,3 +626,13 @@ w
 G.idea/sonarlint/issuestore/d/0/d0a6a217ad0ca4f0074da728767ba3b9bcd9260d,a\0\a05a3b93776071fa7eb93cc3f396468f9af72e40
 è
 _user-audit-service/src/main/java/com/viewnext/userauditservice/UserAuditServiceApplication.java,e\1\e186691c6376832ac3b0a5199a64a0aa2ae869bf
+z
+Japi-gateway/src/main/java/com/viewnext/api_gateway/filter/AuditFilter.java,9\3\93f4d740e6817da97325b42f7871c0681404e509
+Q
+!api-gateway/api_gateway_audit.log,9\2\923bb3cf9a31a5e628e53ee2f84bfb61c3098f93
+Å
+Q.idea/sonarlint/securityhotspotstore/9/3/93f4d740e6817da97325b42f7871c0681404e509,0\0\00bb6c97b29e6132cbc717378cff9a9949654436
+Å
+Q.idea/sonarlint/securityhotspotstore/9/2/923bb3cf9a31a5e628e53ee2f84bfb61c3098f93,1\7\17c83a5da4aecaabca9d16f6e312043aa1733fb1
+w
+G.idea/sonarlint/issuestore/9/2/923bb3cf9a31a5e628e53ee2f84bfb61c3098f93,8\5\85ae6570276d3d938db5a7c32bf2a2002e0c4623

@@ -34,3 +34,13 @@ spring:
 
           filters:
             - AuthenticationFilter
+
+
+logging:
+  level:
+    com.viewnext.api_gateway.filter.AuditFilter: INFO
+
+
+audit:
+  log:
+    path: C:\Desarrollo\GestionGenericaP\api-gateway\api_gateway_audit.log
