@@ -74,7 +74,12 @@ public class User implements Serializable, UserDetails {
 
     /** Clave secretea del factor de doble autenticacion **/
     @Column(name = "FAKey")
+
     private String secret;
+    /** Clave secretea del factor de doble autenticacion **/
+    @Column(name = "pepe")
+    private String pepe;
+
 
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {
