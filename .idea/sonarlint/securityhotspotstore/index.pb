@@ -620,3 +620,5 @@ Q.idea/sonarlint/securityhotspotstore/a/2/a2d8c4a05a4c386ba86e1eebb921a71f66b2a5
 Q.idea/sonarlint/securityhotspotstore/a/2/a29cdc7c924b96cc216da51f734b8b3905720a8f,1\8\18fdb19efb13c7593fbe3929ce49e9605058baa6
 ^
 .api-gateway/src/main/resources/application.yml,7\7\77c21751ba88503925a125b16f07eb3b0daf4892
+J
+user-audit-service/pom.xml,d\0\d0a6a217ad0ca4f0074da728767ba3b9bcd9260d
