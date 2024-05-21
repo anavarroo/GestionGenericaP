@@ -94,15 +94,15 @@ services:
     ports:
       - 8083:8083
     environment:
-      - SPRING_PROFILES_ACTIVE = docker
+      - SPRING_PROFILES_ACTIVE=docker
       # Para desplegar en AZURE
       # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
       # - DATABASE_USERNAME=generics
       # - DATABASE_PASSWORD=Password0
       # Para desplegar en local
-      - DATABASE_URL = jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME = root
-      - DATABASE_PASSWORD = root
+      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
     depends_on:
       - generics-audit-db
     networks:

@@ -1,5 +1,6 @@
 package com.viewnext.crud_service.persistence.model;
 
+import com.viewnext.userauditservice.persistence.model.AuditingData;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -19,7 +20,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable, UserDetails {
+public class User extends AuditingData implements Serializable, UserDetails {
 
     /** Identificador unico del usuario **/
     @Id
