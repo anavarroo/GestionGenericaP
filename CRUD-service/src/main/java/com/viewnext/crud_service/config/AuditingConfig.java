@@ -1,6 +1,6 @@
-package com.viewnext.register_service.config;
+package com.viewnext.crud_service.config;
 
-import com.viewnext.register_service.services.AuditorServiceImpl;
+import com.viewnext.crud_service.services.AuditorServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

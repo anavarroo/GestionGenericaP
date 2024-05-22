@@ -1,7 +1,7 @@
-package com.viewnext.register_service.services;
+package com.viewnext.crud_service.services;
 
-import com.viewnext.register_service.persistence.model.User;
-import com.viewnext.register_service.persistence.repository.UserRepositoryI;
+import com.viewnext.crud_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class AuditorServiceImpl implements AuditorAware<String> {
 
     @Autowired
-    private UserRepositoryI userRepo;
+    private UserRepositoryI userRepository;
 
     @Override
     public Optional<String> getCurrentAuditor() {
@@ -24,7 +24,8 @@ public class AuditorServiceImpl implements AuditorAware<String> {
         }
 
         String correo = authentication.getName();
-        User user = userRepo.findByCorreo(correo);
+        User user = userRepository.findByCorreo(correo);
         return Optional.of(user.getNombre() + " " + user.getApellidos());
     }
+
 }
