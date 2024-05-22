@@ -1,14 +1,13 @@
 package com.viewnext.crud_service.services;
 
 
+import com.viewnext.crud_service.client.RestClient;
+import com.viewnext.crud_service.persistence.dto.AuditingDataDto;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
-import com.viewnext.crud_service.persistence.model.AuditingData;
 import com.viewnext.crud_service.persistence.model.User;
-import com.viewnext.crud_service.persistence.repository.AuditorRepositoryI;
 import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,12 +20,12 @@ public class UserServiceImp implements UserServiceI {
 
     private final UserRepositoryI userRepositoryI;
 
-    private final AuditorRepositoryI auditorRepo;
+    private final RestClient restClient;
 
     @Autowired
-    public UserServiceImp(UserRepositoryI userRepositoryI, AuditorRepositoryI auditorRepo) {
+    public UserServiceImp(UserRepositoryI userRepositoryI, RestClient restClient) {
         this.userRepositoryI = userRepositoryI;
-        this.auditorRepo = auditorRepo;
+        this.restClient = restClient;
     }
 
     /**
@@ -48,10 +47,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/crear/" + user.getCorreo());
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
         return convertToDto(user);
     }
@@ -77,11 +77,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/editar/" + correo);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
 
-        auditorRepo.save(auditingData);
-
+        restClient.sendAudit(auditingDataDto);
 
         return convertToDto(usuarioActualizado);
     }
@@ -106,10 +106,11 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/borrar/" + correo);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
     }
 
@@ -124,12 +125,14 @@ public class UserServiceImp implements UserServiceI {
         User usuarioMod = userRepositoryI.findByCorreo(correo);
         usuarioMod.setEstado(estado);
         userRepositoryI.save(usuarioMod);
+
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/aprobar/" + correo);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
     }
 
@@ -165,11 +168,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/nombre/" + nombre);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
 
-        auditorRepo.save(auditingData);
-
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -190,10 +193,11 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/apellidos/" + apellidos);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -214,10 +218,11 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/edad/" + edad);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/edad/" + edad);
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -237,10 +242,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/correo/" + correo);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/correo/" + correo);
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -262,10 +268,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/direccion/" + direccion);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
 
-        auditorRepo.save(auditingData);
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -284,11 +291,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(),
-                "/api/v1/usuarios/telefono/" + telefono);
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
 
-        auditorRepo.save(auditingData);
-
+        restClient.sendAudit(auditingDataDto);
         return userDtos;
     }
 

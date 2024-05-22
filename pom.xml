@@ -28,6 +28,7 @@
 		<module>register-service</module>
 		<module>api-gateway</module>
 		<module>discovery-server</module>
+		<module>audit-service</module>
 	</modules>
 
 	<dependencies>

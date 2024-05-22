@@ -1,4 +1,4 @@
-package com.viewnext.crud_service.persistence.model;
+package com.viewnext.auditservice.persistence.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
