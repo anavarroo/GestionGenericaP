@@ -24,14 +24,14 @@
 	</properties>
 
 
-	<modules>
-		<module>api-gateway</module>
-		<module>CRUD-service</module>
-		<module>discovery-server</module>
-		<module>register-service</module>
-		<module>user-audit-service</module>
+		<modules>
+			<module>api-gateway</module>
+			<module>CRUD-service</module>
+			<module>discovery-server</module>
+			<module>register-service</module>
+			<module>user-audit-service</module>
 
-	</modules>
+		</modules>
 
 
 
