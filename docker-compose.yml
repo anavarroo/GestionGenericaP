@@ -1,4 +1,4 @@
-version: '3.3'
+version: '4'
 
 services:
 
@@ -7,60 +7,31 @@ services:
     image: aleramiirez/generics:api-gateway
     ports:
       - 8084:8084
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
     networks:
       - generics
 
   discovery-server:
     container_name: discovery-server
     image: aleramiirez/generics:discovery-server
+    restart: always
     ports:
       - 8761:8761
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
+      - eureka.instance.hostname=discoveryserver
+      - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
     networks:
       - generics
 
-  generics-bd:
-    container_name: generics-bd
+  generics-db:
+    container_name: generics-db
     image: mysql:5
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: generics
-      PMA_HOST: mysql
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=generics
+      - PMA_HOST=mysql
     ports:
       - 3307:3306
-    networks:
-      - generics
-
-  generics-audit-bd:
-    container_name: generics-audit-bd
-    image: mysql:5
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: generics_audit
-      PMA_HOST: mysql
-    ports:
-      - 3309:3308
     networks:
       - generics
 
@@ -71,16 +42,11 @@ services:
       - 8081:8081
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
+      - generics-db
     networks:
       - generics
 
@@ -91,36 +57,11 @@ services:
       - 8082:8082
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - api-gateway
-    networks:
-      - generics
-
-  user-audit-service:
-    container_name: user-audit-service
-    image: aleramiirez/generics:user-audit-service
-    ports:
-      - 8083:8083
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
-      - DATABASE_URL=jdbc:mysql://generics-db:3308/generics_audit?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
-    depends_on:
-      - api-gateway
+      - generics-db
     networks:
       - generics
 
@@ -130,14 +71,12 @@ services:
     ports:
       - 3000:3000
     environment:
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=gsnerics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
+    depends_on:
+      - register-service
+      - crud-service
     networks:
       - generics
 
