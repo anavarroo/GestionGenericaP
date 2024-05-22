@@ -48,7 +48,8 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(), "/api/v1/usuarios/crear");
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/crear/" + user.getCorreo());
 
         auditorRepo.save(auditingData);
 
@@ -76,7 +77,8 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(), "/api/v1/usuarios/editar");
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/editar/" + correo);
 
         auditorRepo.save(auditingData);
 
