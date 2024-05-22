@@ -27,14 +27,14 @@ public class AuditingData implements Serializable {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "Created_by")
+    @Column(name = "Author")
     private String createdBy;
 
     @Column(name = "Created_Date")
     @CreationTimestamp
     private Date createdDate;
 
-    @Column(name = "typeRequest")
+    @Column(name = "EndPoint")
     private String typeRequest;
 
     public AuditingData(String createdBy, String typeRequest) {
