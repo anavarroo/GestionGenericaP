@@ -14,7 +14,7 @@ import java.util.Optional;
 public class AuditorServiceImpl implements AuditorAware<String> {
 
     @Autowired
-    private UserRepositoryI userRepository;
+    private UserRepositoryI userRepo;
 
     @Override
     public Optional<String> getCurrentAuditor() {
@@ -24,7 +24,7 @@ public class AuditorServiceImpl implements AuditorAware<String> {
         }
 
         String correo = authentication.getName();
-        User user = userRepository.findByCorreo(correo);
+        User user = userRepo.findByCorreo(correo);
         return Optional.of(user.getNombre() + " " + user.getApellidos());
     }
 
