@@ -30,6 +30,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=generics
       - PMA_HOST=mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
     ports:
       - 3307:3306
     networks:
@@ -83,3 +85,7 @@ services:
 networks:
   generics:
     driver: bridge
+
+volumes:
+  mysql-data:
+    external: true
