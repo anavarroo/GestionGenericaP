@@ -5,6 +5,7 @@ package com.viewnext.crud_service.services;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
 import com.viewnext.crud_service.persistence.model.User;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -73,7 +74,7 @@ public interface UserServiceI {
      * @param user El objeto User que representa al nuevo usuario a crear.
      * @return El objeto User creado y guardado en la base de datos.
      */
-    UserDto crearUsuario(User user);
+    UserDto crearUsuario(User user, String correo);
 
     /**
      * Elimina un usuario de la base de datos por su dirección de correo electrónico.

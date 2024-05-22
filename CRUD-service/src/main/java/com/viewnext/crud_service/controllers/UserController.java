@@ -8,6 +8,7 @@ import com.viewnext.crud_service.services.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +32,11 @@ public class UserController {
      * @return Un objeto ResponseEntity que contiene el nuevo usuario creado y el estado HTTP 201 Created.
      */
     @PostMapping("/crear")
-    public ResponseEntity<UserDto> crearUsuario(@RequestBody User user) {
-        UserDto nuevoUsuario = userServiceI.crearUsuario(user);
+    public ResponseEntity<UserDto> crearUsuario(@RequestBody User user, Authentication authentication) {
+
+        String correo = authentication.getName();
+
+        UserDto nuevoUsuario = userServiceI.crearUsuario(user, correo);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
     }
 

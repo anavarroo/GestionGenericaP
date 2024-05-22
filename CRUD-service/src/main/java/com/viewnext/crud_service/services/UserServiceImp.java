@@ -8,6 +8,7 @@ import com.viewnext.crud_service.persistence.model.User;
 import com.viewnext.crud_service.persistence.repository.AuditorRepositoryI;
 import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class UserServiceImp implements UserServiceI {
      * @return El objeto User creado y guardado en la base de datos.
      */
     @Override
-    public UserDto crearUsuario(User user) {
+    public UserDto crearUsuario(User user, String correo) {
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -45,7 +46,9 @@ public class UserServiceImp implements UserServiceI {
 
         userRepositoryI.save(user);
 
-        AuditingData auditingData = new AuditingData(user, "/createUser");
+        User author = userRepositoryI.findByCorreo(correo);
+
+        AuditingData auditingData = new AuditingData(author, "/createUser");
 
         auditorRepo.save(auditingData);
 
