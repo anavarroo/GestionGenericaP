@@ -48,7 +48,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correo);
 
-        AuditingData auditingData = new AuditingData(author, "/createUser");
+        AuditingData auditingData = new AuditingData(author.getCorreo(), "/createUser");
 
         auditorRepo.save(auditingData);
 

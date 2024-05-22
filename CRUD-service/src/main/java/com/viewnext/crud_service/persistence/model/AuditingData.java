@@ -28,7 +28,7 @@ public class AuditingData implements Serializable {
     private long id;
 
     @Column(name = "Created_by")
-    private User createdBy;
+    private String createdBy;
 
     @Column(name = "Created_Date")
     @CreationTimestamp
@@ -37,7 +37,7 @@ public class AuditingData implements Serializable {
     @Column(name = "typeRequest")
     private String typeRequest;
 
-    public AuditingData(User createdBy, String typeRequest) {
+    public AuditingData(String createdBy, String typeRequest) {
         this.createdBy = createdBy;
         this.typeRequest = typeRequest;
     }
