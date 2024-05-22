@@ -36,7 +36,7 @@ public class UserServiceImp implements UserServiceI {
      * @return El objeto User creado y guardado en la base de datos.
      */
     @Override
-    public UserDto crearUsuario(User user, String correo) {
+    public UserDto crearUsuario(User user, String correoAutor) {
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -46,9 +46,9 @@ public class UserServiceImp implements UserServiceI {
 
         userRepositoryI.save(user);
 
-        User author = userRepositoryI.findByCorreo(correo);
+        User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingData auditingData = new AuditingData(author.getCorreo(), "/createUser");
+        AuditingData auditingData = new AuditingData(author.getCorreo(), "/api/v1/usuarios/crear");
 
         auditorRepo.save(auditingData);
 
@@ -63,7 +63,7 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario actualizado.
      */
     @Override
-    public UserDto actualizarUsuario(String correo, UserDto userDto) {
+    public UserDto actualizarUsuario(String correo, UserDto userDto, String correoAutor) {
         User user = userRepositoryI.findByCorreo(correo);
 
         user.setNombre(userDto.getNombre());
@@ -73,6 +73,13 @@ public class UserServiceImp implements UserServiceI {
         user.setTelefono(userDto.getTelefono());
 
         User usuarioActualizado = userRepositoryI.save(user);
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(), "/api/v1/usuarios/editar");
+
+        auditorRepo.save(auditingData);
+
 
         return convertToDto(usuarioActualizado);
     }
@@ -88,13 +95,20 @@ public class UserServiceImp implements UserServiceI {
      *              la dirección de correo electrónico proporcionada.
      */
     @Override
-    public void borrarUsuarioPorEmail(String correo) {
+    public void borrarUsuarioPorEmail(String correo, String correoAutor) {
         User user = userRepositoryI.findByCorreo(correo);
         if (user != null) {
             userRepositoryI.delete(user);
         } else {
             throw new UsernameNotFoundException("No se encontró ningún usuario con el correo electrónico proporcionado: " + correo);
         }
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/borrar/" + correo);
+
+        auditorRepo.save(auditingData);
+
     }
 
     /**
@@ -104,10 +118,17 @@ public class UserServiceImp implements UserServiceI {
      * @param estado Estado del usuario a aprobar
      */
     @Override
-    public void aprobarRegistro(String correo, boolean estado) {
+    public void aprobarRegistro(String correo, boolean estado, String correoAutor) {
         User usuarioMod = userRepositoryI.findByCorreo(correo);
         usuarioMod.setEstado(estado);
         userRepositoryI.save(usuarioMod);
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/aprobar/" + correo);
+
+        auditorRepo.save(auditingData);
+
     }
 
     /**
@@ -133,12 +154,20 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorNombre(String nombre) {
+    public List<UserDto> consultarUsuarioPorNombre(String nombre, String correoAutor) {
         List<User> users = userRepositoryI.findByNombre(nombre);
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/nombre/" + nombre);
+
+        auditorRepo.save(auditingData);
+
 
         return userDtos;
     }
@@ -150,13 +179,19 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorApellidos(String apellidos) {
+    public List<UserDto> consultarUsuarioPorApellidos(String apellidos, String correoAutor) {
         List<User> users = userRepositoryI.findByApellidos(apellidos);
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/apellidos/" + apellidos);
+
+        auditorRepo.save(auditingData);
 
         return userDtos;
     }
@@ -168,13 +203,19 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorEdad(int edad) {
+    public List<UserDto> consultarUsuarioPorEdad(int edad, String correoAutor) {
         List<User> users = userRepositoryI.findByEdad(edad);
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/edad/" + edad);
+
+        auditorRepo.save(auditingData);
 
         return userDtos;
     }
@@ -186,11 +227,18 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorCorreo(String correo) {
+    public List<UserDto> consultarUsuarioPorCorreo(String correo, String correoAutor) {
         User user = userRepositoryI.findByCorreo(correo);
 
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/correo/" + correo);
+
+        auditorRepo.save(auditingData);
 
         return userDtos;
     }
@@ -202,13 +250,20 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorDireccion(String direccion) {
+    public List<UserDto> consultarUsuarioPorDireccion(String direccion, String correoAutor) {
         List<User> users = userRepositoryI.findByDireccion(direccion);
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/direccion/" + direccion);
+
+        auditorRepo.save(auditingData);
 
         return userDtos;
     }
@@ -220,10 +275,17 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorTelefono(String telefono) {
+    public List<UserDto> consultarUsuarioPorTelefono(String telefono, String correoAutor) {
         User user = userRepositoryI.findByTelefono(telefono);
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingData auditingData = new AuditingData(author.getCorreo(),
+                "/api/v1/usuarios/telefono/" + telefono);
+
+        auditorRepo.save(auditingData);
 
         return userDtos;
     }
