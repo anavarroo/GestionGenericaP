@@ -1,7 +1,9 @@
 package com.viewnext.register_service.security.services;
 
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
+import com.viewnext.register_service.persistence.model.AuditingData;
 import com.viewnext.register_service.persistence.model.User;
+import com.viewnext.register_service.persistence.repository.AuditorRepositoryI;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
@@ -31,13 +33,20 @@ public class AuthServiceImpl implements AuthServiceI {
 
     private final TwoFactorAuthenticationService tfaService;
 
+    private final AuditorRepositoryI auditorRepo;
+
     @Autowired
-    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, TwoFactorAuthenticationService tfaService) {
+    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm,
+                           PasswordEncoder passwordEncoder,
+                           AuthenticationManager authenticationManager,
+                           TwoFactorAuthenticationService tfaService,
+                           AuditorRepositoryI auditorRepo) {
         this.userRepo = userRepo;
         this.jwtMngm = jwtMngm;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.tfaService = tfaService;
+        this.auditorRepo = auditorRepo;
     }
 
     /**
@@ -61,6 +70,10 @@ public class AuthServiceImpl implements AuthServiceI {
 
         userRepo.save(user);
 
+        AuditingData auditingData = new AuditingData (request.getCorreo(),
+                "auth/register");
+
+        auditorRepo.save(auditingData);
 
         return convertToDtoRegister(user);
     }
@@ -91,6 +104,11 @@ public class AuthServiceImpl implements AuthServiceI {
                     .build();
 
         }
+
+        AuditingData auditingData = new AuditingData (request.getCorreo(),
+                "auth/login");
+
+        auditorRepo.save(auditingData);
 
         return AuthResponse.builder()
                 .token(jwtToken)
