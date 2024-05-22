@@ -2,8 +2,10 @@ package com.viewnext.crud_service.persistence.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -14,10 +16,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
 @Table(name = "Auditoria")
 public class AuditingData implements Serializable {
 
@@ -27,21 +27,17 @@ public class AuditingData implements Serializable {
     private long id;
 
     @Column(name = "Created_by")
-    @CreatedBy
-    private String createdBy;
+    private User createdBy;
 
     @Column(name = "Created_Date")
-    @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdDate;
 
-    @Column(name = "Last_Modified_By")
-    @LastModifiedBy
-    private String lastModifiedBy;
+    @Column(name = "typeRequest")
+    private String typeRequest;
 
-    @Column(name = "Last_Modified_Date")
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
-
+    public AuditingData(User createdBy, String typeRequest) {
+        this.createdBy = createdBy;
+        this.typeRequest = typeRequest;
+    }
 }

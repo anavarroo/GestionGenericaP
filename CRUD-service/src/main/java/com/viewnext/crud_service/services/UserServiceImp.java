@@ -3,7 +3,9 @@ package com.viewnext.crud_service.services;
 
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
+import com.viewnext.crud_service.persistence.model.AuditingData;
 import com.viewnext.crud_service.persistence.model.User;
+import com.viewnext.crud_service.persistence.repository.AuditorRepositoryI;
 import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,11 +20,13 @@ public class UserServiceImp implements UserServiceI {
 
     private final UserRepositoryI userRepositoryI;
 
-    @Autowired
-    public UserServiceImp(UserRepositoryI userRepositoryI) {
-        this.userRepositoryI = userRepositoryI;
-    }
+    private final AuditorRepositoryI auditorRepo;
 
+    @Autowired
+    public UserServiceImp(UserRepositoryI userRepositoryI, AuditorRepositoryI auditorRepo) {
+        this.userRepositoryI = userRepositoryI;
+        this.auditorRepo = auditorRepo;
+    }
 
     /**
      * Crea un nuevo usuario en el sistema, encriptando la contraseña antes de guardarla en la base de datos.
@@ -40,6 +44,11 @@ public class UserServiceImp implements UserServiceI {
         user.setContrasena(contrasenaEncriptada);
 
         userRepositoryI.save(user);
+
+        AuditingData auditingData = new AuditingData(user, "/createUser");
+
+        auditorRepo.save(auditingData);
+
         return convertToDto(user);
     }
 
