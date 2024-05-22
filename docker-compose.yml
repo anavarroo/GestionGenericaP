@@ -67,6 +67,21 @@ services:
     networks:
       - generics
 
+  audit-service:
+    container_name: audit-service
+    image: aleramiirez/generics:audit-service
+    ports:
+      - 8085:8085
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - generics-db
+    networks:
+      - generics
+
   generics-front:
     container_name: generics-front
     image: aleramiirez/generics:generics-front

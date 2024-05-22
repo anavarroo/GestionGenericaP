@@ -17,6 +17,21 @@ spring:
           predicates:
             - Path=/auth/**
 
+        - id: audit-service
+          # URL para despliege en local
+          # uri: http://localhost:8081
+
+          # URL para despliege con .jar
+          # uri: http://20.229.96.216:8081
+
+          # URL para despliegue con docker-compose
+          uri: http://audit-service:8085
+
+          # URL para despliegue con kubernetes
+          # uri: http://nlb-service.generics-namespace.svc.cluster.local:8081
+          predicates:
+            - Path=/auth/**
+
         - id: crud-service
           # URL para despliege en local
           # uri: http://localhost:8082
