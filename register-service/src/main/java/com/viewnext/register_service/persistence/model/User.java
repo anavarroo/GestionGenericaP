@@ -20,7 +20,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends AuditingData implements Serializable, UserDetails {
+public class User implements Serializable, UserDetails {
 
     /** Identificador unico del usuario **/
     @Id
