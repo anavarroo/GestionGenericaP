@@ -17,7 +17,8 @@ import java.util.Date;
 
 @Data
 @Entity
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Auditoria")
 public class AuditingData implements Serializable {
 
