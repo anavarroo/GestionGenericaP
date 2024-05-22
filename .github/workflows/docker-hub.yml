@@ -37,7 +37,6 @@ jobs:
       - name: Build and push Docker images for api-gateway
         run: |
           cd api-gateway
-
           docker build -t anavarrooo/generics:api-gateway .
           docker push anavarrooo/generics:api-gateway
 
@@ -45,7 +44,6 @@ jobs:
       - name: Build and push Docker images for crud-service
         run: |
           cd CRUD-service
-
           docker build -t anavarrooo/generics:crud-service .
           docker push anavarrooo/generics:crud-service
 
@@ -53,7 +51,6 @@ jobs:
       - name: Build and push Docker images for register-service
         run: |
           cd register-service
-
           docker build -t anavarrooo/generics:register-service .
           docker push anavarrooo/generics:register-service
 
@@ -61,21 +58,12 @@ jobs:
       - name: Build and push Docker images for discovery-server
         run: |
           cd discovery-server
-
-          docker build -t anavarrooo/generics:discovery-server .
-          docker push anavarrooo/generics:discovery-server
-
-      - name: Build and push Docker images for audit-service
-        run: |
-          cd audit-service
-
           docker build -t anavarrooo/generics:discovery-server .
           docker push anavarrooo/generics:discovery-server
 
       - name: Build and push Docker images for user-audit-service
         run: |
           cd audit-service
-          
           docker build -t anavarrooo/generics:audit-service .
           docker push anavarrooo/generics:audit-service
 
