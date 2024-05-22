@@ -3,6 +3,7 @@ package com.viewnext.register_service.persistence.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -11,8 +12,9 @@ import java.util.Date;
 
 @Data
 @EntityListeners(AuditingEntityListener.class)
-@Entity
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
 @Table(name = "Auditoria")
 public class AuditingData {
 

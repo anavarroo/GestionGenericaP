@@ -1,17 +1,17 @@
 package com.viewnext.register_service.config;
 
-import com.viewnext.register_service.services.AuditorServiceI;
 import com.viewnext.register_service.services.AuditorServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Configuration
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class AuditingConfig {
 
     @Bean
-    public AuditorServiceI<String> currentStudioProvider() {
+    public AuditorAware<String> auditorProvider() {
         return new AuditorServiceImpl();
     }
 
