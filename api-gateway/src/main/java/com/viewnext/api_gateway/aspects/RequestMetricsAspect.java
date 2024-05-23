@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Aspect
@@ -20,6 +22,11 @@ public class RequestMetricsAspect {
     @Around("execution(* org.springframework.cloud.gateway.handler.FilteringWebHandler.handle(..))")
     public Object measureRequestProcessingTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
+
+        // Obtener la fecha y hora actuales
+        LocalDateTime requestDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = requestDateTime.format(formatter);
 
         ServerWebExchange exchange = (ServerWebExchange) joinPoint.getArgs()[0];
         String method = Objects.requireNonNull(exchange.getRequest().getMethod()).name();
@@ -44,7 +51,8 @@ public class RequestMetricsAspect {
             HttpStatus httpStatus = (HttpStatus) exchange.getResponse().getStatusCode();
             int statusCode = httpStatus != null ? httpStatus.value() : -1;
 
-            logger.info("Request: {} {} [{}] - Duracion: {} ms - Estado: {} - Codigo de respuesta: {}", method, uri, contentType, duration, requestState, statusCode);
+            logger.info("Request: {} {} [{}] - Fecha y hora: {} - Duracion: {} ms - Estado: {} - Codigo de respuesta: {}",
+                    method, uri, contentType, formattedDateTime, duration, requestState, statusCode);
         }
 
         return result;
