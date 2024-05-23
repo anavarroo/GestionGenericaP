@@ -9,8 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.Objects;
 
 @Aspect
@@ -23,8 +24,9 @@ public class RequestMetricsAspect {
     public Object measureRequestProcessingTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
 
-        // Obtener la fecha y hora actuales
-        LocalDateTime requestDateTime = LocalDateTime.now();
+        // Obtener la fecha y hora actuales en la zona horaria de Europa Central
+        ZoneId zoneId = ZoneId.of("Europe/Madrid"); // Puedes cambiar "Europe/Madrid" por la zona horaria deseada
+        ZonedDateTime requestDateTime = ZonedDateTime.now(zoneId);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = requestDateTime.format(formatter);
 
