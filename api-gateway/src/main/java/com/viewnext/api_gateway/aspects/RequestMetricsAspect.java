@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.ZoneId;
 import java.util.Objects;
+import java.util.UUID;
 
 @Aspect
 @Component
@@ -23,23 +23,17 @@ public class RequestMetricsAspect {
     @Around("execution(* org.springframework.cloud.gateway.handler.FilteringWebHandler.handle(..))")
     public Object measureRequestProcessingTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-
-        // Obtener la fecha y hora actuales en la zona horaria de Europa Central
-        ZoneId zoneId = ZoneId.of("Europe/Madrid"); // Puedes cambiar "Europe/Madrid" por la zona horaria deseada
-        ZonedDateTime requestDateTime = ZonedDateTime.now(zoneId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = requestDateTime.format(formatter);
+        String traceId = UUID.randomUUID().toString();
 
         ServerWebExchange exchange = (ServerWebExchange) joinPoint.getArgs()[0];
         String method = Objects.requireNonNull(exchange.getRequest().getMethod()).name();
         String uri = Objects.requireNonNull(exchange.getRequest().getPath()).value();
         String contentType = exchange.getRequest().getHeaders().getFirst("Content-Type");
-
-        // Obtener la dirección IP del cliente
+        String userAgent = exchange.getRequest().getHeaders().getFirst("User-Agent");
+        String referer = exchange.getRequest().getHeaders().getFirst("Referer");
         String clientIp = Objects.requireNonNull(exchange.getRequest().getRemoteAddress()).getAddress().getHostAddress();
-
-        // Determinar el estado de la solicitud (entrante o saliente)
-        String requestState = (clientIp != null) ? "Saliente" : "Entrante";
+        String queryParams = exchange.getRequest().getQueryParams().toString();
+        String user = exchange.getRequest().getHeaders().getFirst("X-User-Id"); // Assuming you pass user ID in headers
 
         Object result;
         try {
@@ -49,12 +43,18 @@ public class RequestMetricsAspect {
         } finally {
             long endTime = System.currentTimeMillis();
             long duration = endTime - startTime;
+            LocalDateTime dateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
             HttpStatus httpStatus = (HttpStatus) exchange.getResponse().getStatusCode();
             int statusCode = httpStatus != null ? httpStatus.value() : -1;
+            long responseSize = exchange.getResponse().getHeaders().getContentLength();
+            if (responseSize == -1) {
+                responseSize = 0;
+            }
 
-            logger.info("Request: {} {} [{}] - Fecha y hora: {} - Duracion: {} ms - Estado: {} - Codigo de respuesta: {}",
-                    method, uri, contentType, formattedDateTime, duration, requestState, statusCode);
+            logger.info("Request: {} {} [Content-Type: {}, User-Agent: {}, Referer: {}] - Fecha y hora: {} - Duracion: {} ms - Estado: Saliente - Codigo de respuesta: {} - Tamaño de respuesta: {} bytes - ID de trace: {} - IP del cliente: {} - Usuario: {} - Parámetros de consulta: {}",
+                    method, uri, contentType, userAgent, referer, dateTime.format(formatter), duration, statusCode, responseSize, traceId, clientIp, user, queryParams);
         }
 
         return result;
