@@ -1,5 +1,6 @@
 package com.viewnext.auditservice.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,13 +21,14 @@ public class AuditingData implements Serializable {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "Author")
+    @Column(name = "Author", nullable = false)
     private String createdBy;
 
-    @Column(name = "Created_Date")
     @CreationTimestamp
+    @Column(name = "create_date", nullable = false, updatable = false)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Zagreb")
     private Date createdDate;
 
-    @Column(name = "EndPoint")
+    @Column(name = "EndPoint", nullable = false)
     private String typeRequest;
 }
