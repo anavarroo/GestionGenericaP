@@ -2811,3 +2811,12 @@ Q.idea/sonarlint/securityhotspotstore/c/0/c0007841fdeeddca2aab6b9220fb8d25e5cb6c
 Q.idea/sonarlint/securityhotspotstore/c/0/c03c892e0e3ef7f2b02bd655cd95f1f824f2f412,7\a\7a56e38cdd048e4d1afb1798cfec5aed903c28e2
 Å
 Q.idea/sonarlint/securityhotspotstore/c/0/c09fdcaac8d5d3a855303f803230ccd9447e760a,9\1\91288e9136bc1d423c487d901767f901d8993078
+:
+
+dockerfile,5\5\558c49b604560afd1841f2a7b49e2f60bd1f99b3
+s
+Csrc/main/java/com/viewnext/crud_service/CrudServiceApplication.java,e\6\e64133e02668abd6354f48333046302e28060f19
+q
+Asrc/main/java/com/viewnext/api_gateway/ApiGatewayApplication.java,7\7\776b6d6c32dee429bb0fe3ee1742347af1934808
+Y
+)src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
