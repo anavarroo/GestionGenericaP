@@ -17,6 +17,6 @@ public class AuditServiceApplication {
 
 	@PostConstruct
 	void started() {
-		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Zagreb"));
+		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Madrid"));
 	}
 }
