@@ -30,10 +30,7 @@ public class RequestMetricsAspect {
         String uri = Objects.requireNonNull(exchange.getRequest().getPath()).value();
         String contentType = exchange.getRequest().getHeaders().getFirst("Content-Type");
         String userAgent = exchange.getRequest().getHeaders().getFirst("User-Agent");
-        String referer = exchange.getRequest().getHeaders().getFirst("Referer");
         String clientIp = Objects.requireNonNull(exchange.getRequest().getRemoteAddress()).getAddress().getHostAddress();
-        String queryParams = exchange.getRequest().getQueryParams().toString();
-        String user = exchange.getRequest().getHeaders().getFirst("X-User-Id"); // Assuming you pass user ID in headers
 
         Object result;
         try {
@@ -48,13 +45,9 @@ public class RequestMetricsAspect {
 
             HttpStatus httpStatus = (HttpStatus) exchange.getResponse().getStatusCode();
             int statusCode = httpStatus != null ? httpStatus.value() : -1;
-            long responseSize = exchange.getResponse().getHeaders().getContentLength();
-            if (responseSize == -1) {
-                responseSize = 0;
-            }
 
-            logger.info("Request: {} {} [Content-Type: {}, User-Agent: {}, Referer: {}] - Fecha y hora: {} - Duracion: {} ms - Estado: Saliente - Codigo de respuesta: {} - Tamaño de respuesta: {} bytes - ID de trace: {} - IP del cliente: {} - Usuario: {} - Parámetros de consulta: {}",
-                    method, uri, contentType, userAgent, referer, dateTime.format(formatter), duration, statusCode, responseSize, traceId, clientIp, user, queryParams);
+            logger.info("Request: {} {} [Content-Type: {}, User-Agent: {}] - Fecha y hora: {} - Duracion: {} ms - Estado: Saliente - Codigo de respuesta: {} - ID de trace: {} - IP del cliente: {}",
+                    method, uri, contentType, userAgent, dateTime.format(formatter), duration, statusCode, traceId, clientIp);
         }
 
         return result;
