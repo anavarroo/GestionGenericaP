@@ -51,7 +51,8 @@ public class RequestMetricsAspect {
             int statusCode = httpStatus != null ? httpStatus.value() : -1;
 
             logger.info("Fecha y hora: {} - IP del cliente: {} - Request: {} {} [Content-Type: {}, User-Agent: {}] - Estado: {} - Codigo de respuesta: {} - ID de trace: {} - Duracion: {} ms",
-                    method, uri, contentType, userAgent, dateTime.format(formatter), clientIp, method, requestState, statusCode, traceId, duration);
+                    dateTime.format(formatter), clientIp, method, uri, contentType, userAgent, requestState, statusCode, traceId, duration);
+
         }
 
         return result;
