@@ -1,5 +1,7 @@
 package com.viewnext.register_service.security.services;
 
+import com.viewnext.register_service.client.RestClient;
+import com.viewnext.register_service.persistence.dto.AuditingDataDto;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
@@ -31,13 +33,20 @@ public class AuthServiceImpl implements AuthServiceI {
 
     private final TwoFactorAuthenticationService tfaService;
 
+    private final RestClient restClient;
+
     @Autowired
-    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, TwoFactorAuthenticationService tfaService) {
+    public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm,
+                           PasswordEncoder passwordEncoder,
+                           AuthenticationManager authenticationManager,
+                           TwoFactorAuthenticationService tfaService,
+                           RestClient restClient) {
         this.userRepo = userRepo;
         this.jwtMngm = jwtMngm;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.tfaService = tfaService;
+        this.restClient = restClient;
     }
 
     /**
@@ -61,6 +70,11 @@ public class AuthServiceImpl implements AuthServiceI {
 
         userRepo.save(user);
 
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(request.getCorreo());
+        auditingDataDto.setTypeRequest("/auth/register");
+
+        restClient.sendAudit(auditingDataDto);
 
         return convertToDtoRegister(user);
     }
@@ -91,6 +105,12 @@ public class AuthServiceImpl implements AuthServiceI {
                     .build();
 
         }
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(request.getCorreo());
+        auditingDataDto.setTypeRequest("/auth/login");
+
+        restClient.sendAudit(auditingDataDto);
 
         return AuthResponse.builder()
                 .token(jwtToken)

@@ -1,6 +1,8 @@
 package com.viewnext.crud_service.services;
 
 
+import com.viewnext.crud_service.client.RestClient;
+import com.viewnext.crud_service.persistence.dto.AuditingDataDto;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
 import com.viewnext.crud_service.persistence.model.User;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +21,13 @@ public class UserServiceImp implements UserServiceI {
 
     private final UserRepositoryI userRepositoryI;
 
-    @Autowired
-    public UserServiceImp(UserRepositoryI userRepositoryI) {
-        this.userRepositoryI = userRepositoryI;
-    }
+    private final RestClient restClient;
 
+    @Autowired
+    public UserServiceImp(UserRepositoryI userRepositoryI, RestClient restClient) {
+        this.userRepositoryI = userRepositoryI;
+        this.restClient = restClient;
+    }
 
     /**
      * Crea un nuevo usuario en el sistema, encriptando la contraseña antes de guardarla en la base de datos.
@@ -31,7 +36,7 @@ public class UserServiceImp implements UserServiceI {
      * @return El objeto User creado y guardado en la base de datos.
      */
     @Override
-    public UserDto crearUsuario(User user) {
+    public UserDto crearUsuario(User user, String correoAutor) {
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -40,6 +45,15 @@ public class UserServiceImp implements UserServiceI {
         user.setContrasena(contrasenaEncriptada);
 
         userRepositoryI.save(user);
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
+
+        restClient.sendAudit(auditingDataDto);
+
         return convertToDto(user);
     }
 
@@ -51,7 +65,7 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario actualizado.
      */
     @Override
-    public UserDto actualizarUsuario(String correo, UserDto userDto) {
+    public UserDto actualizarUsuario(String correo, UserDto userDto, String correoAutor) {
         User user = userRepositoryI.findByCorreo(correo);
 
         user.setNombre(userDto.getNombre());
@@ -59,8 +73,17 @@ public class UserServiceImp implements UserServiceI {
         user.setEdad(userDto.getEdad());
         user.setDireccion(userDto.getDireccion());
         user.setTelefono(userDto.getTelefono());
+        user.setEditionDate(LocalDateTime.now());
 
         User usuarioActualizado = userRepositoryI.save(user);
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
+
+        restClient.sendAudit(auditingDataDto);
 
         return convertToDto(usuarioActualizado);
     }
@@ -76,13 +99,21 @@ public class UserServiceImp implements UserServiceI {
      *              la dirección de correo electrónico proporcionada.
      */
     @Override
-    public void borrarUsuarioPorEmail(String correo) {
+    public void borrarUsuarioPorEmail(String correo, String correoAutor) {
         User user = userRepositoryI.findByCorreo(correo);
         if (user != null) {
             userRepositoryI.delete(user);
         } else {
             throw new UsernameNotFoundException("No se encontró ningún usuario con el correo electrónico proporcionado: " + correo);
         }
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
+
+        restClient.sendAudit(auditingDataDto);
+
     }
 
     /**
@@ -92,10 +123,19 @@ public class UserServiceImp implements UserServiceI {
      * @param estado Estado del usuario a aprobar
      */
     @Override
-    public void aprobarRegistro(String correo, boolean estado) {
+    public void aprobarRegistro(String correo, boolean estado, String correoAutor) {
         User usuarioMod = userRepositoryI.findByCorreo(correo);
         usuarioMod.setEstado(estado);
         userRepositoryI.save(usuarioMod);
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
+
+        restClient.sendAudit(auditingDataDto);
+
     }
 
     /**
@@ -121,12 +161,20 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorNombre(String nombre) {
+    public List<UserDto> consultarUsuarioPorNombre(String nombre, String correoAutor) {
         List<User> users = userRepositoryI.findByNombre(nombre);
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
+
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -138,13 +186,20 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorApellidos(String apellidos) {
+    public List<UserDto> consultarUsuarioPorApellidos(String apellidos, String correoAutor) {
         List<User> users = userRepositoryI.findByApellidos(apellidos);
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
+
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -156,13 +211,20 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorEdad(int edad) {
+    public List<UserDto> consultarUsuarioPorEdad(int edad, String correoAutor) {
         List<User> users = userRepositoryI.findByEdad(edad);
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/edad/" + edad);
+
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -174,11 +236,19 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorCorreo(String correo) {
+    public List<UserDto> consultarUsuarioPorCorreo(String correo, String correoAutor) {
         User user = userRepositoryI.findByCorreo(correo);
 
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/correo/" + correo);
+
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -190,13 +260,21 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorDireccion(String direccion) {
+    public List<UserDto> consultarUsuarioPorDireccion(String direccion, String correoAutor) {
         List<User> users = userRepositoryI.findByDireccion(direccion);
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
         }
+
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
+
+        restClient.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -208,11 +286,18 @@ public class UserServiceImp implements UserServiceI {
      * @return DTO del usuario encontrado.
      */
     @Override
-    public List<UserDto> consultarUsuarioPorTelefono(String telefono) {
+    public List<UserDto> consultarUsuarioPorTelefono(String telefono, String correoAutor) {
         User user = userRepositoryI.findByTelefono(telefono);
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));
 
+        User author = userRepositoryI.findByCorreo(correoAutor);
+
+        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        auditingDataDto.setCreatedBy(author.getCorreo());
+        auditingDataDto.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
+
+        restClient.sendAudit(auditingDataDto);
         return userDtos;
     }
 

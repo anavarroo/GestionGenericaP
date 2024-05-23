@@ -1,77 +1,97 @@
 version: '4'
 
 services:
-  discovery-server:
-    container_name: discovery-server
-    image: aleramiirez/generics:discovery-server
-    ports:
-      - 8761:8761
-    environment:
-      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
-    networks:
-      - generics
 
   api-gateway:
     container_name: api-gateway
-    image: aleramiirez/generics:api-gateway
+    image: anavarrooo/generics:api-gateway
     ports:
       - 8084:8084
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
-    depends_on:
-      - discovery-server
     networks:
       - generics
 
-  register-db:
-    container_name: register-db
+  discovery-server:
+    container_name: discovery-server
+    image: anavarrooo/generics:discovery-server
+    restart: always
+    ports:
+      - 8761:8761
+    environment:
+      - eureka.instance.hostname=discoveryserver
+      - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
+    networks:
+      - generics
+
+  generics-db:
+    container_name: generics-db
     image: mysql:5
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: gestiongenerica
-      PMA_HOST: mysql
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=generics
+      - PMA_HOST=mysql
     ports:
       - 3307:3306
     networks:
       - generics
 
+  generics-audit-db:
+    container_name: generics-audit-db
+    image: mysql:5
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=generics_audit
+      - PMA_HOST=mysql
+    volumes:
+      - mysql-data-audit:/var/lib/mysql
+    ports:
+      - 3308:3306
+    networks:
+      - generics
+
   register-service:
     container_name: register-service
-    image: aleramiirez/generics:register-service
+    image: anavarrooo/generics:register-service
     ports:
       - 8081:8081
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - register-db
-      - discovery-server
-      - api-gateway
+      - generics-db
     networks:
       - generics
 
   crud-service:
     container_name: crud-service
-    image: aleramiirez/generics:crud-service
+    image: anavarrooo/generics:crud-service
     ports:
       - 8082:8082
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - register-db
-      - discovery-server
-      - api-gateway
+      - generics-db
+    networks:
+      - generics
+
+  audit-service:
+    container_name: audit-service
+    image: anavarrooo/generics:audit-service
+    ports:
+      - 8085:8085
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    depends_on:
+      - generics-audit-db
     networks:
       - generics
 
@@ -81,12 +101,22 @@ services:
     ports:
       - 3000:3000
     environment:
-      - DATABASE_URL=jdbc:mysql://register-db:3306/gestiongenerica?autoReconnect=true&useSSL=false
+      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
+    depends_on:
+      - register-service
+      - crud-service
     networks:
       - generics
 
 networks:
   generics:
     driver: bridge
+
+volumes:
+  mysql-data:
+    external: true
+
+  mysql-data-audit:
+    external: true

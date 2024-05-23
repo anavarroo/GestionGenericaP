@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 @CrossOrigin
 @Order(1)
-
 public class AuthController {
 
     private final AuthServiceImpl authMngm;
