@@ -46,6 +46,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter{
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
+        logger.debug("Filtro JWT: Procesando solicitud...");
+
         final String token = getTokenFromRequest(request);
         final String username;
 
@@ -81,14 +83,14 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter{
      * @param request La solicitud HTTP.
      * @return El token JWT.
      */
-    private String getTokenFromRequest(HttpServletRequest request){
+    private String getTokenFromRequest(HttpServletRequest request) {
+        String token = request.getHeader(HttpHeaders.AUTHORIZATION);
 
-        final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-
-        if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
-            return authHeader.substring(7);
+        if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
+            token = token.substring(7);
+            System.out.println("Token JWT extraído de la solicitud: {}" + token);
+            return token;
         }
-
         return null;
     }
 }
