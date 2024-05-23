@@ -1,5 +1,6 @@
 package com.viewnext.register_service.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,10 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -75,6 +78,18 @@ public class User implements Serializable, UserDetails {
     /** Clave secretea del factor de doble autenticacion **/
     @Column(name = "FAKey")
     private String secret;
+
+    /** Fecha de creación de la publicación. */
+    @CreationTimestamp
+    @Column(name = "create_date", nullable = false, updatable = false)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Zagreb")
+    private LocalDateTime createDate;
+
+    /** Fecha de edición de la publicación. */
+    @CreationTimestamp
+    @Column(name = "edition_date")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Zagreb")
+    private LocalDateTime editionDate;
 
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {

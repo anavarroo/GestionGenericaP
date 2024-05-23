@@ -35,6 +35,21 @@ services:
     networks:
       - generics
 
+  generics-audit-db:
+    container_name: generics-audit-db
+    image: mysql:5
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=generics_audit
+      - PMA_HOST=mysql
+    volumes:
+      - mysql-data-audit:/var/lib/mysql
+    ports:
+      - 3308:3306
+    networks:
+      - generics
+
   register-service:
     container_name: register-service
     image: anavarrooo/generics:register-service
@@ -72,11 +87,11 @@ services:
       - 8085:8085
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - generics-db
+      - generics-audit-db
     networks:
       - generics
 
@@ -101,4 +116,7 @@ networks:
 
 volumes:
   mysql-data:
+    external: true
+
+  mysql-data-audit:
     external: true
