@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +73,7 @@ public class UserServiceImp implements UserServiceI {
         user.setEdad(userDto.getEdad());
         user.setDireccion(userDto.getDireccion());
         user.setTelefono(userDto.getTelefono());
+        user.setEditionDate(LocalDateTime.now());
 
         User usuarioActualizado = userRepositoryI.save(user);
 
