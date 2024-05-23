@@ -8,6 +8,7 @@ import com.viewnext.crud_service.services.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +32,11 @@ public class UserController {
      * @return Un objeto ResponseEntity que contiene el nuevo usuario creado y el estado HTTP 201 Created.
      */
     @PostMapping("/crear")
-    public ResponseEntity<UserDto> crearUsuario(@RequestBody User user) {
-        UserDto nuevoUsuario = userServiceI.crearUsuario(user);
+    public ResponseEntity<UserDto> crearUsuario(@RequestBody User user, Authentication authentication) {
+
+        String correo = authentication.getName();
+
+        UserDto nuevoUsuario = userServiceI.crearUsuario(user, correo);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
     }
 
@@ -46,8 +50,10 @@ public class UserController {
     @PutMapping("/editar/{correo}")
     public ResponseEntity<UserDto> actualizarUsuario(
             @PathVariable String correo,
-            @RequestBody UserDto userDto) {
-        UserDto usuarioActualizado = userServiceI.actualizarUsuario(correo, userDto);
+            @RequestBody UserDto userDto,
+            Authentication authentication) {
+        String correoAutor = authentication.getName();
+        UserDto usuarioActualizado = userServiceI.actualizarUsuario(correo, userDto, correoAutor);
         return ResponseEntity.ok(usuarioActualizado);
     }
 
@@ -57,8 +63,9 @@ public class UserController {
      * @param correo La dirección de correo electrónico del usuario que se va a eliminar.
      */
     @DeleteMapping("borrar/{correo}")
-    public void borrarUsuarioPorEmail(@PathVariable String correo) {
-        userServiceI.borrarUsuarioPorEmail(correo);
+    public void borrarUsuarioPorEmail(@PathVariable String correo, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        userServiceI.borrarUsuarioPorEmail(correo, correoAutor);
     }
 
     /**
@@ -69,8 +76,9 @@ public class UserController {
      */
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorNombre(
-            @PathVariable String nombre) {
-        List<UserDto> userDtos = userServiceI.consultarUsuarioPorNombre(nombre);
+            @PathVariable String nombre, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorNombre(nombre, correoAutor);
         return ResponseEntity.ok(userDtos);
     }
 
@@ -82,8 +90,9 @@ public class UserController {
      */
     @GetMapping("/apellidos/{apellidos}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorApellidos(
-            @PathVariable String apellidos) {
-        List<UserDto> userDtos = userServiceI.consultarUsuarioPorApellidos(apellidos);
+            @PathVariable String apellidos, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorApellidos(apellidos, correoAutor);
         return ResponseEntity.ok(userDtos);
     }
 
@@ -95,8 +104,9 @@ public class UserController {
      */
     @GetMapping("/edad/{edad}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorEdad(
-            @PathVariable int edad) {
-        List<UserDto> userDtos = userServiceI.consultarUsuarioPorEdad(edad);
+            @PathVariable int edad, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorEdad(edad, correoAutor);
         return ResponseEntity.ok(userDtos);
     }
 
@@ -108,8 +118,9 @@ public class UserController {
      */
     @GetMapping("/correo/{correo}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorCorreo(
-            @PathVariable String correo) {
-        List<UserDto> userDto = userServiceI.consultarUsuarioPorCorreo(correo);
+            @PathVariable String correo, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        List<UserDto> userDto = userServiceI.consultarUsuarioPorCorreo(correo, correoAutor);
         return ResponseEntity.ok(userDto);
     }
 
@@ -121,8 +132,9 @@ public class UserController {
      */
     @GetMapping("/direccion/{direccion}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorDireccion(
-            @PathVariable String direccion) {
-        List<UserDto> userDtos = userServiceI.consultarUsuarioPorDireccion(direccion);
+            @PathVariable String direccion, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        List<UserDto> userDtos = userServiceI.consultarUsuarioPorDireccion(direccion, correoAutor);
         return ResponseEntity.ok(userDtos);
     }
 
@@ -134,8 +146,9 @@ public class UserController {
      */
     @GetMapping("/telefono/{telefono}")
     public ResponseEntity<List<UserDto>> consultarUsuarioPorTelefono(
-            @PathVariable String telefono) {
-        List<UserDto> userDto = userServiceI.consultarUsuarioPorTelefono(telefono);
+            @PathVariable String telefono, Authentication authentication) {
+        String correoAutor = authentication.getName();
+        List<UserDto> userDto = userServiceI.consultarUsuarioPorTelefono(telefono, correoAutor);
         return ResponseEntity.ok(userDto);
     }
 
@@ -146,8 +159,9 @@ public class UserController {
      * @param estado Estado del usuario a aprobar
      */
     @PutMapping("/aprobar/{correo}")
-    public void confirmarUsuario (@PathVariable String correo, @RequestParam boolean estado){
-        userServiceI.aprobarRegistro(correo,estado);
+    public void confirmarUsuario (@PathVariable String correo, @RequestParam boolean estado, Authentication authentication){
+        String correoAutor = authentication.getName();
+        userServiceI.aprobarRegistro(correo,estado, correoAutor);
     }
 
     /**

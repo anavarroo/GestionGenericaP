@@ -1,21 +1,26 @@
 package com.viewnext.register_service.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "Usuarios")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable, UserDetails {
@@ -74,15 +79,28 @@ public class User implements Serializable, UserDetails {
     @Column(name = "FAKey")
     private String secret;
 
+    /** Fecha de creación de la publicación. */
+    @CreationTimestamp
+    @Column(name = "create_date", nullable = false, updatable = false)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Zagreb")
+    private LocalDateTime createDate;
+
+    /** Fecha de edición de la publicación. */
+    @CreationTimestamp
+    @Column(name = "edition_date")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Zagreb")
+    private LocalDateTime editionDate;
+
     public User(String nombre, String apellidos, String correo, String contrasena,
                 boolean mfaEnabled) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.contrasena = contrasena;
+        this.estado = false;
+        this.role = role;
         this.mfaEnabled = mfaEnabled;
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -118,6 +136,5 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 
 }
