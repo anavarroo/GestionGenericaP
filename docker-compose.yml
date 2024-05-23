@@ -46,7 +46,7 @@ services:
       - MYSQL_DATABASE=generics_audit
       - PMA_HOST=mysql
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-data-audit:/var/lib/mysql
     ports:
       - 3308:3306
     networks:
@@ -93,7 +93,7 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
     depends_on:
-      - generics-db
+      - generics-audit-db
     networks:
       - generics
 
@@ -118,4 +118,7 @@ networks:
 
 volumes:
   mysql-data:
+    external: true
+
+  mysql-data-audit:
     external: true

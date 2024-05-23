@@ -3,7 +3,6 @@ package com.viewnext.register_service.security.services;
 import com.viewnext.register_service.client.RestClient;
 import com.viewnext.register_service.persistence.dto.AuditingDataDto;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
-import com.viewnext.register_service.persistence.model.AuditingData;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
 import com.viewnext.register_service.security.model.AuthResponse;
