@@ -24,11 +24,11 @@
 	</properties>
 
 	<modules>
-		<module>CRUD-service</module>
-		<module>register-service</module>
 		<module>api-gateway</module>
+		<module>CRUD-service</module>
 		<module>discovery-server</module>
 		<module>audit-service</module>
+		<module>register-service</module>
 	</modules>
 
 	<dependencies>

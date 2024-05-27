@@ -46,6 +46,5 @@ spring:
           # uri: http://nlb-service.generics-namespace.svc.cluster.local:8082
           predicates:
             - Path=/api/v1/usuarios/**
-
           filters:
             - AuthenticationFilter
