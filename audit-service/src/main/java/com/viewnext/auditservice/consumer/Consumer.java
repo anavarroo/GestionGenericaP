@@ -19,7 +19,7 @@ public class Consumer {
         this.auditingService = auditingService;
     }
 
-    @RabbitListener(queues = { "${generics.queue.name} "})
+    @RabbitListener(queues = { "${generics.queue.name}"})
     public void receive(@Payload AuditingData message) {
         log.info("Received message: {}", message);
         auditingService.saveAudit(message);

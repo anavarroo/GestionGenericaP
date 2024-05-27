@@ -20,7 +20,7 @@ public class Publisher {
         this.queue = queue;
     }
 
-    public void sendAudit(AuditingDataDto message) {
+    public void sendAudit(Object message) {
         template.convertAndSend(queue.getName(), message);
     }
 
