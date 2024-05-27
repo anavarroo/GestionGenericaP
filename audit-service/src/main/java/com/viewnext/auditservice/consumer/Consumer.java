@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class Consumer {
-
+/*
     private final AuditingServiceImpl auditingService;
 
     @Autowired
@@ -33,4 +33,6 @@ public class Consumer {
             e.printStackTrace();
         }
     }
+
+ */
 }
