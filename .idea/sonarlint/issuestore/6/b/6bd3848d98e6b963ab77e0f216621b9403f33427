@@ -1,3 +1,17 @@
 
-y
-java:S1128"7Remove this unused import 'jakarta.persistence.Column'.(Ó‰ÙE8‰§ÍÇó1J$d1bfcfaa-80e5-4a3a-9603-11c798768ecb
+L
+java:S1068"*Remove this unused "nombre" private field.(µÿï„ùÿÿÿÿ8Çë¤Òû1
+O
+java:S1068"-Remove this unused "apellidos" private field.(úñœıÿÿÿÿ8Éë¤Òû1
+J
+java:S1068"(Remove this unused "edad" private field.(®ÂèÍûÿÿÿÿ8Êë¤Òû1
+G
+java:S1068"*Remove this unused "correo" private field.(•“8Ëë¤Òû1
+O
+java:S1068"-Remove this unused "direccion" private field.(“’’öÿÿÿÿÿ8Íë¤Òû1
+I
+java:S1068",Remove this unused "telefono" private field.(‘ò¬¡8Íë¤Òû1
+K
+java:S1068!".Remove this unused "mfaEnabled" private field.( µÈÜ8Îë¤Òû1
+G
+java:S1068#"*Remove this unused "secret" private field.(‚Úá8Îë¤Òû1

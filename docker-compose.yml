@@ -1,8 +1,7 @@
 version: '4'
 
 services:
-
-# RabbitMQ
+  # RabbitMQ
 
   rabbitmq:
     container_name: rabbitmq
@@ -15,26 +14,7 @@ services:
     networks:
       - generics
 
-  api-gateway:
-    container_name: api-gateway
-    image: anavarrooo/generics:api-gateway
-    ports:
-      - 8084:8084
-    networks:
-      - generics
-
-  discovery-server:
-    container_name: discovery-server
-    image: anavarrooo/generics:discovery-server
-    restart: always
-    ports:
-      - 8761:8761
-    environment:
-      - eureka.instance.hostname=discoveryserver
-      - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
-    networks:
-      - generics
-
+  # API
   generics-db:
     container_name: generics-db
     image: mysql:5
@@ -97,10 +77,10 @@ services:
 
   audit-service:
     container_name: audit-service
-    image: aleramiirez/generics:audit-service
+    image: anavarrooo/generics:audit-service
     ports:
       - 8085:8085
-        environment:
+    environment:
       - SPRING_PROFILES_ACTIVE=docker
       - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
@@ -109,10 +89,10 @@ services:
       - generics-audit-db
     networks:
       - generics
-      
+
   generics-front:
     container_name: generics-front
-    image: aleramiirez/generics:generics-front
+    image: anavarrooo/generics:generics-front
     ports:
       - 3000:3000
     environment:
@@ -122,6 +102,26 @@ services:
     depends_on:
       - register-service
       - crud-service
+    networks:
+      - generics
+
+  api-gateway:
+    container_name: api-gateway
+    image: anavarrooo/generics:api-gateway
+    ports:
+      - 8084:8084
+    networks:
+      - generics
+
+  discovery-server:
+    container_name: discovery-server
+    image: anavarrooo/generics:discovery-server
+    restart: always
+    ports:
+      - 8761:8761
+    environment:
+      - eureka.instance.hostname=discoveryserver
+      - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
     networks:
       - generics
 
