@@ -2,6 +2,19 @@ version: '4'
 
 services:
 
+# RabbitMQ
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.9-management
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - generics
+
   api-gateway:
     container_name: api-gateway
     image: anavarrooo/generics:api-gateway
@@ -30,6 +43,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=generics
       - PMA_HOST=mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
     ports:
       - 3307:3306
     networks:
@@ -40,9 +55,11 @@ services:
     image: mysql:5
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: generics_audit
-      PMA_HOST: mysql
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=generics_audit
+      - PMA_HOST=mysql
+    volumes:
+      - mysql-data-audit:/var/lib/mysql
     ports:
       - 3308:3306
     networks:
@@ -78,18 +95,13 @@ services:
     networks:
       - generics
 
-  user-audit-service:
-    container_name: user-audit-service
-    image: anavarrooo/generics:user-audit-service
+  audit-service:
+    container_name: audit-service
+    image: aleramiirez/generics:audit-service
     ports:
-      - 8083:8083
-    environment:
-      - SPRING_PROFILES_ACTIVE = docker
-      # Para desplegar en AZURE
-      # - DATABASE_URL=jdbc:mysql://generics-mysql-server.mysql.database.azure.com:3306/generics?useSSL=true
-      # - DATABASE_USERNAME=generics
-      # - DATABASE_PASSWORD=Password0
-      # Para desplegar en local
+      - 8085:8085
+        environment:
+      - SPRING_PROFILES_ACTIVE=docker
       - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
@@ -97,7 +109,7 @@ services:
       - generics-audit-db
     networks:
       - generics
-
+      
   generics-front:
     container_name: generics-front
     image: aleramiirez/generics:generics-front
@@ -116,3 +128,10 @@ services:
 networks:
   generics:
     driver: bridge
+
+volumes:
+  mysql-data:
+    external: true
+
+  mysql-data-audit:
+    external: true

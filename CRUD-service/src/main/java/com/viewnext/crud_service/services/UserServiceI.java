@@ -5,6 +5,7 @@ package com.viewnext.crud_service.services;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
 import com.viewnext.crud_service.persistence.model.User;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface UserServiceI {
      * @param nombre Nombre del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorNombre(String nombre);
+    List<UserDto> consultarUsuarioPorNombre(String nombre, String correoAutor);
 
     /**
      * Muestra un usuario segun su correo.
@@ -24,7 +25,7 @@ public interface UserServiceI {
      * @param apellidos Apellidos del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorApellidos(String apellidos);
+    List<UserDto> consultarUsuarioPorApellidos(String apellidos, String correoAutor);
 
     /**
      * Muestra un usuario segun su correo.
@@ -32,7 +33,7 @@ public interface UserServiceI {
      * @param edad Edad del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorEdad(int edad);
+    List<UserDto> consultarUsuarioPorEdad(int edad, String correoAutor);
 
     /**
      * Muestra un usuario segun su correo.
@@ -40,7 +41,7 @@ public interface UserServiceI {
      * @param correo Correo del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorCorreo(String correo);
+    List<UserDto> consultarUsuarioPorCorreo(String correo, String correoAutor);
 
     /**
      * Muestra un usuario segun su correo.
@@ -48,7 +49,7 @@ public interface UserServiceI {
      * @param direccion Direccion del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorDireccion(String direccion);
+    List<UserDto> consultarUsuarioPorDireccion(String direccion, String correoAutor);
 
     /**
      * Muestra un usuario segun su correo.
@@ -56,7 +57,7 @@ public interface UserServiceI {
      * @param telefono Telefono del usuario que se busca.
      * @return Lista de DTOs de los usuarios encontrados.
      */
-    List<UserDto> consultarUsuarioPorTelefono(String telefono);
+    List<UserDto> consultarUsuarioPorTelefono(String telefono, String correoAutor);
 
     /**
      * Actualiza la descripción de un usuario.
@@ -65,7 +66,7 @@ public interface UserServiceI {
      * @param userDto DTO del usuario con la nueva información.
      * @return DTO del usuario actualizado.
      */
-    UserDto actualizarUsuario(String correo, UserDto userDto);
+    UserDto actualizarUsuario(String correo, UserDto userDto, String correoAutor);
 
     /**
      * Crea un nuevo usuario en el sistema, encriptando la contraseña antes de guardarla en la base de datos.
@@ -73,14 +74,14 @@ public interface UserServiceI {
      * @param user El objeto User que representa al nuevo usuario a crear.
      * @return El objeto User creado y guardado en la base de datos.
      */
-    UserDto crearUsuario(User user);
+    UserDto crearUsuario(User user, String correoAutor);
 
     /**
      * Elimina un usuario de la base de datos por su dirección de correo electrónico.
      *
      * @param email La dirección de correo electrónico del usuario a eliminar.
      */
-    void borrarUsuarioPorEmail(String email);
+    void borrarUsuarioPorEmail(String email, String correoAutor);
 
     /**
      * Muestra los usuarios con estado = false.
@@ -95,5 +96,5 @@ public interface UserServiceI {
      * @param correo La dirección de correo electrónico del usuario a aprobar.
      * @param estado Estado del usuario a aprobar
      */
-    void aprobarRegistro(String correo, boolean estado);
+    void aprobarRegistro(String correo, boolean estado, String correoAutor);
 }

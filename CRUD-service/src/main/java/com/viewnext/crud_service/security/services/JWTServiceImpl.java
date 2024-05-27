@@ -28,8 +28,9 @@ public class JWTServiceImpl implements JWTServiceI{
      */
     @Override
     public String getToken(User user) {
-        return getToken(Map.of("id", user.getId(),
-                "correo", user.getCorreo()), user);
+        String token = getToken(Map.of("id", user.getId(), "correo", user.getCorreo()), user);
+        System.out.println("Token JWT generado para usuario {}: {}" + user.getCorreo() + token);
+        return token;
     }
 
     /**

@@ -6,6 +6,7 @@ on:
   pull_request:
     branches: ['feature-alberto']
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,8 +55,10 @@ jobs:
           docker build -t anavarrooo/generics:discovery-server .
           docker push anavarrooo/generics:discovery-server
 
-      - name: Build and push Docker images for user-audit-service
+      - name: Build and push Docker images for audit-service
         run: |
-          cd user-audit-service
-          docker build -t anavarrooo/generics:user-audit-service .
-          docker push anavarrooo/generics:user-audit-service
+          cd audit-service
+          docker build -t anavarrooo/generics:discovery-server .
+          docker push anavarrooo/generics:discovery-server
+
+ 
