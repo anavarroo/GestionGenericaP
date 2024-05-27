@@ -1,5 +1,7 @@
 # Aplicación Genérica
 
+Para ver lo documentación completa del proyecto: [Wiki](https://github.com/anavarroo/GestionGenericaP/wiki)
+
 ## Como ejecutar la aplicación con Docker
 
 1. Escribe en la terminal el comando `git clone https://github.com/anavarroo/GestionGenericaP.git`
@@ -14,8 +16,6 @@
 3. Escribe en la terminal el comando `mvn clean verify -DskipTest` para entrar en cada carpeta y construit la aplicación.
 4. Despues ejecuta `mvn spring-boot:run` para entrar en cada carpeta y iniciar la aplicación..
 
-Para ver lo documentación completa del proyecto: [Wiki](https://github.com/aleramiirez/Generics/wiki)
-
 ## Contacto
 
 Para cualquier duda, no dudes en contactar con nosotros:
@@ -27,4 +27,3 @@ Para cualquier duda, no dudes en contactar con nosotros:
 
 
     
-1
