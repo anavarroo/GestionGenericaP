@@ -70,12 +70,14 @@ services:
 
   rabbitmq:
     container_name: rabbitmq
-    image: rabbitmq:3.9-management
+    image: rabbitmq:3.10.5-management
     hostname: rabbitmq
     restart: always
     ports:
       - 5672:5672
       - 15672:15672
+    volumes:
+      - rabbit-data:/var/lib/rabbitmq
     networks:
       - generics
 
@@ -199,4 +201,7 @@ volumes:
     external: true
 
   mysql-data-audit:
+    external: true
+
+  rabbit-data:
     external: true
