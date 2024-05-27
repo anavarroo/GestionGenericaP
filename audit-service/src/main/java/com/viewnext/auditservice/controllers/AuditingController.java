@@ -1,5 +1,6 @@
 package com.viewnext.auditservice.controllers;
 
+import com.viewnext.auditservice.persistence.AuditingDataDto;
 import com.viewnext.auditservice.persistence.model.AuditingData;
 import com.viewnext.auditservice.services.AuditingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class AuditingController {
     }
 
     @PostMapping
-    public ResponseEntity<AuditingData> createAudit(@RequestBody AuditingData audit) {
+    public ResponseEntity<AuditingData> createAudit(@RequestBody AuditingDataDto audit) {
         AuditingData savedAudit = auditingMngm.saveAudit(audit);
         return new ResponseEntity<>(savedAudit, HttpStatus.CREATED);
     }
