@@ -1,6 +1,6 @@
 package com.viewnext.crud_service.published;
 
-import com.viewnext.crud_service.persistence.dto.AuditingData;
+import com.viewnext.crud_service.persistence.model.AuditingData;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

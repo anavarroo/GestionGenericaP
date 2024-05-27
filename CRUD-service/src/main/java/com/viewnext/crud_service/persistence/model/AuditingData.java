@@ -1,4 +1,4 @@
-package com.viewnext.crud_service.persistence.dto;
+package com.viewnext.crud_service.persistence.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
