@@ -61,7 +61,7 @@ jobs:
           docker build -t anavarrooo/generics:discovery-server .
           docker push anavarrooo/generics:discovery-server
 
-      - name: Build and push Docker images for user-audit-service
+      - name: Build and push Docker images for audit-service
         run: |
           cd audit-service
           docker build -t anavarrooo/generics:audit-service .

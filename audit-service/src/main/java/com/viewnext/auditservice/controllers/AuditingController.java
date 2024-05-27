@@ -1,28 +1,27 @@
 package com.viewnext.auditservice.controllers;
 
 import com.viewnext.auditservice.persistence.model.AuditingData;
-import org.springframework.amqp.core.AmqpTemplate;
+import com.viewnext.auditservice.services.AuditingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.viewnext.auditservice.config.RabbitMQConfig.AUDIT_QUEUE;
 
 @RestController
 @RequestMapping("/api/audit")
 public class AuditingController {
 
-    private final AmqpTemplate amqpTemplate;
+    private final AuditingServiceImpl auditingMngm;
 
     @Autowired
-    public AuditingController(AmqpTemplate amqpTemplate) {
-        this.amqpTemplate = amqpTemplate;
+    public AuditingController(AuditingServiceImpl auditingMngm) {
+        this.auditingMngm = auditingMngm;
     }
 
     @PostMapping
     public ResponseEntity<AuditingData> createAudit(@RequestBody AuditingData audit) {
-        amqpTemplate.convertAndSend(AUDIT_QUEUE, audit);
+        auditingMngm.saveAudit(audit);
         return new ResponseEntity<>(audit, HttpStatus.CREATED);
     }
 }
