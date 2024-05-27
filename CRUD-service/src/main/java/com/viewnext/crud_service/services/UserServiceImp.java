@@ -1,7 +1,7 @@
 package com.viewnext.crud_service.services;
 
 
-import com.viewnext.crud_service.client.RestClient;
+import com.viewnext.crud_service.published.Publisher;
 import com.viewnext.crud_service.persistence.dto.AuditingDataDto;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
@@ -21,12 +21,12 @@ public class UserServiceImp implements UserServiceI {
 
     private final UserRepositoryI userRepositoryI;
 
-    private final RestClient restClient;
+    private final Publisher publisher;
 
     @Autowired
-    public UserServiceImp(UserRepositoryI userRepositoryI, RestClient restClient) {
+    public UserServiceImp(UserRepositoryI userRepositoryI, Publisher publisher) {
         this.userRepositoryI = userRepositoryI;
-        this.restClient = restClient;
+        this.publisher = publisher;
     }
 
     /**
@@ -52,7 +52,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return convertToDto(user);
     }
@@ -83,7 +83,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return convertToDto(usuarioActualizado);
     }
@@ -112,7 +112,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
     }
 
@@ -134,7 +134,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
     }
 
@@ -174,7 +174,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -199,7 +199,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -224,7 +224,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/edad/" + edad);
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -248,7 +248,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/correo/" + correo);
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -274,7 +274,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
 
         return userDtos;
     }
@@ -297,7 +297,7 @@ public class UserServiceImp implements UserServiceI {
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
 
-        restClient.sendAudit(auditingDataDto);
+        publisher.sendAudit(auditingDataDto);
         return userDtos;
     }
 
