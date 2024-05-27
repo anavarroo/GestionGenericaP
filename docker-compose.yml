@@ -30,6 +30,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=generics
       - PMA_HOST=mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
     ports:
       - 3307:3306
     networks:
@@ -109,6 +111,15 @@ services:
       - crud-service
     networks:
       - generics
+
+
+  rabbitmq:
+      container_name: rabbitmq
+      image: rabbitmq:3.9-management
+      restart: always
+      ports:
+        - 5672:5672
+        - 15672:15672
 
 networks:
   generics:
