@@ -2,9 +2,9 @@ name: Push Docker images to Hub
 
 on:
   push:
-    branches: ['feature-alberto']
+    branches: ['alberto-v.2']
   pull_request:
-    branches: ['feature-alberto']
+    branches: ['alberto-v.2']
 
 
 jobs:
