@@ -1,6 +1,7 @@
 package com.viewnext.crud_service.services;
 
 
+import com.viewnext.auditservice.persistence.model.AuditingData;
 import com.viewnext.crud_service.published.Publisher;
 import com.viewnext.crud_service.persistence.dto.AuditingDataDto;
 import com.viewnext.crud_service.persistence.dto.UserDto;
@@ -50,7 +51,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
 
@@ -81,7 +82,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
 
@@ -110,7 +111,7 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
 
@@ -132,7 +133,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
 
@@ -172,7 +173,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
 
@@ -197,7 +198,7 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
 
@@ -222,7 +223,7 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/edad/" + edad);
 
@@ -246,7 +247,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/correo/" + correo);
 
@@ -272,7 +273,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
 
@@ -295,7 +296,7 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
+        AuditingData auditingDataDto = new AuditingData();
         auditingDataDto.setCreatedBy(author.getCorreo());
         auditingDataDto.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
 

@@ -1,5 +1,6 @@
 package com.viewnext.crud_service.published;
 
+import com.viewnext.auditservice.persistence.model.AuditingData;
 import com.viewnext.crud_service.persistence.dto.AuditingDataDto;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
@@ -20,7 +21,7 @@ public class Publisher {
         this.queue = queue;
     }
 
-    public void sendAudit(AuditingDataDto message) {
+    public void sendAudit(AuditingData message) {
         template.convertAndSend(queue.getName(), message);
     }
 

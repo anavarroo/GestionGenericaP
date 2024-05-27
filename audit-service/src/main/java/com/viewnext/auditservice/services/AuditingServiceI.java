@@ -5,6 +5,6 @@ import com.viewnext.auditservice.persistence.model.AuditingData;
 
 public interface AuditingServiceI {
 
-    public AuditingData saveAudit(AuditingDataDto auditingData);
+    public AuditingData saveAudit(AuditingData auditingData);
 
 }

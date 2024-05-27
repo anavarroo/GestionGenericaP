@@ -23,7 +23,7 @@ public class AuditingController {
     }
 
     @PostMapping
-    public ResponseEntity<AuditingData> createAudit(@RequestBody AuditingDataDto audit) {
+    public ResponseEntity<AuditingData> createAudit(@RequestBody AuditingData audit) {
         AuditingData savedAudit = auditingMngm.saveAudit(audit);
         return new ResponseEntity<>(savedAudit, HttpStatus.CREATED);
     }

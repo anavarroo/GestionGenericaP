@@ -1,6 +1,5 @@
 package com.viewnext.auditservice.consumer;
 
-import com.viewnext.auditservice.persistence.AuditingDataDto;
 import com.viewnext.auditservice.persistence.model.AuditingData;
 import com.viewnext.auditservice.services.AuditingServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,7 @@ public class Consumer {
     }
 
     @RabbitListener(queues = { "${generics.queue.name}" })
-    public void receive(@Payload AuditingDataDto message) {
+    public void receive(@Payload AuditingData message) {
         log.info("Received message: {}", message);
         auditingService.saveAudit(message);
 
