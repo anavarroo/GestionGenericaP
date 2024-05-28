@@ -24,13 +24,13 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="CRUD-service" options="-parameters" />
-      <module name="api-gateway" options="-parameters" />
+      <module name="CRUD-service" options="" />
+      <module name="api-gateway" options="" />
       <module name="common-services" options="-parameters" />
-      <module name="discovery-server" options="-parameters" />
+      <module name="discovery-server" options="" />
       <module name="gestiongenerica" options="" />
       <module name="identity-service" options="-parameters" />
-      <module name="register-service" options="-parameters" />
+      <module name="register-service" options="" />
       <module name="user-audit-service" options="-parameters" />
     </option>
   </component>
