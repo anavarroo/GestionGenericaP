@@ -16,6 +16,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class AuditingData implements Serializable {
 
     @Id
