@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class RabbitMQJsonProducer {
 
-    @Value("${exchange_generics_audit}")
+    @Value("${rabbitmq.exchange.name}")
     private String exchange;
 
-    @Value("${routing_json_key_generics_audit}")
+    @Value("${rabbitmq.routing.json.key}")
     private String routingJsonKey;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQJsonProducer.class);
