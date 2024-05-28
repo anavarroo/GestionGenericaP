@@ -29,7 +29,6 @@
 		<module>discovery-server</module>
 		<module>audit-service</module>
 		<module>register-service</module>
-		<module>common</module>
 	</modules>
 
 	<dependencies>
