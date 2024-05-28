@@ -1,6 +1,7 @@
 package com.viewnext.auditservice.services;
 
-import com.viewnext.common.model.AuditingData;
+
+import com.viewnext.auditservice.persistence.model.AuditingData;
 
 public interface AuditingServiceI {
 
