@@ -16,7 +16,6 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class AuditingData implements Serializable {
 
     @Id
@@ -34,6 +33,11 @@ public class AuditingData implements Serializable {
     @Column(name = "EndPoint")
     private String typeRequest;
 
-
-
+    @Override
+    public String toString() {
+        return  id +
+                "," + createdBy +
+                "," + createdDate +
+                "," + typeRequest;
+    }
 }
