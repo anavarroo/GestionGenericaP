@@ -1,6 +1,5 @@
 package com.viewnext.auditservice.consumer;
 
-import com.viewnext.auditservice.persistence.model.AuditingData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -12,8 +11,8 @@ public class RabbitMQConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQConsumer.class);
 
     @RabbitListener(queues = {"${rabbitmq.queue.name}"})
-    public void consume(AuditingData auditingData) {
-        LOGGER.info(String.format("Recieved message -> "), auditingData);
+    public void consume(String message) {
+        LOGGER.info(String.format("Recieved message -> "), message);
     }
 
 }

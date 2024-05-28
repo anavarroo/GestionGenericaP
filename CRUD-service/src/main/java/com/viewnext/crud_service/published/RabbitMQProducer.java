@@ -1,6 +1,5 @@
 package com.viewnext.crud_service.published;
 
-import com.viewnext.crud_service.persistence.model.AuditingData;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +26,8 @@ public class RabbitMQProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendMessage(AuditingData auditingData) {
-        LOGGER.info(String.format("Message sent -> "), auditingData);
-        rabbitTemplate.convertAndSend(exchange, routingKey, auditingData);
+    public void sendMessage(String message) {
+        LOGGER.info(String.format("Message sent -> "), message);
+        rabbitTemplate.convertAndSend(exchange, routingKey, message );
     }
 }
