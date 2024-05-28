@@ -27,8 +27,8 @@ public class RabbitMQProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendMessage(String message) {
-        LOGGER.info(String.format("Message sent -> %s", message));
-        rabbitTemplate.convertAndSend(exchange, routingKey, message);
+    public void sendMessage(AuditingData auditingData) {
+        LOGGER.info(String.format("Message sent -> "), auditingData);
+        rabbitTemplate.convertAndSend(exchange, routingKey, auditingData);
     }
 }

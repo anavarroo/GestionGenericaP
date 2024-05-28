@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return convertToDto(user);
     }
@@ -85,7 +84,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return convertToDto(usuarioActualizado);
     }
@@ -114,7 +113,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
     }
 
@@ -136,7 +135,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
     }
 
@@ -176,7 +175,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -201,7 +200,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -226,7 +225,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/edad/" + edad);
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -250,7 +249,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/correo/" + correo);
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -276,7 +275,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -299,7 +298,7 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
 
-        rabbitMQProducer.sendMessage("Mensaje");
+        rabbitMQProducer.sendMessage(auditingData);
         return userDtos;
     }
 

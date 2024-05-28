@@ -14,6 +14,9 @@ public class RabbitMQConfig {
     @Value("${rabbitmq.queue.name}")
     private String queue;
 
+    @Value("${rabbitmq.queue.json.name}")
+    private String jsonQueue;
+
     @Value("${rabbitmq.exchange.name}")
     private String exchange;
 
@@ -23,6 +26,10 @@ public class RabbitMQConfig {
     @Bean
     public Queue queue() {
         return new Queue(queue);
+    }
+
+    public Queue jsonQueue() {
+        return new Queue(jsonQueue);
     }
 
     @Bean
