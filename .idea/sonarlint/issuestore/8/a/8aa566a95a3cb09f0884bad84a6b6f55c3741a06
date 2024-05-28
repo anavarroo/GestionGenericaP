@@ -1,3 +1,7 @@
 
 g
-java:S2629"$Invoke method(s) only conditionally.(°«½À8Ä«Íñû1J$d8ecab76-2e93-4c6d-8069-dfe84f5c4687
+java:S2629"$Invoke method(s) only conditionally.(°«½À8Ìë›õû1J$e2244780-2db4-4e5a-b6cf-1092f96cbca8
+’
+java:S1858"O"auditingData" is already a string, there's no need to call "toString()" on it.(°«½À8Üë›õû1J$a25dc401-e7f0-4b86-a5d6-5ecad2cdf450
+˜
+java:S1128"URemove this unused import 'com.viewnext.crud_service.persistence.model.AuditingData'.(½Õ¤ü8„Íœõû1J$ce8a25c2-dd5e-4603-9db1-b017bf186229

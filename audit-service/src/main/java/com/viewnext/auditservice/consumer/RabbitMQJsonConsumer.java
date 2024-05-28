@@ -12,10 +12,9 @@ public class RabbitMQJsonConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQJsonConsumer.class);
 
     @RabbitListener(queues = {"${rabbitmq.queue.json.name}"})
-    public void consumJsonMessage(AuditingData auditingData) {
+    public void consumJsonMessage(String auditingData) {
 
         LOGGER.info(String.format("Received JSON message -> %s", auditingData.toString()));
-
 
     }
 

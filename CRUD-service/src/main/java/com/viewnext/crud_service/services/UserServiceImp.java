@@ -53,7 +53,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return convertToDto(user);
     }
@@ -84,7 +86,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return convertToDto(usuarioActualizado);
     }
@@ -113,7 +117,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
     }
 
@@ -135,7 +141,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
     }
 
@@ -175,7 +183,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return userDtos;
     }
@@ -200,7 +210,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return userDtos;
     }
@@ -225,7 +237,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/edad/" + edad);
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return userDtos;
     }
@@ -249,7 +263,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/correo/" + correo);
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return userDtos;
     }
@@ -275,7 +291,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return userDtos;
     }
@@ -298,7 +316,9 @@ public class UserServiceImp implements UserServiceI {
         auditingData.setCreatedBy(author.getCorreo());
         auditingData.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
 
-        rabbitMQProducer.sendJsonMessage(auditingData);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
         return userDtos;
     }
 
