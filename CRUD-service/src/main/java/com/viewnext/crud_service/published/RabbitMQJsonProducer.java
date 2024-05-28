@@ -27,7 +27,7 @@ public class RabbitMQJsonProducer {
     }
 
     public void sendJsonMessage(String auditingData) {
-        LOGGER.info(String.format("Json message sent -> %s", auditingData.toString()));
+        LOGGER.info(String.format("Json message sent -> %s", auditingData));
 
         rabbitTemplate.convertAndSend(exchange, routingJsonKey, auditingData);
     }
