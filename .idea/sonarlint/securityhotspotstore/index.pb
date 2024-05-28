@@ -7001,3 +7001,13 @@ Q.idea/sonarlint/securityhotspotstore/f/5/f5b4f6d60400b15c2da29568ae062169b75a14
 Q.idea/sonarlint/securityhotspotstore/4/9/497ba5ae7eb3d1a000cbd8a766b2095a69707dab,6\2\6206e888ca46296cbcfadb35754463936e66b143
 Å
 Q.idea/sonarlint/securityhotspotstore/8/a/8aa566a95a3cb09f0884bad84a6b6f55c3741a06,7\0\70c8316e09283d049cd1f0956bf311115688d632
+á
+Wregister-service/src/main/java/com/viewnext/register_service/config/RabbitMQConfig.java,7\4\74c3fda81377a96fb9142cbc0ac8120df5411aed
+ê
+`register-service/src/main/java/com/viewnext/register_service/published/RabbitMQJsonProducer.java,a\b\ab93346b33ae41089c1d7aef1b40760bea5f97a5
+ê
+`register-service/src/main/java/com/viewnext/register_service/persistence/model/AuditingData.java,7\d\7db32e6665b03911038794a4d059f9499ed21993
+w
+G.idea/sonarlint/issuestore/7/4/74c3fda81377a96fb9142cbc0ac8120df5411aed,6\e\6efbd5dc630f42970c459d418ed8dcdb01158852
+Å
+Q.idea/sonarlint/securityhotspotstore/7/4/74c3fda81377a96fb9142cbc0ac8120df5411aed,4\7\47fbc57c4f96ed2a339ba05c9a19f45408ead431
