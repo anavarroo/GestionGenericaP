@@ -2,6 +2,21 @@ version: '4'
 
 services:
 
+# RabbitMQ
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.10.5-management
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbit-data:/var/lib/rabbitmq
+    networks:
+      - generics
+
   api-gateway:
     container_name: api-gateway
     image: anavarrooo/generics:api-gateway
@@ -96,7 +111,7 @@ services:
       - generics-audit-db
     networks:
       - generics
-
+      
   generics-front:
     container_name: generics-front
     image: aleramiirez/generics:generics-front
@@ -112,15 +127,6 @@ services:
     networks:
       - generics
 
-
-  rabbitmq:
-      container_name: rabbitmq
-      image: rabbitmq:3.9-management
-      restart: always
-      ports:
-        - 5672:5672
-        - 15672:15672
-
 networks:
   generics:
     driver: bridge
@@ -130,4 +136,7 @@ volumes:
     external: true
 
   mysql-data-audit:
+    external: true
+
+  rabbit-data:
     external: true

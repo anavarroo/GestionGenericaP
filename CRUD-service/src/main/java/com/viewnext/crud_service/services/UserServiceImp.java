@@ -1,32 +1,33 @@
 package com.viewnext.crud_service.services;
 
 
-import com.viewnext.crud_service.client.RestClient;
-import com.viewnext.crud_service.persistence.dto.AuditingDataDto;
+import com.viewnext.crud_service.persistence.model.AuditingData;
+import com.viewnext.crud_service.published.RabbitMQProducer;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
 import com.viewnext.crud_service.persistence.model.User;
 import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class UserServiceImp implements UserServiceI {
 
     private final UserRepositoryI userRepositoryI;
 
-    private final RestClient restClient;
+    private final RabbitMQProducer rabbitMQProducer;
 
     @Autowired
-    public UserServiceImp(UserRepositoryI userRepositoryI, RestClient restClient) {
+    public UserServiceImp(UserRepositoryI userRepositoryI, RabbitMQProducer rabbitMQProducer) {
         this.userRepositoryI = userRepositoryI;
-        this.restClient = restClient;
+        this.rabbitMQProducer = rabbitMQProducer;
     }
 
     /**
@@ -48,11 +49,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/crear/" + user.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return convertToDto(user);
     }
@@ -79,11 +80,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/editar/" + user.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return convertToDto(usuarioActualizado);
     }
@@ -108,11 +109,11 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/borrar/" + user.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
     }
 
@@ -130,11 +131,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/editar/" + usuarioMod.getCorreo());
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
     }
 
@@ -170,11 +171,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/nombre/" + nombre);
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -195,11 +196,11 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/apellidos/" + apellidos);
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -220,11 +221,11 @@ public class UserServiceImp implements UserServiceI {
         }
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/edad/" + edad);
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/edad/" + edad);
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -244,11 +245,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/correo/" + correo);
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/correo/" + correo);
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -270,11 +271,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/direccion/" + direccion);
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
 
         return userDtos;
     }
@@ -293,11 +294,11 @@ public class UserServiceImp implements UserServiceI {
 
         User author = userRepositoryI.findByCorreo(correoAutor);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(author.getCorreo());
-        auditingDataDto.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(author.getCorreo());
+        auditingData.setTypeRequest("/api/v1/usuarios/telefono/" + telefono);
 
-        restClient.sendAudit(auditingDataDto);
+        rabbitMQProducer.sendMessage(auditingData);
         return userDtos;
     }
 
