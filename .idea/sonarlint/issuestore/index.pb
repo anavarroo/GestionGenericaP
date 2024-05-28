@@ -3307,3 +3307,7 @@ w
 G.idea/sonarlint/issuestore/5/b/5b60bd7ff9179965197532d8b25a444a59868825,4\a\4ac524eeccf23a19ed5c1814c5aec137c6f159fc
 w
 G.idea/sonarlint/issuestore/5/b/5bd82be7d4b7d1edd3c132743acfec106745b540,7\1\71022751bc6006726e78a5953313bf86efefa05c
+‰
+Yaudit-service/src/main/java/com/viewnext/auditservice/persistence/model/AuditingData.java,8\0\80f3e733c1664fde1def3fbfbc8b67593fd71b39
+E
+audit-service/pom.xml,7\2\72d5502d1fe020cfca42dcfe22e964202012b5f6
