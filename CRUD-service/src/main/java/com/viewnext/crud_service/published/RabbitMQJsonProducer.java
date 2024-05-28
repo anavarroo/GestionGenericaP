@@ -16,7 +16,7 @@ public class RabbitMQJsonProducer {
     @Value("${routing_json_key_generics_audit}")
     private String routingJsonKey;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQProducer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQJsonProducer.class);
 
     private RabbitTemplate rabbitTemplate;
 
