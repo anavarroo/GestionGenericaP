@@ -2,9 +2,24 @@ version: '4'
 
 services:
 
+# RabbitMQ
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.10.5-management
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbit-data:/var/lib/rabbitmq
+    networks:
+      - generics
+
   api-gateway:
     container_name: api-gateway
-    image: aleramiirez/generics:api-gateway
+    image: anavarrooo/generics:api-gateway
     ports:
       - 8084:8084
     networks:
@@ -12,7 +27,7 @@ services:
 
   discovery-server:
     container_name: discovery-server
-    image: aleramiirez/generics:discovery-server
+    image: anavarrooo/generics:discovery-server
     restart: always
     ports:
       - 8761:8761
@@ -54,7 +69,7 @@ services:
 
   register-service:
     container_name: register-service
-    image: aleramiirez/generics:register-service
+    image: anavarrooo/generics:register-service
     ports:
       - 8081:8081
     environment:
@@ -69,7 +84,7 @@ services:
 
   crud-service:
     container_name: crud-service
-    image: aleramiirez/generics:crud-service
+    image: anavarrooo/generics:crud-service
     ports:
       - 8082:8082
     environment:
@@ -84,7 +99,7 @@ services:
 
   audit-service:
     container_name: audit-service
-    image: aleramiirez/generics:audit-service
+    image: anavarrooo/generics:audit-service
     ports:
       - 8085:8085
     environment:
@@ -96,7 +111,7 @@ services:
       - generics-audit-db
     networks:
       - generics
-
+      
   generics-front:
     container_name: generics-front
     image: aleramiirez/generics:generics-front
@@ -121,4 +136,7 @@ volumes:
     external: true
 
   mysql-data-audit:
+    external: true
+
+  rabbit-data:
     external: true

@@ -1,10 +1,12 @@
-name: Push docker images to hub
+
+name: Push Docker images to Hub
 
 on:
   push:
-    branches: ['main']
+    branches: ['feature-alberto']
   pull_request:
-    branches: ['main']
+    branches: ['feature-alberto']
+
 
 jobs:
   build:
@@ -27,35 +29,41 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+
+          username: ${{ secrets.DOCKERUSERNAME }}
+          password: ${{ secrets.DOCKERPASSWORD }}
+
 
       - name: Build and push Docker images for api-gateway
         run: |
           cd api-gateway
-          docker build -t aleramiirez/generics:api-gateway .
-          docker push aleramiirez/generics:api-gateway
+          docker build -t anavarrooo/generics:api-gateway .
+          docker push anavarrooo/generics:api-gateway
+
 
       - name: Build and push Docker images for crud-service
         run: |
           cd CRUD-service
-          docker build -t aleramiirez/generics:crud-service .
-          docker push aleramiirez/generics:crud-service
+          docker build -t anavarrooo/generics:crud-service .
+          docker push anavarrooo/generics:crud-service
+
 
       - name: Build and push Docker images for register-service
         run: |
           cd register-service
-          docker build -t aleramiirez/generics:register-service .
-          docker push aleramiirez/generics:register-service
+          docker build -t anavarrooo/generics:register-service .
+          docker push anavarrooo/generics:register-service
+
 
       - name: Build and push Docker images for discovery-server
         run: |
           cd discovery-server
-          docker build -t aleramiirez/generics:discovery-server .
-          docker push aleramiirez/generics:discovery-server
+          docker build -t anavarrooo/generics:discovery-server .
+          docker push anavarrooo/generics:discovery-server
 
       - name: Build and push Docker images for audit-service
         run: |
           cd audit-service
-          docker build -t aleramiirez/generics:audit-service .
-          docker push aleramiirez/generics:audit-service
+          docker build -t anavarrooo/generics:audit-service .
+          docker push anavarrooo/generics:audit-service
+

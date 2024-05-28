@@ -77,7 +77,12 @@ public class User implements Serializable, UserDetails {
 
     /** Clave secretea del factor de doble autenticacion **/
     @Column(name = "FAKey")
+
     private String secret;
+    /** Clave secretea del factor de doble autenticacion **/
+    @Column(name = "pepe")
+    private String pepe;
+
 
     /** Fecha de creación de la publicación. */
     @CreationTimestamp
