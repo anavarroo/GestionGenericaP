@@ -1,10 +1,10 @@
 package com.viewnext.register_service.security.services;
 
-import com.viewnext.register_service.client.RestClient;
-import com.viewnext.register_service.persistence.dto.AuditingDataDto;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
+import com.viewnext.register_service.persistence.model.AuditingData;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
+import com.viewnext.register_service.published.RabbitMQJsonProducer;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
 import com.viewnext.register_service.security.model.RegisterRequest;
@@ -33,20 +33,20 @@ public class AuthServiceImpl implements AuthServiceI {
 
     private final TwoFactorAuthenticationService tfaService;
 
-    private final RestClient restClient;
+    private final RabbitMQJsonProducer rabbitMQProducer;
 
     @Autowired
     public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm,
                            PasswordEncoder passwordEncoder,
                            AuthenticationManager authenticationManager,
                            TwoFactorAuthenticationService tfaService,
-                           RestClient restClient) {
+                           RabbitMQJsonProducer rabbitMQProducer) {
         this.userRepo = userRepo;
         this.jwtMngm = jwtMngm;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.tfaService = tfaService;
-        this.restClient = restClient;
+        this.rabbitMQProducer = rabbitMQProducer;
     }
 
     /**
@@ -70,11 +70,13 @@ public class AuthServiceImpl implements AuthServiceI {
 
         userRepo.save(user);
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(request.getCorreo());
-        auditingDataDto.setTypeRequest("/auth/register");
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(request.getCorreo());
+        auditingData.setTypeRequest("/auth/register");
 
-        restClient.sendAudit(auditingDataDto);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return convertToDtoRegister(user);
     }
@@ -106,11 +108,13 @@ public class AuthServiceImpl implements AuthServiceI {
 
         }
 
-        AuditingDataDto auditingDataDto = new AuditingDataDto();
-        auditingDataDto.setCreatedBy(request.getCorreo());
-        auditingDataDto.setTypeRequest("/auth/login");
+        AuditingData auditingData = new AuditingData();
+        auditingData.setCreatedBy(request.getCorreo());
+        auditingData.setTypeRequest("/auth/login");
 
-        restClient.sendAudit(auditingDataDto);
+        String data = auditingData.toString();
+
+        rabbitMQProducer.sendJsonMessage(data);
 
         return AuthResponse.builder()
                 .token(jwtToken)
