@@ -11,6 +11,7 @@
 
     <artifactId>CRUD-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>CRUD-service</name>
     <description>Microservicio de CRUD de usuarios</description>
 
