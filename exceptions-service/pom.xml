@@ -6,9 +6,8 @@
 		<groupId>com.viewnext</groupId>
 		<artifactId>gestiongenericap</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.viewnext</groupId>
+
 	<artifactId>exceptions-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>exceptions-service</name>
