@@ -32,6 +32,13 @@
 	</modules>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.viewnext</groupId>
+			<artifactId>CRUD-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
