@@ -6,7 +6,7 @@
 		<groupId>com.viewnext</groupId>
 		<artifactId>gestiongenerica</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
+		<relativePath>../CRUD-service</relativePath><!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.viewnext</groupId>
