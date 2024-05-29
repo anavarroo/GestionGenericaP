@@ -1,15 +1,19 @@
 package com.viewnext.register_service.security.services;
 
-import com.viewnext.register_service.exceptionhandler.UsuarioNoHabilitadoExeption;
+import com.viewnext.register_service.exceptions.UsuarioNoHabilitadoExeption;
+import com.viewnext.register_service.persistence.model.ExceptionHandler;
 import com.viewnext.register_service.persistence.model.User;
+import com.viewnext.register_service.published.RabbitMQExceptionProducer;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import javax.crypto.SecretKey;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
@@ -23,6 +27,13 @@ public class JWTServiceImpl implements JWTServiceI{
     @Value("${jwt.secret}")
     String secretKey;
 
+    private final RabbitMQExceptionProducer rabbitMQExceptionProducer;
+
+    @Autowired
+    public JWTServiceImpl(RabbitMQExceptionProducer rabbitMQExceptionProducer) {
+        this.rabbitMQExceptionProducer = rabbitMQExceptionProducer;
+    }
+
     /**
      * Genera un token JWT para el usuario dado.
      *
@@ -32,9 +43,16 @@ public class JWTServiceImpl implements JWTServiceI{
     @Override
     public String getToken(User user) {
         if (!user.isEstado()) {
-            // Si el estado del usuario es false, no se genera el token
-            throw new UsuarioNoHabilitadoExeption("El usuario " +
-                    "no esta habilitado para generar el token");
+
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(user.getCorreo());
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("auth/login");
+            exceptionHandler.setMessage("" +
+                    "El usuario no esta habilitado para generar el token");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
         }
 
         return getToken(Map.of("id", user.getId(),

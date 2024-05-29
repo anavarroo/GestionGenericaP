@@ -1,9 +1,12 @@
 package com.viewnext.register_service.security.services;
 
+import com.viewnext.register_service.exceptions.DatosIncompletos;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.persistence.model.AuditingData;
+import com.viewnext.register_service.persistence.model.ExceptionHandler;
 import com.viewnext.register_service.persistence.model.User;
 import com.viewnext.register_service.persistence.repository.UserRepositoryI;
+import com.viewnext.register_service.published.RabbitMQExceptionProducer;
 import com.viewnext.register_service.published.RabbitMQJsonProducer;
 import com.viewnext.register_service.security.model.AuthResponse;
 import com.viewnext.register_service.security.model.LoginRequest;
@@ -16,6 +19,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 /**
  * Implementación del servicio de autenticación.
@@ -35,18 +40,22 @@ public class AuthServiceImpl implements AuthServiceI {
 
     private final RabbitMQJsonProducer rabbitMQProducer;
 
+    private final RabbitMQExceptionProducer rabbitMQExceptionProducer;
+
     @Autowired
     public AuthServiceImpl(UserRepositoryI userRepo, JWTServiceI jwtMngm,
                            PasswordEncoder passwordEncoder,
                            AuthenticationManager authenticationManager,
                            TwoFactorAuthenticationService tfaService,
-                           RabbitMQJsonProducer rabbitMQProducer) {
+                           RabbitMQJsonProducer rabbitMQProducer,
+                           RabbitMQExceptionProducer rabbitMQExceptionProducer) {
         this.userRepo = userRepo;
         this.jwtMngm = jwtMngm;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.tfaService = tfaService;
         this.rabbitMQProducer = rabbitMQProducer;
+        this.rabbitMQExceptionProducer = rabbitMQExceptionProducer;
     }
 
     /**
@@ -57,6 +66,32 @@ public class AuthServiceImpl implements AuthServiceI {
      */
     @Override
     public UserDtoRegister register(RegisterRequest request) {
+
+        if (request.getNombre().isEmpty() || request.getNombre().isBlank()
+        || request.getApellidos().isEmpty() || request.getApellidos().isBlank()
+        || request.getCorreo().isEmpty() || request.getCorreo().isBlank()) {
+
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(request.getCorreo());
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("auth/register");
+            exceptionHandler.setMessage("Rellene todos los campos obligatorios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+        }
+
+        if (userRepo.existsByCorreo(request.getCorreo())) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(request.getCorreo());
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("auth/register");
+            exceptionHandler.setMessage("El usuario ya existe");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+        }
+
         User user = new User(request.getNombre(),
                 request.getApellidos(), request.getCorreo(),
                 passwordEncoder.encode(request.getContrasena()),
@@ -89,10 +124,34 @@ public class AuthServiceImpl implements AuthServiceI {
      */
     @Override
     public AuthResponse login(LoginRequest request) {
+
+        if (!userRepo.existsByCorreo(request.getCorreo())) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(request.getCorreo());
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("auth/login");
+            exceptionHandler.setMessage("El usuario no esta registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+        }
+
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 request.getCorreo(),
                 request.getContrasena()));
+
         User user = userRepo.findByCorreo(request.getCorreo());
+
+        if (!passwordEncoder.matches(request.getContrasena(), user.getPassword())) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(request.getCorreo());
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("auth/login");
+            exceptionHandler.setMessage("La contraseña o el usuario son incorrecta");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+        }
 
         var jwtToken = jwtMngm.getToken(user);
 

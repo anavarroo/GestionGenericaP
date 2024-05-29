@@ -29,6 +29,7 @@
 		<module>discovery-server</module>
 		<module>audit-service</module>
 		<module>register-service</module>
+		<module>exceptions-service</module>
 	</modules>
 
 	<dependencies>
