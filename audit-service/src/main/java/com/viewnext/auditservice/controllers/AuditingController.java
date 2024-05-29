@@ -1,6 +1,7 @@
 package com.viewnext.auditservice.controllers;
 
 import com.viewnext.auditservice.services.AuditingServiceImpl;
+import com.viewnext.crud_service.persistence.model.AuditingData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
