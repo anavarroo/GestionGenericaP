@@ -16,22 +16,21 @@ services:
       - rabbit-data:/var/lib/rabbitmq
 
 
-  api-gateway:
-    container_name: api-gateway
-    image: anavarrooo/generics:api-gateway
-    ports:
-      - 8084:8084
+# api-gateway:
+#   container_name: api-gateway
+#   image: anavarrooo/generics:api-gateway
+#   ports:
+#     - 8084:8084##
 
-
-  discovery-server:
-    container_name: discovery-server
-    image: anavarrooo/generics:discovery-server
-    restart: always
-    ports:
-      - 8761:8761
-    environment:
-      - eureka.instance.hostname=discoveryserver
-      - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
+# discovery-server:
+#   container_name: discovery-server
+#   image: anavarrooo/generics:discovery-server
+#   restart: always
+#   ports:
+#     - 8761:8761
+#   environment:
+#     - eureka.instance.hostname=discoveryserver
+#     - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
 
 
   generics-db:
