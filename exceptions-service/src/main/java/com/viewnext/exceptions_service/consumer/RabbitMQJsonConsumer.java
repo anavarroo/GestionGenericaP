@@ -23,7 +23,8 @@ public class RabbitMQJsonConsumer {
         this.exceptionMngm = exceptionMngm;
     }
 
-    @RabbitListener(queues = {"${rabbitmq.queue.exception.name}"})
+    @RabbitListener(queues = {"${rabbitmq.queue.exception.name}",
+                                "${rabbitmq.queue.exception.users.name}"})
     public void consumJsonMessage(@Payload String data) {
 
         String[] dataException = data.split(",");
