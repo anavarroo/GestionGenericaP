@@ -19,23 +19,21 @@ services:
 
   api-gateway:
     container_name: api-gateway
-    image: aleramiirez/generics:api-gateway
+    image: anavarrooo/generics:api-gateway
     ports:
       - 8084:8084
-    networks:
-      - generics
+
 
   discovery-server:
     container_name: discovery-server
-    image: aleramiirez/generics:discovery-server
+    image: anavarrooo/generics:discovery-server
     restart: always
     ports:
       - 8761:8761
     environment:
       - eureka.instance.hostname=discoveryserver
       - eureka.client.serviceUrl.defaultZone=http://discoveryserver:8761/eureka
-    networks:
-      - generics
+
 
   generics-db:
     container_name: generics-db
@@ -46,6 +44,8 @@ services:
       - PMA_HOST=mysql
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./files/mysql:/docker-entrypoint-initdb.d
+
     ports:
       - 3307:3306
 
@@ -66,7 +66,7 @@ services:
 
   register-service:
     container_name: register-service
-    image: aleramiirez/generics:register-service
+    image: anavarrooo/generics:register-service
     ports:
       - 8081:8081
     environment:
@@ -76,8 +76,7 @@ services:
       - DATABASE_PASSWORD=root
     depends_on:
       - generics-db
-    networks:
-      - generics
+
 #
 #  crud-service:
 #    container_name: crud-service
@@ -190,15 +189,15 @@ services:
       SCHEMA_REGISTRY_JMX_HOSTNAME: "localhost"
       SCHEMA_REGISTRY_JMX_PORT: 31002
 
-  mysql:
-    image: mysql:8.0.32
-    container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3309:3306"
-    volumes:
-      - ./files/mysql:/docker-entrypoint-initdb.d
+#  mysql:
+#    image: mysql:8.0.32
+#    container_name: mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#    ports:
+#      - "3309:3306"
+#    volumes:
+#      - ./files/mysql:/docker-entrypoint-initdb.d
 
   redis:
     image: redis:latest
