@@ -15,6 +15,7 @@
         <module name="discovery-server" />
         <module name="audit-service" />
         <module name="CRUD-service" />
+        <module name="exceptions-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +29,7 @@
       <module name="audit-service" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
+      <module name="exceptions-service" options="-parameters" />
       <module name="register-service" options="-parameters" />
     </option>
   </component>

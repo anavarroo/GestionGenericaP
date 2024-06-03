@@ -53,6 +53,8 @@ public class JWTServiceImpl implements JWTServiceI{
                     "El usuario no esta habilitado para generar el token");
 
             rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoHabilitadoExeption("El usuario no esta habilitado para generar el token");
         }
 
         return getToken(Map.of("id", user.getId(),

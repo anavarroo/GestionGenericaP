@@ -1,6 +1,9 @@
 package com.viewnext.register_service.security.services;
 
 import com.viewnext.register_service.exceptions.DatosIncompletos;
+import com.viewnext.register_service.exceptions.DatosIncorrectos;
+import com.viewnext.register_service.exceptions.UsuarioNoEncontrado;
+import com.viewnext.register_service.exceptions.UsuarioYaExiste;
 import com.viewnext.register_service.persistence.dto.UserDtoRegister;
 import com.viewnext.register_service.persistence.model.AuditingData;
 import com.viewnext.register_service.persistence.model.ExceptionHandler;
@@ -76,9 +79,11 @@ public class AuthServiceImpl implements AuthServiceI {
             exceptionHandler.setCreatedBy(request.getCorreo());
             exceptionHandler.setCreatedDate(LocalDate.now());
             exceptionHandler.setTypeRequest("auth/register");
-            exceptionHandler.setMessage("Rellene todos los campos obligatorios");
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
 
             rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
         }
 
         if (userRepo.existsByCorreo(request.getCorreo())) {
@@ -90,6 +95,8 @@ public class AuthServiceImpl implements AuthServiceI {
             exceptionHandler.setMessage("El usuario ya existe");
 
             rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioYaExiste("El usuario ya existe");
         }
 
         User user = new User(request.getNombre(),
@@ -125,6 +132,20 @@ public class AuthServiceImpl implements AuthServiceI {
     @Override
     public AuthResponse login(LoginRequest request) {
 
+        if (request.getCorreo().isBlank() || request.getCorreo().isEmpty()
+            || request.getContrasena().isBlank() || request.getContrasena().isEmpty()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(request.getCorreo());
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("auth/login");
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
         if (!userRepo.existsByCorreo(request.getCorreo())) {
             ExceptionHandler exceptionHandler = new ExceptionHandler();
 
@@ -134,6 +155,8 @@ public class AuthServiceImpl implements AuthServiceI {
             exceptionHandler.setMessage("El usuario no esta registrado");
 
             rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("El usuario no esta registrado");
         }
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -151,6 +174,8 @@ public class AuthServiceImpl implements AuthServiceI {
             exceptionHandler.setMessage("La contraseña o el usuario son incorrecta");
 
             rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncorrectos("La contraseña o el usuario son incorrecta");
         }
 
         var jwtToken = jwtMngm.getToken(user);
