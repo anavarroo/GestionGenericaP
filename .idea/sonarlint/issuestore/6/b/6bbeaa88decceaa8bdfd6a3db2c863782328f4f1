@@ -1,0 +1,881 @@
+
+¼
+java:S6539„E"ŸSplit this â€œMonster Classâ€ into smaller and more specialized ones to reduce its dependencies on other classes from 27 to the maximum authorized 20 or less.(ºœÓ­úÿÿÿÿ
+¼
+java:S6539è;"ŸSplit this â€œMonster Classâ€ into smaller and more specialized ones to reduce its dependencies on other classes from 23 to the maximum authorized 20 or less.(–Š„üøÿÿÿÿ
+¼
+java:S6539Â}"ŸSplit this â€œMonster Classâ€ into smaller and more specialized ones to reduce its dependencies on other classes from 25 to the maximum authorized 20 or less.(ºœÓ­úÿÿÿÿ
+½
+java:S6539Ä•"ŸSplit this â€œMonster Classâ€ into smaller and more specialized ones to reduce its dependencies on other classes from 22 to the maximum authorized 20 or less.(ºœÓ­úÿÿÿÿ
+»
+java:S6539$"ŸSplit this â€œMonster Classâ€ into smaller and more specialized ones to reduce its dependencies on other classes from 38 to the maximum authorized 20 or less.(ëú‡òüÿÿÿÿ
+u
+java:S2293ß
+"YReplace the type specification in this constructor call with the diamond operator ("<>").(«òÆëüÿÿÿÿ
+u
+java:S2293ÄK"YReplace the type specification in this constructor call with the diamond operator ("<>").(ß³µŒúÿÿÿÿ
+p
+java:S2293üM"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨û£ª
+u
+java:S2293õR"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç§æÚùÿÿÿÿ
+u
+java:S2293­U"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŸôÛÉùÿÿÿÿ
+p
+java:S2293Ía"YReplace the type specification in this constructor call with the diamond operator ("<>").(†„…
+u
+java:S2293m"YReplace the type specification in this constructor call with the diamond operator ("<>").(Õ”Å™üÿÿÿÿ
+p
+java:S2293Øo"YReplace the type specification in this constructor call with the diamond operator ("<>").(¤şş
+p
+java:S2293¢r"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨û£ª
+v
+java:S2293¾…"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç§æÚùÿÿÿÿ
+q
+java:S2293ö‡"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÇË¤„
+q
+java:S2293ÀŠ"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨û£ª
+v
+java:S2293ƒ"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ç§æÚùÿÿÿÿ
+q
+java:S2293»Ÿ"YReplace the type specification in this constructor call with the diamond operator ("<>").(¨û£ª
+
+java:S1192†"jDefine a constant instead of duplicating this literal "EnumValueDescriptor is not for this type." 8 times.(ĞŒÛ„
+f
+java:S1192Ë"IDefine a constant instead of duplicating this literal "Criteria" 3 times.(š‹ºıÿÿÿÿ
+g
+java:S1192Ë"JDefine a constant instead of duplicating this literal "LimitExpr" 3 times.(š‹ºıÿÿÿÿ
+c
+java:S1192Ë"FDefine a constant instead of duplicating this literal "Order" 3 times.(š‹ºıÿÿÿÿ
+g
+java:S1192Ë"JDefine a constant instead of duplicating this literal "DataModel" 4 times.(š‹ºıÿÿÿÿ
+h
+java:S1192Ë"KDefine a constant instead of duplicating this literal "Collection" 7 times.(š‹ºıÿÿÿÿ
+c
+java:S1192Ë"FDefine a constant instead of duplicating this literal "Limit" 3 times.(š‹ºıÿÿÿÿ
+K
+java:S1066¾"/Merge this if statement with the enclosing one.(µ§øŸøÿÿÿÿ
+K
+java:S1066Ã"/Merge this if statement with the enclosing one.(ÜõØˆúÿÿÿÿ
+F
+java:S1066›"/Merge this if statement with the enclosing one.(Äæçº
+K
+java:S1066 "/Merge this if statement with the enclosing one.(ÜõØˆúÿÿÿÿ
+K
+java:S1066¡"/Merge this if statement with the enclosing one.(µ§øŸøÿÿÿÿ
+F
+java:S1066¦"/Merge this if statement with the enclosing one.(”«§Ä
+K
+java:S1066"/Merge this if statement with the enclosing one.(ñ ”ëûÿÿÿÿ
+K
+java:S1066†"/Merge this if statement with the enclosing one.(¦œ¤úÿÿÿÿ
+K
+java:S1066©!"/Merge this if statement with the enclosing one.(â×ç¿ùÿÿÿÿ
+K
+java:S1066İ!"/Merge this if statement with the enclosing one.(æ§Ïäıÿÿÿÿ
+K
+java:S1066â!"/Merge this if statement with the enclosing one.(Î–»™üÿÿÿÿ
+K
+java:S1066„$"/Merge this if statement with the enclosing one.(â×ç¿ùÿÿÿÿ
+F
+java:S1066É)"/Merge this if statement with the enclosing one.(È©Œø
+F
+java:S1066Î)"/Merge this if statement with the enclosing one.(’¦´ë
+K
+java:S1066Û1"/Merge this if statement with the enclosing one.(ÃÁ·­ùÿÿÿÿ
+F
+java:S1066–2"/Merge this if statement with the enclosing one.(Äæçº
+F
+java:S1066›2"/Merge this if statement with the enclosing one.(ø¨ÑÈ
+F
+java:S1066Ÿ2"/Merge this if statement with the enclosing one.(•ÛÓ“
+K
+java:S1066É4"/Merge this if statement with the enclosing one.(ÃÁ·­ùÿÿÿÿ
+F
+java:S1066šB"/Merge this if statement with the enclosing one.(Õ§î
+F
+java:S1066 B"/Merge this if statement with the enclosing one.(§ƒëİ
+K
+java:S1066²B"/Merge this if statement with the enclosing one.(™…¹¿ÿÿÿÿÿ
+K
+java:S1066¸B"/Merge this if statement with the enclosing one.(úèÕ¬øÿÿÿÿ
+F
+java:S1066²C"/Merge this if statement with the enclosing one.(¯ö¢
+E
+java:S1066·C"/Merge this if statement with the enclosing one.(¹ûµr
+F
+java:S1066¿C"/Merge this if statement with the enclosing one.(¥ôõÄ
+K
+java:S1066ÄC"/Merge this if statement with the enclosing one.(°úúœşÿÿÿÿ
+F
+java:S1066ÍC"/Merge this if statement with the enclosing one.(àİ³˜
+F
+java:S1066ÒC"/Merge this if statement with the enclosing one.(Ó—ª
+K
+java:S1066ÖC"/Merge this if statement with the enclosing one.(´ŠÉŠùÿÿÿÿ
+F
+java:S1066ÚC"/Merge this if statement with the enclosing one.(ñû
+F
+java:S1066­H"/Merge this if statement with the enclosing one.(Õ§î
+F
+java:S1066²H"/Merge this if statement with the enclosing one.(§ƒëİ
+K
+java:S1066ÁH"/Merge this if statement with the enclosing one.(™…¹¿ÿÿÿÿÿ
+K
+java:S1066ÆH"/Merge this if statement with the enclosing one.(úèÕ¬øÿÿÿÿ
+F
+java:S1066g"/Merge this if statement with the enclosing one.(¯ö¢
+E
+java:S1066†g"/Merge this if statement with the enclosing one.(¹ûµr
+F
+java:S1066g"/Merge this if statement with the enclosing one.(¦Á¯²
+F
+java:S1066—{"/Merge this if statement with the enclosing one.(Õ§î
+F
+java:S1066{"/Merge this if statement with the enclosing one.(§ƒëİ
+K
+java:S1066µ{"/Merge this if statement with the enclosing one.(úèÕ¬øÿÿÿÿ
+F
+java:S1066“|"/Merge this if statement with the enclosing one.(¯ö¢
+E
+java:S1066˜|"/Merge this if statement with the enclosing one.(¹ûµr
+F
+java:S1066œ|"/Merge this if statement with the enclosing one.(¥ôõÄ
+K
+java:S1066¡|"/Merge this if statement with the enclosing one.(°úúœşÿÿÿÿ
+F
+java:S1066¬|"/Merge this if statement with the enclosing one.(ñû
+G
+java:S1066’€"/Merge this if statement with the enclosing one.(Õ§î
+G
+java:S1066—€"/Merge this if statement with the enclosing one.(§ƒëİ
+L
+java:S1066«€"/Merge this if statement with the enclosing one.(úèÕ¬øÿÿÿÿ
+G
+java:S1066¬“"/Merge this if statement with the enclosing one.(Õ§î
+G
+java:S1066²“"/Merge this if statement with the enclosing one.(§ƒëİ
+L
+java:S1066Ä“"/Merge this if statement with the enclosing one.(úèÕ¬øÿÿÿÿ
+G
+java:S1066›”"/Merge this if statement with the enclosing one.(¯ö¢
+F
+java:S1066 ”"/Merge this if statement with the enclosing one.(¹ûµr
+G
+java:S1066¤”"/Merge this if statement with the enclosing one.(¥ôõÄ
+L
+java:S1066©”"/Merge this if statement with the enclosing one.(°úúœşÿÿÿÿ
+G
+java:S1066²”"/Merge this if statement with the enclosing one.(ñû
+G
+java:S1066é—"/Merge this if statement with the enclosing one.(Õ§î
+G
+java:S1066î—"/Merge this if statement with the enclosing one.(§ƒëİ
+L
+java:S1066ı—"/Merge this if statement with the enclosing one.(úèÕ¬øÿÿÿÿ
+G
+java:S1066ü¨"/Merge this if statement with the enclosing one.(¯ö¢
+G
+java:S1066©"/Merge this if statement with the enclosing one.(ìü‹ö
+L
+java:S1066†©"/Merge this if statement with the enclosing one.(›İÑñÿÿÿÿÿ
+L
+java:S1066Š©"/Merge this if statement with the enclosing one.(©Âã¹úÿÿÿÿ
+L
+java:S1066©"/Merge this if statement with the enclosing one.(¶áÛùÿÿÿÿ
+G
+java:S1066”©"/Merge this if statement with the enclosing one.(“¶¡›
+G
+java:S1066™©"/Merge this if statement with the enclosing one.(‚Ÿõ
+G
+java:S1066€¸"/Merge this if statement with the enclosing one.(‚‚œÅ
+G
+java:S1066Ú¸"/Merge this if statement with the enclosing one.(¯ö¢
+G
+java:S1066ß¸"/Merge this if statement with the enclosing one.(ìü‹ö
+L
+java:S1066ä¸"/Merge this if statement with the enclosing one.(›İÑñÿÿÿÿÿ
+L
+java:S1066è¸"/Merge this if statement with the enclosing one.(©Âã¹úÿÿÿÿ
+L
+java:S1066ì¸"/Merge this if statement with the enclosing one.(¶áÛùÿÿÿÿ
+G
+java:S1066ò¸"/Merge this if statement with the enclosing one.(“¶¡›
+G
+java:S1066İ»"/Merge this if statement with the enclosing one.(‚‚œÅ
+G
+java:S1066ÕÄ"/Merge this if statement with the enclosing one.(¯ö¢
+L
+java:S1066ÚÄ"/Merge this if statement with the enclosing one.(àª˜Úıÿÿÿÿ
+g	java:S117„"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117…"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117Ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117ß"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117Ú"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117Û"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117¼"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117½"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117­#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117®#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117‘+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117è3"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117é3"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117ŠF"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117‹F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117¸`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+g	java:S117ÿh"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117€i"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+g	java:S117µ~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+l	java:S117¶~"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+h	java:S117¯–"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+m	java:S117°–"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+h	java:S117†«"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+m	java:S117‡«"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+h	java:S117Ùº"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+m	java:S117Úº"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+h	java:S117Æ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÓ¡€
+m	java:S117ŸÆ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤¢öøÿÿÿÿ
+u
+java:S1488»"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488’"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488˜"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488ú"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488Ô""_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488¿*"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488•3"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488ôD"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488ï_"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488“h"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+u
+java:S1488¶}"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+v
+java:S1488¸•"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+v
+java:S1488¤ª"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+v
+java:S1488ø¹"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+v
+java:S1488ÍÅ"_Immediately return this expression instead of assigning it to the temporary variable "builder".(«‰Ÿ~
+J
+java:S1199Û¨"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+J
+java:S1199½¸"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+Q
+java:S3516éÆ"9Refactor this method to not always return the same value.(Û‹Ö‡
+Q
+java:S3516Õ»"9Refactor this method to not always return the same value.(Û‹Ö‡
+Q
+java:S3516‰¬"9Refactor this method to not always return the same value.(Û‹Ö‡
+œ
+java:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ƒ°‡ıÿÿÿÿ
+J
+java:S1172'"/Remove this unused method parameter "registry".(•óÊõÿÿÿÿÿ
+K
+java:S1133W"5Do not forget to remove this deprecated code someday.(ãÿÙ‹
+=
+java:S1123W"'Add the missing @Deprecated annotation.(ãÿÙ‹
+Q
+java:S1133Ş"5Do not forget to remove this deprecated code someday.(ş‰üøÿÿÿÿÿ
+C
+java:S1123Ş"'Add the missing @Deprecated annotation.(ş‰üøÿÿÿÿÿ
+Q
+java:S1133Ö"5Do not forget to remove this deprecated code someday.(ííïşÿÿÿÿ
+C
+java:S1123Ö"'Add the missing @Deprecated annotation.(ííïşÿÿÿÿ
+Q
+java:S1133Î"5Do not forget to remove this deprecated code someday.(›ÉÙúÿÿÿÿ
+C
+java:S1123Î"'Add the missing @Deprecated annotation.(›ÉÙúÿÿÿÿ
+k	java:S116ô"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+f	java:S116ö"PRename this field "name_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áè±Í
+l	java:S116¦"QRename this field "alias_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß‘ò­úÿÿÿÿ
+n	java:S116Ö"XRename this field "documentPath_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Êíö»
+{
+java:S4144„"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 1632.(†û‰
+n
+java:S3077ö"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(áè±Í
+s
+java:S3077¦"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(ß‘ò­úÿÿÿÿ
+b
+java:S6201†"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201š"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201¶"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201Ê"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+W
+java:S1126È"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116±	"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+e	java:S116³	"PRename this field "name_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñœã/
+g	java:S116‡
+"QRename this field "alias_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ÀÙµ
+n	java:S116Û
+"XRename this field "documentPath_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öØ¸Ê
+z	java:S116å
+"_Rename this field "documentPathBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÕÈûşÿÿÿÿ
+o
+java:S2975"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+]
+java:S6201¾"FReplace this instanceof check and cast with 'instanceof Column column'(úŸÙÿ
+n
+java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(¸Éˆôşÿÿÿÿ
+W	java:S125¨	"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125©	"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+b
+java:S6201Á	"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+]
+java:S6201Ô	"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+b
+java:S6201•
+"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+]
+java:S6201¨
+"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+@
+java:S1940Ş
+")Use the opposite operator ("==") instead.(œüìé
+T
+java:S1854ë"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116õ"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116÷"RRename this field "source_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÚ–Ÿøÿÿÿÿ
+l	java:S116 "QRename this field "alias_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß‘ò­úÿÿÿÿ
+{
+java:S4144²"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 2574.(Ô½Ôã
+s
+java:S3077 "WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(ß‘ò­úÿÿÿÿ
+b
+java:S6201º"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201Ó"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+W
+java:S1126£"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116à"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116â"RRename this field "source_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÚ–Ÿøÿÿÿÿ
+o	java:S116ä"YRename this field "sourceBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ã®­
+g	java:S116‡"QRename this field "alias_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ÀÙµ
+o
+java:S2975ò"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+j
+java:S6201“"NReplace this instanceof check and cast with 'instanceof Projection projection'(“¶ØŒùÿÿÿÿ
+]
+java:S1126¯"AReplace this if-then-else statement by a single return statement.(„²Ö‹üÿÿÿÿ
+W	java:S125×"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125Ø"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+b
+java:S6201Ÿ"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+]
+java:S6201·"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+T
+java:S1854™"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116ˆ"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+f	java:S116Š"PRename this field "name_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áè±Í
+h	java:S116º"RRename this field "schema_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒõÊÍ
+€
+java:S4144¸"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 3348.(’Õ²İúÿÿÿÿ
+n
+java:S3077Š"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(áè±Í
+n
+java:S3077º"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(ŒõÊÍ
+b
+java:S6201š"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201®"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201Ê"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+b
+java:S6201Ş"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+W
+java:S1126©"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116Õ"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+e	java:S116×"PRename this field "name_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñœã/
+h	java:S116«"RRename this field "schema_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì‚§
+o
+java:S2975ê"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+j
+java:S6201‹"NReplace this instanceof check and cast with 'instanceof Collection collection'(ù´øòşÿÿÿÿ
+X
+java:S1126¦"AReplace this if-then-else statement by a single return statement.(»øŠˆ
+W	java:S125Ì"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125Í"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+b
+java:S6201å"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+]
+java:S6201ø"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+b
+java:S6201¹"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+]
+java:S6201Ì"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+T
+java:S1854Ÿ"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+j	java:S116’"TRename this field "rowCount_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ÔÊÛ
+m	java:S116­"RRename this field "offset_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ñ‹Åÿÿÿÿÿ
+€
+java:S4144Ü"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 4024.(‹£·¾øÿÿÿÿ
+W
+java:S1126‰"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116³"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+j	java:S116µ"TRename this field "rowCount_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ÔÊÛ
+m	java:S116ì"RRename this field "offset_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ñ‹Åÿÿÿÿÿ
+o
+java:S2975Ì"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+`
+java:S6201í"DReplace this instanceof check and cast with 'instanceof Limit limit'(é®’ÿúÿÿÿÿ
+]
+java:S1126„"AReplace this if-then-else statement by a single return statement.(Ä˜—§ıÿÿÿÿ
+W	java:S125ª"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125«"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+T
+java:S1854Ã"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116Ì "URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+o	java:S116Î "TRename this field "rowCount_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì• ûÿÿÿÿ
+h	java:S116ô "RRename this field "offset_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ê¼
+€
+java:S4144«'"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 4999.(Š‹ÄÏøÿÿÿÿ
+W
+java:S1126å!"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116¸$"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+o	java:S116º$"TRename this field "rowCount_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì• ûÿÿÿÿ
+q	java:S116¼$"[Rename this field "rowCountBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤àÛ
+h	java:S116Ö%"RRename this field "offset_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Ê¼
+t	java:S116Ø%"YRename this field "offsetBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§¹Ÿıÿÿÿÿ
+o
+java:S2975Å#"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+h
+java:S6201æ#"LReplace this instanceof check and cast with 'instanceof LimitExpr limitexpr'(áù•îÿÿÿÿÿ
+W	java:S125¯$"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125°$"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+T
+java:S1854’'"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116İ("URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+f	java:S116ß("PRename this field "expr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ‘Ÿˆ
+p	java:S116ù("URename this field "direction_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãß¹ÿÿÿÿÿ
+{
+java:S4144õ-"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 5841.(·‹¸
+Q
+java:S1133 ("5Do not forget to remove this deprecated code someday.(î€¾ìûÿÿÿÿ
+C
+java:S1123 ("'Add the missing @Deprecated annotation.(î€¾ìûÿÿÿÿ
+W
+java:S1126Ğ)"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116—,"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+f	java:S116™,"PRename this field "expr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(æ‘Ÿˆ
+m	java:S116›,"WRename this field "exprBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚¤¶ƒ
+k	java:S116‘-"URename this field "direction_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Üªœí
+o
+java:S2975¤+"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+[
+java:S6201Å+"DReplace this instanceof check and cast with 'instanceof Order order'(İè™¥
+]
+java:S1126ß+"AReplace this if-then-else statement by a single return statement.(ÚÖ–òûÿÿÿÿ
+W	java:S125,"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125,"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+T
+java:S1854Ü-"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116Ó0"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+g	java:S116Õ0"RRename this field "source_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ÙÖ8
+k	java:S116‡1"URename this field "operation_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êæº
+g	java:S116¢1"QRename this field "value_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÎá‹
+€
+java:S4144Û8"dUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 7223.(áı…Äüÿÿÿÿ
+Q
+java:S11330"5Do not forget to remove this deprecated code someday.(×æ•œüÿÿÿÿ
+C
+java:S11230"'Add the missing @Deprecated annotation.(×æ•œüÿÿÿÿ
+W
+java:S1126¢2"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116‰5"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+g	java:S116‹5"RRename this field "source_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™ÙÖ8
+t	java:S1165"YRename this field "sourceBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÜÚ¹—üÿÿÿÿ
+j	java:S116Ë6"URename this field "operation_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬ş¯E
+g	java:S116†7"QRename this field "value_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÎá‹
+n	java:S116ˆ7"XRename this field "valueBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò¡³‘
+o
+java:S2975„4"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+o
+java:S6201¥4"XReplace this instanceof check and cast with 'instanceof UpdateOperation updateoperation'(·Ğ£ˆ
+W	java:S125€5"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S1255"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+T
+java:S1854Â8"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116ø="URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+l	java:S116ú="VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+p	java:S116 >"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Öê¶şÿÿÿÿ
+k	java:S116»>"VRename this field "projection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Øì4
+f	java:S116÷>"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø²–½
+o	java:S116³?"TRename this field "criteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÚ«ıÿÿÿÿ
+f	java:S116Ù?"QRename this field "limit_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øí¹g
+g	java:S116‚@"QRename this field "order_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¶±Û
+j	java:S116¾@"TRename this field "grouping_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂÅ†æ
+r	java:S116ú@"\Rename this field "groupingCriteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àª®
+i	java:S116 A"SRename this field "locking_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥üğ“
+u	java:S116»A"ZRename this field "lockingOptions_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áø˜úÿÿÿÿ
+p	java:S116ÖA"URename this field "limitExpr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É ßÕüÿÿÿÿ
+
+java:S4144Ğ>"cUpdate this method so that its implementation is not identical to "getProjectionList" on line 8004.(ÿÒüÄşÿÿÿÿ
+z
+java:S4144—@"^Update this method so that its implementation is not identical to "getOrderList" on line 8203.(óÇô£ıÿÿÿÿ
+|
+java:S4144Ñ["eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 11693.(óŠƒÿ
+Q
+java:S1133Ç<"5Do not forget to remove this deprecated code someday.(éµŞ¸üÿÿÿÿ
+C
+java:S1123Ç<"'Add the missing @Deprecated annotation.(éµŞ¸üÿÿÿÿ
+L
+java:S1133»="5Do not forget to remove this deprecated code someday.(×Ñ˜”
+>
+java:S1123»="'Add the missing @Deprecated annotation.(×Ñ˜”
+i
+java:S3776€B"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Û‹Ö‡
+W
+java:S1126İC"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116çI"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+l	java:S116éI"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+x	java:S116ëI"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+p	java:S116…K"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚»‰…şÿÿÿÿ
+q	java:S116ÀK"VRename this field "projection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õ³Ñ¶ÿÿÿÿÿ
+s	java:S116ÊK"]Rename this field "projectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™¬Ó¼
+f	java:S116øM"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ€ù‰
+r	java:S116‚N"WRename this field "argsBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ëİşÿÿÿÿ
+o	java:S116°P"TRename this field "criteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÚ«ıÿÿÿÿ
+q	java:S116²P"[Rename this field "criteriaBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ¸Ûó
+f	java:S116ÌQ"QRename this field "limit_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øí¹g
+n	java:S116ÎQ"XRename this field "limitBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ÓĞû
+l	java:S116ñR"QRename this field "order_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÈÔˆúÿÿÿÿ
+n	java:S116ûR"XRename this field "orderBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò¦¡Ï
+o	java:S116©U"TRename this field "grouping_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿñöªıÿÿÿÿ
+q	java:S116³U"[Rename this field "groupingBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ûÙÍ
+r	java:S116áW"\Rename this field "groupingCriteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àª®
+~	java:S116ãW"cRename this field "groupingCriteriaBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âé„»ÿÿÿÿÿ
+i	java:S116ıX"SRename this field "locking_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(””˜
+p	java:S116¸Y"ZRename this field "lockingOptions_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰¾“ÿ
+p	java:S116óY"URename this field "limitExpr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É ßÕüÿÿÿÿ
+q	java:S116õY"\Rename this field "limitExprBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¼¾c
+i
+java:S3776®E"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(öË·š
+i
+java:S3776ˆF"RRefactor this method to reduce its Cognitive Complexity from 39 to the 15 allowed.(ÖÄ›Ñ
+o
+java:S2975êF"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+^
+java:S6201‹G"BReplace this instanceof check and cast with 'instanceof Find find'(ä´á—üÿÿÿÿ
+n
+java:S3776“G"RRefactor this method to reduce its Cognitive Complexity from 81 to the 15 allowed.(çõùÿÿÿÿ
+i
+java:S3776›H"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(Û‹Ö‡
+n
+java:S3776ÎH"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(˜œö¾ûÿÿÿÿ
+W	java:S125ŞI"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125ßI"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+@
+java:S1940ÃK")Use the opposite operator ("==") instead.(œüìé
+E
+java:S1940ûM")Use the opposite operator ("==") instead.(ÆÕÕûÿÿÿÿ
+@
+java:S1940ôR")Use the opposite operator ("==") instead.(©„„ò
+E
+java:S1940¬U")Use the opposite operator ("==") instead.(„¢¶ûÿÿÿÿ
+T
+java:S1854¸["=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116øc"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+l	java:S116úc"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+p	java:S116 d"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Öê¶şÿÿÿÿ
+l	java:S116»d"VRename this field "projection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ö¤©§
+e	java:S116üd"ORename this field "row_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦êåî
+f	java:S116½e"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø²–½
+h	java:S116ùe"RRename this field "upsert_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õúì¢
+€
+java:S4144Òd"dUpdate this method so that its implementation is not identical to "getProjectionList" on line 12869.(ÿÒüÄşÿÿÿÿ
+y
+java:S4144“e"]Update this method so that its implementation is not identical to "getRowList" on line 12934.(¢¢Ü¹úÿÿÿÿ
+|
+java:S4144Êu"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 15014.(Ó²ßô
+l	java:S116¨^"QRename this field "field_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥Ö­­øÿÿÿÿ
+|
+java:S4144òc"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 12750.(‘Ìç¿
+W
+java:S1126„_"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116Ça"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+g	java:S116Éa"QRename this field "field_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Èœ•
+s	java:S116Óa"XRename this field "fieldBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«Îúÿÿÿÿ
+Z
+java:S1854¸`"CRemove this useless assignment to local variable "from_bitField0_".(ÆÓ¡€
+K
+java:S1481¸`"4Remove this unused "from_bitField0_" local variable.(ÆÓ¡€
+o
+java:S2975Ç`"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+f
+java:S6201è`"JReplace this instanceof check and cast with 'instanceof TypedRow typedrow'(Î…º°ÿÿÿÿÿ
+i
+java:S3776ğ`"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Úõ•ş
+W	java:S125¾a"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125¿a"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+@
+java:S1940Ìa")Use the opposite operator ("==") instead.(¦ÁÕ“
+T
+java:S1854Ùc"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+W
+java:S1126“g"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+k	java:S116±k"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+l	java:S116³k"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+x	java:S116µk"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+p	java:S116Ïl"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚»‰…şÿÿÿÿ
+l	java:S116Šm"VRename this field "projection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾˜ûó
+x	java:S116”m"]Rename this field "projectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãò…Âşÿÿÿÿ
+j	java:S116Ôo"ORename this field "row_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãá›²ùÿÿÿÿ
+l	java:S116Şo"VRename this field "rowBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚîÉç
+f	java:S116r"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ€ù‰
+r	java:S116¨r"WRename this field "argsBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ëİşÿÿÿÿ
+h	java:S116Öt"RRename this field "upsert_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õúì¢
+i
+java:S3776ıh"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(«âÏ½
+o
+java:S2975²i"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+b
+java:S6201Ói"FReplace this instanceof check and cast with 'instanceof Insert insert'(¢â«µÿÿÿÿÿ
+n
+java:S3776Ûi"RRefactor this method to reduce its Cognitive Complexity from 58 to the 15 allowed.(¾–‡ùÿÿÿÿ
+n
+java:S3776Ôj"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(˜œö¾ûÿÿÿÿ
+W	java:S125¨k"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+R	java:S125©k"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+@
+java:S1940m")Use the opposite operator ("==") instead.(œüìé
+E
+java:S1940×o")Use the opposite operator ("==") instead.(ÆÕÕûÿÿÿÿ
+E
+java:S1940¡r")Use the opposite operator ("==") instead.(‘ƒôÛùÿÿÿÿ
+T
+java:S1854±u"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+k	java:S116”x"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+l	java:S116–x"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+p	java:S116¼x"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Öê¶şÿÿÿÿ
+o	java:S116×x"TRename this field "criteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÚ«ıÿÿÿÿ
+f	java:S116ıx"QRename this field "limit_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øí¹g
+g	java:S116¦y"QRename this field "order_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¶±Û
+p	java:S116ây"URename this field "operation_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÍ¾«øÿÿÿÿ
+f	java:S116£z"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø²–½
+p	java:S116ßz"URename this field "limitExpr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É ßÕüÿÿÿÿ
+{
+java:S4144»y"_Update this method so that its implementation is not identical to "getOrderList" on line 15535.(óÇô£ıÿÿÿÿ
+z
+java:S4144ùy"cUpdate this method so that its implementation is not identical to "getOperationList" on line 15596.(±÷­
+}
+java:S4144Ò"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 18222.(ßãƒ
+i
+java:S3776‰{"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(Û‹Ö‡
+W
+java:S1126¯|"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+l	java:S116 "URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116¢"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+y	java:S116¤"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+q	java:S116¾‚"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚»‰…şÿÿÿÿ
+p	java:S116ù‚"TRename this field "criteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÚ«ıÿÿÿÿ
+r	java:S116û‚"[Rename this field "criteriaBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ¸Ûó
+g	java:S116•„"QRename this field "limit_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øí¹g
+o	java:S116—„"XRename this field "limitBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ÓĞû
+m	java:S116º…"QRename this field "order_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÈÔˆúÿÿÿÿ
+o	java:S116Ä…"XRename this field "orderBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò¦¡Ï
+l	java:S116ò‡"URename this field "operation_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÀ·˜
+x	java:S116ü‡"\Rename this field "operationBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—ÄÀüÿÿÿÿ
+g	java:S116¼Š"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ€ù‰
+s	java:S116ÆŠ"WRename this field "argsBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ëİşÿÿÿÿ
+q	java:S116ôŒ"URename this field "limitExpr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É ßÕüÿÿÿÿ
+r	java:S116öŒ"\Rename this field "limitExprBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¼¾c
+i
+java:S3776³~"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(½¦“—
+o
+java:S2975ü~"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+]
+java:S6201"FReplace this instanceof check and cast with 'instanceof Update update'(òìÔÊ
+i
+java:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 60 to the 15 allowed.(Ù‚©í
+j
+java:S3776Š€"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Û‹Ö‡
+o
+java:S3776³€"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(˜œö¾ûÿÿÿÿ
+X	java:S125—"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+S	java:S125˜"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+F
+java:S1940½…")Use the opposite operator ("==") instead.(‘ƒôÛùÿÿÿÿ
+F
+java:S1940õ‡")Use the opposite operator ("==") instead.(ºí¹íùÿÿÿÿ
+A
+java:S1940¿Š")Use the opposite operator ("==") instead.(©„„ò
+U
+java:S1854¹"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+l	java:S116ê"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116ì"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+q	java:S116’‘"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²Öê¶şÿÿÿÿ
+p	java:S116­‘"TRename this field "criteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÚ«ıÿÿÿÿ
+g	java:S116Ó‘"QRename this field "limit_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øí¹g
+h	java:S116ü‘"QRename this field "order_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¶±Û
+g	java:S116¸’"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø²–½
+q	java:S116ô’"URename this field "limitExpr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É ßÕüÿÿÿÿ
+|
+java:S4144‘’"_Update this method so that its implementation is not identical to "getOrderList" on line 18693.(óÇô£ıÿÿÿÿ
+‚
+java:S4144Í£"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 20905.(¸š•¶úÿÿÿÿ
+j
+java:S3776“"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(Û‹Ö‡
+X
+java:S1126µ”"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+l	java:S116å˜"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116ç˜"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+y	java:S116é˜"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+q	java:S116ƒš"URename this field "dataModel_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚»‰…şÿÿÿÿ
+p	java:S116¾š"TRename this field "criteria_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÚ«ıÿÿÿÿ
+r	java:S116Àš"[Rename this field "criteriaBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ¸Ûó
+g	java:S116Ú›"QRename this field "limit_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øí¹g
+o	java:S116Ü›"XRename this field "limitBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–ÓĞû
+m	java:S116ÿœ"QRename this field "order_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÈÔˆúÿÿÿÿ
+o	java:S116‰"XRename this field "orderBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ò¦¡Ï
+g	java:S116·Ÿ"PRename this field "args_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ€ù‰
+s	java:S116ÁŸ"WRename this field "argsBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Ëİşÿÿÿÿ
+q	java:S116ï¡"URename this field "limitExpr_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(É ßÕüÿÿÿÿ
+r	java:S116ñ¡"\Rename this field "limitExprBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¼¾c
+o
+java:S3776­–"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(Š»ôşÿÿÿÿ
+p
+java:S2975í–"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+]
+java:S6201—"FReplace this instanceof check and cast with 'instanceof Delete delete'(“¾¯
+o
+java:S3776–—"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(·ƒÿüÿÿÿÿ
+j
+java:S3776á—"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Û‹Ö‡
+o
+java:S3776…˜"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(˜œö¾ûÿÿÿÿ
+X	java:S125Ü˜"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+S	java:S125İ˜"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+F
+java:S1940‚")Use the opposite operator ("==") instead.(‘ƒôÛùÿÿÿÿ
+F
+java:S1940ºŸ")Use the opposite operator ("==") instead.(ºí¹íùÿÿÿÿ
+U
+java:S1854´£"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+l	java:S116Ù¥"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116Û¥"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+j	java:S116¦"SRename this field "definer_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å’Ï
+l	java:S116À¦"URename this field "algorithm_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é²ˆÓ
+j	java:S116Û¦"TRename this field "security_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÈòn
+f	java:S116ö¦"QRename this field "check_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âöS
+i	java:S116‘§"RRename this field "column_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô‹´ù
+g	java:S116Ä§"PRename this field "stmt_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öé¥ø
+r	java:S116í§"[Rename this field "replaceExisting_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô•
+}
+java:S4144å³"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 22977.(‘Ó“÷
+o
+java:S3077¦"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(Å’Ï
+c
+java:S6201›¦"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+c
+java:S6201´¦"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+X
+java:S1126œ©"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+l	java:S116ú¬"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116ü¬"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+y	java:S116ş¬"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+o	java:S116˜®"SRename this field "definer_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚šÁ˜üÿÿÿÿ
+l	java:S116Š¯"URename this field "algorithm_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İŒïå
+k	java:S116Å¯"TRename this field "security_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¢Ü…
+m	java:S116€°"QRename this field "check_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÓ†´üÿÿÿÿ
+n	java:S116»°"RRename this field "column_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Äó¼„şÿÿÿÿ
+g	java:S116Ì±"PRename this field "stmt_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öé¥ø
+n	java:S116Î±"WRename this field "stmtBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’Û›
+r	java:S116ñ²"[Rename this field "replaceExisting_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô•
+p
+java:S2975·«"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+k
+java:S6201Ø«"NReplace this instanceof check and cast with 'instanceof CreateView createview'(ÿ•£ÿÿÿÿÿ
+Y
+java:S1126“¬"AReplace this if-then-else statement by a single return statement.(‚‚œÅ
+o
+java:S3776š¬"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(˜œö¾ûÿÿÿÿ
+X	java:S125ñ¬"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+S	java:S125ò¬"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+c
+java:S6201°®"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+^
+java:S6201È®"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+F
+java:S1940½°")Use the opposite operator ("==") instead.(ºí¹íùÿÿÿÿ
+U
+java:S1854Ì³"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+l	java:S116İµ"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116ßµ"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+j	java:S116…¶"SRename this field "definer_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Å’Ï
+l	java:S116Ä¶"URename this field "algorithm_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é²ˆÓ
+j	java:S116ß¶"TRename this field "security_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÈòn
+f	java:S116ú¶"QRename this field "check_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âöS
+i	java:S116•·"RRename this field "column_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô‹´ù
+g	java:S116È·"PRename this field "stmt_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öé¥ø
+}
+java:S4144ğÂ"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 24908.( ‹ùã
+o
+java:S3077…¶"WUse a thread-safe type; adding "volatile" is not enough to make this field thread-safe.(Å’Ï
+c
+java:S6201Ÿ¶"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+c
+java:S6201¸¶"FReplace this instanceof check and cast with 'instanceof String string'(õõáÀÿÿÿÿÿ
+X
+java:S1126õ¸"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+l	java:S116À¼"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116Â¼"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+y	java:S116Ä¼"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+o	java:S116Ş½"SRename this field "definer_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚šÁ˜üÿÿÿÿ
+l	java:S116Ğ¾"URename this field "algorithm_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İŒïå
+p	java:S116‹¿"TRename this field "security_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“§¤¼şÿÿÿÿ
+m	java:S116Æ¿"QRename this field "check_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÓ†´üÿÿÿÿ
+n	java:S116À"RRename this field "column_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Äó¼„şÿÿÿÿ
+g	java:S116’Á"PRename this field "stmt_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öé¥ø
+n	java:S116”Á"WRename this field "stmtBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’Û›
+p
+java:S2975†»"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+f
+java:S6201§»"NReplace this instanceof check and cast with 'instanceof ModifyView modifyview'(Ü¤Œ
+o
+java:S3776å»"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(˜œö¾ûÿÿÿÿ
+X	java:S125·¼"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+S	java:S125¸¼"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+c
+java:S6201ö½"FReplace this instanceof check and cast with 'instanceof String string'(Á¿Ö¨üÿÿÿÿ
+^
+java:S6201¾"FReplace this instanceof check and cast with 'instanceof String string'(‡ñ÷
+F
+java:S1940ƒÀ")Use the opposite operator ("==") instead.(ºí¹íùÿÿÿÿ
+U
+java:S1854×Â"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+l	java:S116ÕÃ"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116×Ã"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+p	java:S116ıÃ"TRename this field "ifExists_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔÚõüıÿÿÿÿ
+}
+java:S4144¬É"eUpdate this method so that its implementation is not identical to "getDefaultInstance" on line 25736.(ÄŠ– 
+X
+java:S1126İÄ"AReplace this if-then-else statement by a single return statement.(ûÿ½%
+l	java:S116Ç"URename this field "bitField0_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö»³Ä
+m	java:S116 Ç"VRename this field "collection_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ò¼Â
+y	java:S116¢Ç"]Rename this field "collectionBuilder_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çñÉÅşÿÿÿÿ
+p	java:S116¼È"TRename this field "ifExists_" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÔÚõüıÿÿÿÿ
+p
+java:S2975²Æ"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Îõ¾Òûÿÿÿÿ
+g
+java:S6201ÓÆ"JReplace this instanceof check and cast with 'instanceof DropView dropview'(†èÇüÿÿÿÿ
+Y
+java:S1126íÆ"AReplace this if-then-else statement by a single return statement.(™ö­
+X	java:S125•Ç"<This block of commented-out lines of code should be removed.(““ùûÿÿÿÿ
+S	java:S125–Ç"<This block of commented-out lines of code should be removed.(¯Ë¶‡
+U
+java:S1854“É"=Remove this useless assignment to local variable "!unknown!".(íİƒ
+O
+java:S6126†Ê"2Replace this String concatenation with Text block.(˜·§Ãøÿÿÿÿ

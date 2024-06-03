@@ -40,7 +40,6 @@ services:
   generics-db:
     container_name: generics-db
     image: mysql:5
-    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=generics
@@ -49,23 +48,21 @@ services:
       - mysql-data:/var/lib/mysql
     ports:
       - 3307:3306
-    networks:
-      - generics
 
-  generics-audit-db:
-    container_name: generics-audit-db
-    image: mysql:5
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=generics_audit
-      - PMA_HOST=mysql
-    volumes:
-      - mysql-data-audit:/var/lib/mysql
-    ports:
-      - 3308:3306
-    networks:
-      - generics
+#  generics-audit-db:
+#    container_name: generics-audit-db
+#    image: mysql:5
+#    restart: always
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=root
+#      - MYSQL_DATABASE=generics_audit
+#      - PMA_HOST=mysql
+#    volumes:
+#      - mysql-data-audit:/var/lib/mysql
+#    ports:
+#      - 3308:3306
+#    networks:
+#      - generics
 
   register-service:
     container_name: register-service
@@ -81,51 +78,132 @@ services:
       - generics-db
     networks:
       - generics
+#
+#  crud-service:
+#    container_name: crud-service
+#    image: aleramiirez/generics:crud-service
+#    ports:
+#      - 8082:8082
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+#      - DATABASE_USERNAME=root
+#      - DATABASE_PASSWORD=root
+#    depends_on:
+#      - generics-db
+#    networks:
+#      - generics
+#
+#  audit-service:
+#    container_name: audit-service
+#    image: aleramiirez/generics:audit-service
+#    ports:
+#      - 8085:8085
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
+#      - DATABASE_USERNAME=root
+#      - DATABASE_PASSWORD=root
+#    depends_on:
+#      - generics-audit-db
+#    networks:
+#      - generics
+#
+#  generics-front:
+#    container_name: generics-front
+#    image: aleramiirez/generics:generics-front
+#    ports:
+#      - 3000:3000
+#    environment:
+#      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
+#      - DATABASE_USERNAME=root
+#      - DATABASE_PASSWORD=root
+#    depends_on:
+#      - register-service
+#      - crud-service
+#    networks:
+#      - generics
 
-  crud-service:
-    container_name: crud-service
-    image: aleramiirez/generics:crud-service
+  zookeeper:
+    image: confluentinc/cp-zookeeper:6.0.0
+    hostname: zookeeper
+    container_name: zookeeper
     ports:
-      - 8082:8082
+      - "2181:2181"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
-    depends_on:
-      - generics-db
-    networks:
-      - generics
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
 
-  audit-service:
-    container_name: audit-service
-    image: aleramiirez/generics:audit-service
-    ports:
-      - 8085:8085
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-      - DATABASE_URL=jdbc:mysql://generics-audit-db:3306/generics_audit?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
+  kafka:
+    image: confluentinc/cp-enterprise-kafka:6.0.0
+    hostname: kafka
+    container_name: kafka
     depends_on:
-      - generics-audit-db
-    networks:
-      - generics
-      
-  generics-front:
-    container_name: generics-front
-    image: aleramiirez/generics:generics-front
+      - zookeeper
     ports:
-      - 3000:3000
+      - "29092:29092"
     environment:
-      - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  ksqldb-server:
+    image: confluentinc/ksqldb-server:0.14.0
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    command: [ "/etc/ksqldb-server/run.sh" ]
     depends_on:
-      - register-service
-      - crud-service
-    networks:
-      - generics
+      - kafka
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./files/ksqldb-server:/etc/ksqldb-server
+
+  # docker-compose exec ksqldb-cli  ksql http://ksqldb-server:8088
+  ksqldb-cli:
+    image: confluentinc/ksqldb-cli:0.14.0
+    container_name: ksqldb-cli
+    depends_on:
+      - kafka
+      - ksqldb-server
+    entrypoint: /bin/sh
+    tty: true
+    volumes:
+      - ./files/ksqldb-cli:/etc/sql
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:6.0.0
+    depends_on:
+      - zookeeper
+      - kafka
+    ports:
+      - '8086:8086'
+      - '31002:31002'
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
+      SCHEMA_REGISTRY_JMX_HOSTNAME: "localhost"
+      SCHEMA_REGISTRY_JMX_PORT: 31002
+
+  mysql:
+    image: mysql:8.0.32
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./files/mysql:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
 
 networks:
   generics:
