@@ -41,7 +41,6 @@ services:
       - MYSQL_DATABASE=generics
       - PMA_HOST=mysql
     volumes:
-      - mysql-data:/var/lib/mysql
       - ./files/mysql:/docker-entrypoint-initdb.d
     ports:
       - 3307:3306
