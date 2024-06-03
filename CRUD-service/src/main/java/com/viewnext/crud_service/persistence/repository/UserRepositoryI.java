@@ -63,4 +63,8 @@ public interface UserRepositoryI extends JpaRepository<User, Long>{
      * @return Usuarios encontrados con estado = true.
      */
     List<User> findByEstadoFalse();
+
+    boolean existsByCorreo(String correo);
+
+    boolean existsByTelefono(String telefono);
 }

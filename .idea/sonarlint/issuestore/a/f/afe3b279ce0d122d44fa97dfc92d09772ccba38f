@@ -1,13 +1,3 @@
 
-c
-java:S1165"Make this "id" field final.(°µ€˜ýÿÿÿÿ8ð¤‹›ü1J$43f3d804-11c8-45ab-b031-06f6f09b2014
-e
-java:S1165""Make this "createdBy" field final.(êÍÏÖ8ñ¤‹›ü1J$8bfeb7ab-bf3e-4ecd-a8cc-a2a5eb8ecd3c
-l
-java:S1165"$Make this "createdDate" field final.(î‚©çúÿÿÿÿ8ñ¤‹›ü1J$6ddb1379-1b22-4fa8-bcba-e5146a362968
-l
-java:S1165"$Make this "typeRequest" field final.(Š×‹£øÿÿÿÿ8ò¤‹›ü1J$43d6b175-0a3b-48d3-86b6-faa11a0edd68
-h
-java:S1165"" Make this "message" field final.(ù„è¿ûÿÿÿÿ8ò¤‹›ü1J$2e9a5a31-ce90-46b4-878b-86e0af05f05b
 o
-java:S1128",Remove this unused import 'lombok.ToString'.(¹ÂÄÓ8’·íšü1J$be2df2d0-d0ae-4093-a3d2-b710d18ba9ef
+java:S1128",Remove this unused import 'lombok.ToString'.(¹ÂÄÓ8’·íšü1J$ef3795b6-1436-4e16-9cc8-1be5138f4c11

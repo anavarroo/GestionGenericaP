@@ -21,9 +21,23 @@ public class RabbitMQConfig {
     @Value("${rabbitmq.routing.json.key}")
     private String routingJsonKey;
 
+    @Value("${rabbitmq.queue.exception.name}")
+    private String exceptionQueue;
+
+    @Value("${rabbitmq.exchange.exception.name}")
+    private String exceptionExchange;
+
+    @Value("${rabbitmq.routing.exception.key}")
+    private String routingexceptionKey;
+
     @Bean
     public Queue jsonQueue() {
         return new Queue(jsonQueue);
+    }
+
+    @Bean
+    public Queue exceptionQueue() {
+        return new Queue(exceptionQueue);
     }
 
     @Bean
@@ -32,11 +46,24 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public TopicExchange exceptionExchange() {
+        return new TopicExchange(exceptionExchange);
+    }
+
+    @Bean
     public Binding jsonBinding() {
         return BindingBuilder
                 .bind(jsonQueue())
                 .to(exchange())
                 .with(routingJsonKey);
+    }
+
+    @Bean
+    public Binding exceptionBinding() {
+        return BindingBuilder
+                .bind(exceptionQueue())
+                .to(exceptionExchange())
+                .with(routingexceptionKey);
     }
 
     @Bean

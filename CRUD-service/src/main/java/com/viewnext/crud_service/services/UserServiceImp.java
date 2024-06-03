@@ -1,17 +1,23 @@
 package com.viewnext.crud_service.services;
 
 
+import com.viewnext.crud_service.exceptions.DatosIncompletos;
+import com.viewnext.crud_service.exceptions.UsuarioNoEncontrado;
 import com.viewnext.crud_service.persistence.model.AuditingData;
 import com.viewnext.crud_service.persistence.dto.UserDto;
 import com.viewnext.crud_service.persistence.dto.UserDtoRegister;
+import com.viewnext.crud_service.persistence.model.ExceptionHandler;
 import com.viewnext.crud_service.persistence.model.User;
 import com.viewnext.crud_service.persistence.repository.UserRepositoryI;
+import com.viewnext.crud_service.published.RabbitMQExceptionProducer;
 import com.viewnext.crud_service.published.RabbitMQJsonProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +30,15 @@ public class UserServiceImp implements UserServiceI {
 
     private final RabbitMQJsonProducer rabbitMQProducer;
 
+    private final RabbitMQExceptionProducer rabbitMQExceptionProducer;
+
     @Autowired
-    public UserServiceImp(UserRepositoryI userRepositoryI, RabbitMQJsonProducer rabbitMQProducer) {
+    public UserServiceImp(UserRepositoryI userRepositoryI,
+                          RabbitMQJsonProducer rabbitMQProducer,
+                          RabbitMQExceptionProducer rabbitMQExceptionProducer) {
         this.userRepositoryI = userRepositoryI;
         this.rabbitMQProducer = rabbitMQProducer;
+        this.rabbitMQExceptionProducer = rabbitMQExceptionProducer;
     }
 
     /**
@@ -38,6 +49,24 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public UserDto crearUsuario(User user, String correoAutor) {
+
+        if (user.getCorreo().isEmpty() || user.getCorreo().isBlank()
+        || user.getNombre().isEmpty() || user.getNombre().isBlank()
+        || user.getApellidos().isEmpty() || user.getApellidos().isBlank()
+        || user.getDireccion().isEmpty() || user.getDireccion().isBlank()
+        || user.getTelefono().isEmpty() || user.getTelefono().isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/crear/" + user.getCorreo());
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
         String contrasenaSinEncriptar = user.getContrasena();
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -69,6 +98,37 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public UserDto actualizarUsuario(String correo, UserDto userDto, String correoAutor) {
+
+        if (userDto.getCorreo().isEmpty() || userDto.getCorreo().isBlank()
+                || userDto.getNombre().isEmpty() || userDto.getNombre().isBlank()
+                || userDto.getApellidos().isEmpty() || userDto.getApellidos().isBlank()
+                || userDto.getDireccion().isEmpty() || userDto.getDireccion().isBlank()
+                || userDto.getTelefono().isEmpty() || userDto.getTelefono().isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/editar/" + userDto.getCorreo());
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
+        if (!userRepositoryI.existsByCorreo(correo)) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/editar/" + correo);
+            exceptionHandler.setMessage("El usuario no esta registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("El usuario no esta registrado");
+        }
+
         User user = userRepositoryI.findByCorreo(correo);
 
         user.setNombre(userDto.getNombre());
@@ -105,12 +165,36 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public void borrarUsuarioPorEmail(String correo, String correoAutor) {
-        User user = userRepositoryI.findByCorreo(correo);
-        if (user != null) {
-            userRepositoryI.delete(user);
-        } else {
-            throw new UsernameNotFoundException("No se encontró ningún usuario con el correo electrónico proporcionado: " + correo);
+        if (correo.isEmpty() || correo.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/borrar/" + correo);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
         }
+
+        if (!userRepositoryI.existsByCorreo(correo)) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/borrar/" + correo);
+            exceptionHandler.setMessage("El usuario no esta registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("El usuario no esta registrado");
+        }
+
+        User user = userRepositoryI.findByCorreo(correo);
+
+        userRepositoryI.delete(user);
+
         User author = userRepositoryI.findByCorreo(correoAutor);
 
         AuditingData auditingData = new AuditingData();
@@ -131,6 +215,32 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public void aprobarRegistro(String correo, boolean estado, String correoAutor) {
+        if (correo.isEmpty() || correo.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/aprobar/" + correo);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
+        if (!userRepositoryI.existsByCorreo(correo)) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/aprobar/" + correo);
+            exceptionHandler.setMessage("El usuario no esta registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("El usuario no esta registrado");
+        }
+
         User usuarioMod = userRepositoryI.findByCorreo(correo);
         usuarioMod.setEstado(estado);
         userRepositoryI.save(usuarioMod);
@@ -154,6 +264,7 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDtoRegister> devolverUsuariosConEstadoFalse() {
+
         List<User> users = userRepositoryI.findByEstadoFalse();
         List<UserDtoRegister> userDtos = new ArrayList<>();
         for (User user : users) {
@@ -171,7 +282,35 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDto> consultarUsuarioPorNombre(String nombre, String correoAutor) {
+
+        if (nombre.isEmpty() || nombre.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/nombre/" + nombre);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
         List<User> users = userRepositoryI.findByNombre(nombre);
+
+        if (users.isEmpty()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/nombre/" + nombre);
+            exceptionHandler.setMessage("No se han encontrado usuarios registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("No se han encontrado usuarios registrado");
+        }
+
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
             userDtos.add(convertToDto(user));
@@ -198,7 +337,34 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDto> consultarUsuarioPorApellidos(String apellidos, String correoAutor) {
+
+        if (apellidos.isEmpty() || apellidos.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/apellidos/" + apellidos);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
         List<User> users = userRepositoryI.findByApellidos(apellidos);
+
+        if (users.isEmpty()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/apellidos/" + apellidos);
+            exceptionHandler.setMessage("No se han encontrado usuarios registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("No se han encontrado usuarios registrado");
+        }
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
@@ -225,7 +391,21 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDto> consultarUsuarioPorEdad(int edad, String correoAutor) {
+
         List<User> users = userRepositoryI.findByEdad(edad);
+
+        if (users.isEmpty()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/edad/" + edad);
+            exceptionHandler.setMessage("No se han encontrado usuarios registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("No se han encontrado usuarios registrado");
+        }
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
@@ -252,6 +432,33 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDto> consultarUsuarioPorCorreo(String correo, String correoAutor) {
+
+        if (correo.isEmpty() || correo.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/correo/" + correo);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
+        if (!userRepositoryI.existsByCorreo(correo)) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/correo/" + correo);
+            exceptionHandler.setMessage("No se han encontrado usuarios registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("No se han encontrado usuarios registrado");
+        }
+
         User user = userRepositoryI.findByCorreo(correo);
 
         List<UserDto> userDtos = new ArrayList<>();
@@ -278,7 +485,34 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDto> consultarUsuarioPorDireccion(String direccion, String correoAutor) {
+
+        if (direccion.isEmpty() || direccion.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/direccion/" + direccion);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
         List<User> users = userRepositoryI.findByDireccion(direccion);
+
+        if (users.isEmpty()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/direccion/" + direccion);
+            exceptionHandler.setMessage("No se han encontrado usuarios registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("No se han encontrado usuarios registrado");
+        }
 
         List<UserDto> userDtos = new ArrayList<>();
         for (User user : users) {
@@ -306,7 +540,35 @@ public class UserServiceImp implements UserServiceI {
      */
     @Override
     public List<UserDto> consultarUsuarioPorTelefono(String telefono, String correoAutor) {
+
+        if (telefono.isEmpty() || telefono.isBlank()) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/telefono/" + telefono);
+            exceptionHandler.setMessage("Los datos no pueden estar vacios");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new DatosIncompletos("Los datos no pueden estar vacios");
+        }
+
         User user = userRepositoryI.findByTelefono(telefono);
+
+        if (!userRepositoryI.existsByTelefono(telefono)) {
+            ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+            exceptionHandler.setCreatedBy(correoAutor);
+            exceptionHandler.setCreatedDate(LocalDate.now());
+            exceptionHandler.setTypeRequest("api/v1/usuarios/telefono/" + telefono);
+            exceptionHandler.setMessage("No se han encontrado usuarios registrado");
+
+            rabbitMQExceptionProducer.sendJsonMessage(exceptionHandler.toString());
+
+            throw new UsuarioNoEncontrado("No se han encontrado usuarios registrado");
+        }
+
         List<UserDto> userDtos = new ArrayList<>();
         userDtos.add(convertToDto(user));
 
