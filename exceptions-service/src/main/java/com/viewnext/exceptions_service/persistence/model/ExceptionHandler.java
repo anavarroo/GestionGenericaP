@@ -8,7 +8,6 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Entity
@@ -16,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Table(name = "Exceptions")
-public class ExceptionHandler extends RuntimeException implements Serializable {
+public class ExceptionHandler implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
