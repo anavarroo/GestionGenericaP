@@ -64,7 +64,7 @@ services:
     container_name: register-service
     image: anavarrooo/generics:register-service
     ports:
-      - 8081:8081
+      - 8086:8086
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - DATABASE_URL=jdbc:mysql://generics-db:3306/generics?autoReconnect=true&useSSL=false
@@ -177,7 +177,7 @@ services:
       - zookeeper
       - kafka
     ports:
-      - '8086:8086'
+      - '8081:8081'
       - '31002:31002'
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
