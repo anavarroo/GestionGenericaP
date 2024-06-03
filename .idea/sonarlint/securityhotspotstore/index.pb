@@ -8867,3 +8867,5 @@ G.idea/sonarlint/issuestore/f/c/fc9588f146139e13153f1b77062942e71bf6aa72,8\2\82
 Q.idea/sonarlint/securityhotspotstore/3/1/315ea03f3e6a8720ad880f34454d302652e46372,e\0\e0b0ebf9bb9bef9ae2b3f28d2e9d75139e10cb3c
 Å
 Q.idea/sonarlint/securityhotspotstore/3/7/3733737c6da5ee72995c48332b38a54debff151a,8\e\8ec7580799ab0badb89ac1b7021a425b3e2487ff
+M
+exceptions-service/Dockerfile,1\9\19c6d3333ba5af81f60644452c8336e06a3e184b
