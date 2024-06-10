@@ -9,15 +9,23 @@ import org.springframework.stereotype.Service;
 public class AuditingServiceImpl implements AuditingServiceI {
 
     private final AuditorRepositoryI auditorRepo;
+    private final EmailServiceImpl emailService;
 
     @Autowired
-    public AuditingServiceImpl(AuditorRepositoryI auditorRepo) {
+    public AuditingServiceImpl(AuditorRepositoryI auditorRepo, EmailServiceImpl emailService) {
         this.auditorRepo = auditorRepo;
+        this.emailService = emailService;
     }
 
     @Override
     public AuditingData saveAudit(AuditingData audit) {
-        return auditorRepo.save(audit);
+        AuditingData savedAudit = auditorRepo.save(audit);
+        String emailContent = "A new audit entry has been created:\n\n" +
+                "Author: " + savedAudit.getCreatedBy() + "\n" +
+                "Date: " + savedAudit.getCreatedDate() + "\n" +
+                "Endpoint: " + savedAudit.getTypeRequest();
+        emailService.sendEmail("alejandro1052004@gmail.com", "New Audit Entry", emailContent);
+        return savedAudit;
     }
 
 
