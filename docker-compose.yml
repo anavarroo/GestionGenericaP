@@ -108,6 +108,14 @@ services:
     networks:
       - generics
 
+  mail-server:
+    container_name: mail-server
+    image: aleramiirez/generics:mail-server
+    ports:
+      - 8090:8090
+    networks:
+      - generics
+
   exceptions-service:
     container_name: exceptions-service
     image: aleramiirez/generics:exceptions-service

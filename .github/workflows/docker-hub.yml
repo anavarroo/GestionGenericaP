@@ -73,3 +73,9 @@ jobs:
           docker build -t aleramiirez/generics:exceptions-service .
           docker push aleramiirez/generics:exceptions-service
 
+      - name: Build and push Docker images for mail-server
+        run: |
+          cd mail-server
+          docker build -t aleramiirez/generics:mail-server .
+          docker push aleramiirez/generics:mail-server
+

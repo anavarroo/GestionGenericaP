@@ -1,0 +1,5 @@
+
+	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¤î°€2J$a990c4f9-71cd-43e2-912d-9c4c51f0857e
+m	java:S106,"+Replace this use of System.out by a logger.(íëñ®8³î°€2J$928257fd-6f53-4d58-8a0a-735e4e1e8b69
+r	java:S106-"+Replace this use of System.out by a logger.(£ı¸Çüÿÿÿÿ8³î°€2J$0a307235-a0a2-4e61-9e8d-3e98d0204b6f
+r	java:S1062"+Replace this use of System.out by a logger.(ù†‡÷úÿÿÿÿ8´î°€2J$b964cfbc-de55-479e-b734-4de89cf0eaf9

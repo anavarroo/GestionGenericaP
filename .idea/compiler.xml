@@ -10,12 +10,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-gateway" />
         <module name="register-service" />
         <module name="discovery-server" />
         <module name="audit-service" />
-        <module name="CRUD-service" />
         <module name="exceptions-service" />
+        <module name="mail-server" />
+        <module name="api-gateway" />
+        <module name="CRUD-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -30,6 +31,7 @@
       <module name="common" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="exceptions-service" options="-parameters" />
+      <module name="mail-server" options="-parameters" />
       <module name="register-service" options="-parameters" />
     </option>
   </component>
