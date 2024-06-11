@@ -11167,3 +11167,5 @@ a
 1mail-server/.mvn/wrapper/maven-wrapper.properties,5\5\55b7c04ab35ab391af8448f44de634c57e9f0b41
 Å
 Q.idea/sonarlint/securityhotspotstore/9/a/9a746a5b1ed5af00fb5b375e22309e89b82967f4,4\6\46cfcb96a1d5ab9c9fc1627f1ad2c897b19e21a8
+F
+mail-server/Dockerfile,a\a\aaa1abbb82bc51bba225d3de830f8112c17212ee
