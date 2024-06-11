@@ -46,7 +46,7 @@ public class AuditingServiceImpl implements AuditingServiceI {
         props.setProperty("mail.smtp.port","587");
 
         // Nombre del usuario
-        props.setProperty("mail.smtp.user", "@gmail.com");
+        props.setProperty("mail.smtp.user", "correopruebacorreop@gmail.com");
 
         // Si requiere o no usuario y password para conectarse.
         props.setProperty("mail.smtp.auth", "true");
@@ -60,10 +60,10 @@ public class AuditingServiceImpl implements AuditingServiceI {
         try {
 
             // Quien envia el correo
-            message.setFrom(new InternetAddress("@gmail.com"));
+            message.setFrom(new InternetAddress("correopruebacorreop@gmail.com"));
 
             // A quien va dirigido
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("@gmail.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("correopruebacorreop@gmail.com"));
 
             message.setSubject("New Audit Entry");
             message.setText("A new audit entry has been created:\n\n" +
@@ -73,7 +73,7 @@ public class AuditingServiceImpl implements AuditingServiceI {
 
             Transport t = session.getTransport();
 
-            t.connect("alejandro1052004@gmail.com","");
+            t.connect("correopruebacorreop@gmail.com","");
 
             t.sendMessage(message,message.getAllRecipients());
 
