@@ -111,6 +111,8 @@ services:
   mail-server:
     container_name: mail-server
     image: aleramiirez/generics:mail-server
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
     ports:
       - 8090:8090
     networks:

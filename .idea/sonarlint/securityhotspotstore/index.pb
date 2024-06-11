@@ -11169,3 +11169,15 @@ a
 Q.idea/sonarlint/securityhotspotstore/9/a/9a746a5b1ed5af00fb5b375e22309e89b82967f4,4\6\46cfcb96a1d5ab9c9fc1627f1ad2c897b19e21a8
 F
 mail-server/Dockerfile,a\a\aaa1abbb82bc51bba225d3de830f8112c17212ee
+w
+G.idea/sonarlint/issuestore/a/a/aaa1abbb82bc51bba225d3de830f8112c17212ee,5\2\524a0852c03a1cfd00baf2b9cf047095bb3b02a7
+Å
+Q.idea/sonarlint/securityhotspotstore/a/a/aaa1abbb82bc51bba225d3de830f8112c17212ee,8\1\817f285674bca7b38a42cb76c0c552f3da5e372d
+w
+G.idea/sonarlint/issuestore/5/2/524a0852c03a1cfd00baf2b9cf047095bb3b02a7,c\3\c3c860291d657eac10dc3ac2ad8f1d9a1df1580b
+Å
+Q.idea/sonarlint/securityhotspotstore/5/2/524a0852c03a1cfd00baf2b9cf047095bb3b02a7,3\5\356614ff01a1c4486a74e929c6ba793f0f236153
+Å
+Q.idea/sonarlint/securityhotspotstore/8/1/817f285674bca7b38a42cb76c0c552f3da5e372d,6\2\622023f27774ea1ca4f05879e506225ab031a3df
+w
+G.idea/sonarlint/issuestore/8/1/817f285674bca7b38a42cb76c0c552f3da5e372d,d\d\dd87e53181c704372454b1d18c5bbb08fd2445ec

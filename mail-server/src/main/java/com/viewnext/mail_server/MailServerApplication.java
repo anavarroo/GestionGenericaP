@@ -11,9 +11,6 @@ import java.util.Properties;
 public class MailServerApplication {
 
 	public static void main(String[] args) {
-		Properties p = new Properties();
-		p.setProperty("un nombre", "un valor");
-		p.setProperty("PI", "3.1416");
 
 		Properties prop = new Properties();
 
@@ -33,7 +30,7 @@ public class MailServerApplication {
 		try {
         	Store store = null;
             store = sesion.getStore("pop3");
-			store.connect("pop.gmail.com","ejemplo@gmail.com","la password ");
+			store.connect("pop.gmail.com","correopruebacorreop@gmail.com","prueba1234 ");
 			Folder folder = store.getFolder("INBOX");
 			folder.open(Folder.READ_ONLY);
 
@@ -41,8 +38,8 @@ public class MailServerApplication {
 
 			for (int i=0;i<mensajes.length;i++)
 			{
-				System.out.println("From:"+mensajes[i].getFrom()[0].toString());
-				System.out.println("Subject:"+mensajes[i].getSubject());
+				System.out.println("From:" + mensajes[i].getFrom()[0].toString());
+				System.out.println("Subject:" + mensajes[i].getSubject());
 			}
 
 			for (int i=0;i<mensajes.length;i++)
