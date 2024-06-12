@@ -11155,8 +11155,6 @@ F
 mail-server/.gitignore,c\6\c62810fcf8f4e9ade289ca334fdd1d842911792e
 @
 mail-server/mvnw,d\f\df98df8dd781ceb63c22f730d814c80a809a024f
-Ç
-Rmail-server/src/test/java/com/viewnext/mail_server/MailServerApplicationTests.java,d\3\d3b6167f2e78e15995ee30b30c474bb95eaf6000
 Å
 Q.idea/sonarlint/securityhotspotstore/7/8/7862431d92a17dd56589546b851e860fa904f313,f\d\fdd6667170981bba1a594239a6f984247ac4ea1d
 w

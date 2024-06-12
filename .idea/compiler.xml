@@ -14,13 +14,13 @@
         <module name="discovery-server" />
         <module name="audit-service" />
         <module name="exceptions-service" />
-        <module name="mail-server" />
         <module name="api-gateway" />
         <module name="CRUD-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="17" />
+      <module name="mail-server" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
