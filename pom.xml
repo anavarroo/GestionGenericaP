@@ -30,7 +30,6 @@
 		<module>audit-service</module>
 		<module>register-service</module>
 		<module>exceptions-service</module>
-		<module>mail-server</module>
 	</modules>
 
 	<dependencies>
