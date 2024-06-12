@@ -5,6 +5,7 @@ import com.viewnext.auditservice.persistence.repository.AuditorRepositoryI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class AuditingServiceImpl implements AuditingServiceI {
 
@@ -19,5 +20,6 @@ public class AuditingServiceImpl implements AuditingServiceI {
     public AuditingData saveAudit(AuditingData audit) {
         return auditorRepo.save(audit);
     }
+
 
 }
